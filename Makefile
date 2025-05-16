@@ -7,7 +7,7 @@ CFLAGS = -Wall -Werror -Wextra  -g
 SRCDIR = srcs/
 OBJDIR = objs/
 
-SRCS =  $(addprefix $(SRCDIR), main.c parsing.c)
+SRCS = $(shell find $(SRCDIR) -type f -name "*.c")
 
 LIBFT_PATH = libft
 
