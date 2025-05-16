@@ -7,7 +7,7 @@ CFLAGS = -Wall -Werror -Wextra  -g
 SRCDIR = srcs/
 OBJDIR = objs/
 
-SRCS =  $(addprefix $(SRCDIR), main.c parsing.c)
+SRCS = $(shell find $(SRCDIR) -type f -name "*.c")
 
 LIBFT_PATH = libft
 
@@ -23,7 +23,7 @@ all: header $(NAME)
 header:
 	@echo "$(GREEN)"
 	@echo "   ______      __   _____ ____ "
-	@echo "  / ____/_  __/ /_ |__  // __ \"
+	@echo "  / ____/_  __/ /_ |__  // __ \\"
 	@echo " / /   / / / / __ \ /_ </ / / /"
 	@echo "/ /___/ /_/ / /_/ /__/ / /_/ / "
 	@echo "\____/\__,_/_.___/____/_____/  "
