@@ -1,4 +1,4 @@
-NAME = minishell
+NAME = cub3D
 
 CC = cc
 
@@ -35,7 +35,7 @@ $(OBJDIR)%.o: $(SRCDIR)%.c
 	@$(CC) $(CFLAGS) -c $< -o $@
 
 $(NAME): $(OBJS) $(LIBFT)
-	@$(CC) $(CFLAGS) $(OBJS) $(LIBFT) -lreadline -o $(NAME)
+	@$(CC) $(CFLAGS) $(OBJS) $(LIBFT) -o $(NAME)
 
 
 $(LIBFT):
@@ -43,7 +43,6 @@ $(LIBFT):
 
 clean:
 	@rm -rf $(OBJDIR)
-	@rm -rf ~/.ms_history*
 	@$(MAKE) clean -C $(LIBFT_PATH)
 
 fclean: clean
@@ -52,7 +51,4 @@ fclean: clean
 
 re: fclean all
 
-debug: $(NAME)
-	@valgrind --leak-check=full --show-leak-kinds=all --track-fds=yes --track-origins=yes --suppressions=ignore_readline_leaks.supp --log-file="leaks.log" ./minishell
-
-.PHONY: all clean fclean re debug
+.PHONY: all clean fclean re
