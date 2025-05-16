@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 13:50:46 by cgoldens          #+#    #+#             */
 /*   Updated: 2025/05/16 16:28:27 by cgoldens         ###   ########.fr       */
@@ -14,9 +14,9 @@
 # define CUB3D_H
 
 # include "../minilibx/mlx.h"
+# include "functions.h"
+# include "structs.h"
 # include "../libft/libft.h"
-# include "../includes/functions.h"
-# include "../includes/structs.h"
 # include <sys/types.h>
 # include <sys/stat.h>
 # include <fcntl.h>
