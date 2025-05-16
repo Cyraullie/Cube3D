@@ -6,9 +6,13 @@
 /*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 14:47:12 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/05/16 16:12:19 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/05/16 16:47:53 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3D.h"
 
+void	load_screen(t_data *data)
+{
+
+}
