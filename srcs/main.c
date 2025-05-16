@@ -3,19 +3,11 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/16 13:46:48 by cgoldens          #+#    #+#             */
-/*   Updated: 2025/05/16 13:49:39 by cgoldens         ###   ########.fr       */
+/*   Created: 2025/05/16 14:10:26 by ktintim-          #+#    #+#             */
+/*   Updated: 2025/05/16 14:39:43 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/**
- * @brief main function
- * 
- */
-int	main(int argc, char **argv)
-{
-	(void)argc;
-	(void)argv;
-}
+#include "../includes/cub3D.h"
