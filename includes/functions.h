@@ -1,23 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   functions.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/16 13:46:48 by cgoldens          #+#    #+#             */
-/*   Updated: 2025/05/16 15:21:49 by cgoldens         ###   ########.fr       */
+/*   Created: 2025/05/16 15:46:40 by ktintim-          #+#    #+#             */
+/*   Updated: 2025/05/16 15:46:52 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3D.h"
+#ifndef FUNCTIONS_H
+# define FUNCTIONS_H
 
-/**
- * @brief main function
- * 
- */
-int	main(int argc, char **argv)
-{
-	(void)argc;
-	test(argv[1]);
-}
+
+
+#endif
