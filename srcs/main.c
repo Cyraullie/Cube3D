@@ -6,9 +6,11 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 13:46:48 by cgoldens          #+#    #+#             */
-/*   Updated: 2025/05/16 13:49:39 by cgoldens         ###   ########.fr       */
+/*   Updated: 2025/05/16 15:21:49 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "../includes/cub3D.h"
 
 /**
  * @brief main function
@@ -17,5 +19,5 @@
 int	main(int argc, char **argv)
 {
 	(void)argc;
-	(void)argv;
+	test(argv[1]);
 }
