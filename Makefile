@@ -1,0 +1,62 @@
+NAME = minishell
+
+CC = cc
+
+CFLAGS = -Wall -Werror -Wextra  -g
+
+SRCDIR = srcs/
+OBJDIR = objs/
+
+SRCS =  $(addprefix $(SRCDIR), main.c parsing.c split_commands.c create_list.c list.c parsing_utils.c signal.c token.c \
+								separate_token.c check.c sort.c alloc.c exec_main.c heredoc_sig.c\
+								clean.c history.c echo.c exit_value.c exec_path.c exec_utils.c heredoc.c \
+								syntax.c expansion.c remove_quotes.c redir.c child.c single_builtin.c init.c\
+								exit.c env.c pwd.c cd.c unset.c env_utils.c update_pwd.c export.c concat.c export_utils.c)
+
+LIBFT_PATH = libft
+
+LIBFT = $(LIBFT_PATH)/libft.a
+
+OBJS = $(SRCS:$(SRCDIR)%.c=$(OBJDIR)%.o)
+
+GREEN = \033[1;32m
+RESET = \033[0m
+
+all: header $(NAME)
+
+header:
+	@echo "$(GREEN)"
+	@echo "   ______      __   _____ ____ "
+	@echo "  / ____/_  __/ /_ |__  // __ \"
+	@echo " / /   / / / / __ \ /_ </ / / /"
+	@echo "/ /___/ /_/ / /_/ /__/ / /_/ / "
+	@echo "\____/\__,_/_.___/____/_____/  "
+	@echo "                               "
+	@echo "$(RESET)"
+
+$(OBJDIR)%.o: $(SRCDIR)%.c
+	@mkdir -p $(OBJDIR)
+	@$(CC) $(CFLAGS) -c $< -o $@
+
+$(NAME): $(OBJS) $(LIBFT)
+	@$(CC) $(CFLAGS) $(OBJS) $(LIBFT) -lreadline -o $(NAME)
+
+
+$(LIBFT):
+	@$(MAKE) -C $(LIBFT_PATH)
+
+clean:
+	@rm -rf $(OBJDIR)
+	@rm -rf ~/.ms_history*
+	@$(MAKE) clean -C $(LIBFT_PATH)
+
+fclean: clean
+	@rm -f $(NAME)
+	@$(MAKE) fclean -C $(LIBFT_PATH)
+
+re: fclean all
+
+debug: $(NAME)
+	@valgrind --leak-check=full --show-leak-kinds=all --track-fds=yes --track-origins=yes --suppressions=ignore_readline_leaks.supp --log-file="leaks.log" ./minishell
+
+.PHONY: all clean fclean re debug
