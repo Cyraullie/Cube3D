@@ -2,6 +2,6 @@
 	path = libft
 	url = https://github.com/Cyraullie/libft.git
 
-[submodule "minilibx-linux"]
+[submodule "minilibx"]
 	path = minilibx
 	url = https://github.com/42paris/minilibx-linux.git
