@@ -3,16 +3,66 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 13:46:51 by cgoldens          #+#    #+#             */
-/*   Updated: 2025/05/16 15:46:51 by cgoldens         ###   ########.fr       */
+/*   Updated: 2025/05/16 17:28:01 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3D.h"
 
-void	test(char *file)
+void	get_color(int color[3], char *str)
+{
+	char	**tab;
+	int		i;
+
+	i = 0;
+	tab = ft_split(str, ',');
+	while (i < 3)
+	{
+		color[i] = ft_atoi(tab[i]);
+		i++;
+	}
+	free_array(tab);
+}
+/**
+ * @brief caca
+ * 
+ * @param txtr 
+ * @param str 
+ * @return int 
+ */
+int	add_struct(t_texture *txtr, char *str)
+{
+	char	**tab;
+
+	tab = ft_split(str, ' ');
+
+	if (!ft_strncmp(tab[0], "NO", 3))
+		txtr->n_path = tab[1];
+	else if (!ft_strncmp(tab[0], "SO", 3))
+		txtr->s_path = tab[1];
+	else if (!ft_strncmp(tab[0], "WE", 3))
+		txtr->w_path = tab[1];
+	else if (!ft_strncmp(tab[0], "EA", 3))
+		txtr->e_path = tab[1];
+	else if (!ft_strncmp(tab[0], "F", 2))
+		get_color(txtr->f_color, tab[1]);
+	else if (!ft_strncmp(tab[0], "C", 2))
+		get_color(txtr->c_color, tab[1]);
+	else
+		return (0);
+	return (1);
+}
+
+/**
+ * @brief 
+ * 
+ * @param file 
+ * @param txtr 
+ */
+void	test(char *file, t_texture *txtr)
 {
 	int		fd;
 	char	*buf;
@@ -20,7 +70,18 @@ void	test(char *file)
 	buf = malloc(BUFFER_SIZE * sizeof(char *));
 
 	fd = open(file, O_RDONLY);
-	read(fd, buf, BUFFER_SIZE);
-	printf("%s\n", ft_split(buf, ' ')[0]);
+	//read(fd, buf, BUFFER_SIZE);
+	//printf("%s\n", buf);
+	buf = get_next_line(fd);
+	while (buf != NULL)
+	{
+		printf("%s", buf);
+		printf("%d_", add_struct(txtr, buf));
+		//add_struct(txtr, buf);
+		free(buf);
+		buf = get_next_line(fd);
+	}
+	close(fd);
+
 }
 

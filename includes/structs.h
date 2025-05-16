@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 15:41:29 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/05/16 16:12:15 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/05/16 17:09:48 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,12 @@ typedef struct s_window
 	void	*win;
 }	t_window;
 
+typedef struct s_map {
+	char	**map;
+	int		rows;
+	int		cols;
+}				t_map;
+
 typedef struct s_texture
 {
 	void	*north;
@@ -29,6 +35,8 @@ typedef struct s_texture
 	char	*s_path;
 	char	*w_path;
 	char	*e_path;
+	int		f_color[3];
+	int		c_color[3];
 }	t_texture;
 
 #endif
