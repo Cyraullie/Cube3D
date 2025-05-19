@@ -6,7 +6,7 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 14:56:59 by cgoldens          #+#    #+#             */
-/*   Updated: 2025/05/19 16:02:55 by cgoldens         ###   ########.fr       */
+/*   Updated: 2025/05/19 16:04:26 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ int	check_path(char *path)
 
 int	check_texture(t_texture *txtr)
 {
+	//TODO free and exit if caca
 	if (check_color(txtr->c_color) || check_color(txtr->f_color))
 		printf("caca\n");
 	if (check_path(txtr->n_path) || check_path(txtr->s_path)
