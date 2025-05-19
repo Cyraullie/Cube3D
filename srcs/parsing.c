@@ -6,7 +6,7 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 13:46:51 by cgoldens          #+#    #+#             */
-/*   Updated: 2025/05/19 16:09:08 by cgoldens         ###   ########.fr       */
+/*   Updated: 2025/05/19 16:23:26 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,14 @@ int	add_struct(t_texture *txtr, char *str)
 	return (1);
 }
 
+void	add_map(t_map *map, char *str)
+{
+	strip_newline(str);
+	map->map[map->cols] = str;
+	map->rows = ft_strlen(str);
+	map->cols++;
+}
+
 /**
  * @brief 
  * 
@@ -81,7 +89,9 @@ void	test(char *file, t_data *data)
 {
 	int		fd;
 	char	*buf;
+	int		count;
 
+	count = 0;
 	buf = malloc(BUFFER_SIZE * sizeof(char *));
 
 	fd = open(file, O_RDONLY);
@@ -93,15 +103,22 @@ void	test(char *file, t_data *data)
 		//printf("%s", buf);
 		if (!(!ft_strcmp(buf, "\n")))
 		{
-			printf("%d_%s\n", add_struct(data->texture, buf), buf);
+			if (count != MAX_DATA)
+			{
+				count += add_struct(data->texture, buf);
+				printf("%d_%s\n", count, buf);
+			}
+			else
+			{
+				add_map(data->map, buf);
+			}
 		}
-		//add_struct(txtr, buf);
 		free(buf);
 		buf = get_next_line(fd);
 	}
 	//TODO if incorrect free + exit
 	check_texture(data->texture);
+	check_map(data->map);
 	close(fd);
-
 }
 

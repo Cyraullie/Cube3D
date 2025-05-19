@@ -6,7 +6,7 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 14:56:59 by cgoldens          #+#    #+#             */
-/*   Updated: 2025/05/19 16:04:26 by cgoldens         ###   ########.fr       */
+/*   Updated: 2025/05/19 16:23:01 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,5 +54,25 @@ int	check_texture(t_texture *txtr)
 	if (check_path(txtr->n_path) || check_path(txtr->s_path)
 		|| check_path(txtr->e_path) || check_path(txtr->w_path))
 		printf("cacaV2\n");
+	return (0);
+}
+
+int	check_map(t_map *map)
+{
+	int cols;
+	int rows;
+
+	rows = 0;
+	while (rows < map->rows)
+	{
+		cols = 0;
+		while (cols < map->cols)
+		{
+			printf("%c", map->map[rows][cols]);
+			cols++;
+		}
+		printf("\n");
+		rows++;
+	}
 	return (0);
 }
