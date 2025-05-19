@@ -6,7 +6,7 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 15:46:40 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/05/19 15:59:52 by cgoldens         ###   ########.fr       */
+/*   Updated: 2025/05/19 16:23:09 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,6 @@ void	test(char *file, t_data *data);
 int	check_texture(t_texture *txtr);
 void	strip_newline(char *str);
 void	free_array(char **tab);
+int	check_map(t_map *map);
 
 #endif

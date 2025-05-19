@@ -6,7 +6,7 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 13:50:46 by cgoldens          #+#    #+#             */
-/*   Updated: 2025/05/16 16:41:13 by cgoldens         ###   ########.fr       */
+/*   Updated: 2025/05/19 16:14:23 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,7 @@
 # include <stdio.h>
 # include <unistd.h>
 # include <stdlib.h>
+
+# define MAX_DATA 6
 
 #endif

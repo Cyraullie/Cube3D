@@ -6,7 +6,7 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 16:42:35 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/05/19 14:34:31 by cgoldens         ###   ########.fr       */
+/*   Updated: 2025/05/19 16:16:41 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ void	texture_constructor(t_texture *texture)
 void	data_constructor(t_data *data)
 {
 	data->texture = malloc(sizeof(t_texture));
+	data->map = malloc(sizeof(t_map));
 	//window_constructor(data->window );
 	texture_constructor(data->texture);
 }
