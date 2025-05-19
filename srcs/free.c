@@ -6,7 +6,7 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 17:22:42 by cgoldens          #+#    #+#             */
-/*   Updated: 2025/05/16 17:28:33 by cgoldens         ###   ########.fr       */
+/*   Updated: 2025/05/19 15:07:49 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,4 +23,3 @@ void	free_array(char **tab)
 		free(tab[j++]);
 	free(tab);
 }
-

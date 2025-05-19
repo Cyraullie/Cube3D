@@ -6,12 +6,19 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 13:46:51 by cgoldens          #+#    #+#             */
-/*   Updated: 2025/05/19 14:13:00 by cgoldens         ###   ########.fr       */
+/*   Updated: 2025/05/19 16:01:14 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3D.h"
+//TODO check data missing or incorrect
 
+/**
+ * @brief Get the color object
+ * 
+ * @param color 
+ * @param str 
+ */
 void	get_color(int color[3], char *str)
 {
 	char	**tab;
@@ -21,11 +28,18 @@ void	get_color(int color[3], char *str)
 	tab = ft_split(str, ',');
 	while (i < 3)
 	{
+		if (!tab[i] || tab[i][0] == '\n')
+		{
+			printf("Erreur\nRGB format (255,255,255) is not respected\n");
+			free_array(tab);
+			exit(EXIT_FAILURE);
+		}
 		color[i] = ft_atoi(tab[i]);
 		i++;
 	}
 	free_array(tab);
 }
+
 /**
  * @brief caca
  * 
@@ -37,6 +51,7 @@ int	add_struct(t_texture *txtr, char *str)
 {
 	char	**tab;
 
+	strip_newline(str);
 	tab = ft_split(str, ' ');
 
 	if (!ft_strncmp(tab[0], "NO", 3))
@@ -75,12 +90,14 @@ void	test(char *file, t_data *data)
 	buf = get_next_line(fd);
 	while (buf != NULL)
 	{
-		printf("%s", buf);
-		printf("%d_", add_struct(data->texture, buf));
+		//printf("%s", buf);
+		printf("%d_%s\n", add_struct(data->texture, buf), buf);
 		//add_struct(txtr, buf);
 		free(buf);
 		buf = get_next_line(fd);
 	}
+	//TODO if incorrect free + exit
+	check_texture(data->texture);
 	close(fd);
 
 }
