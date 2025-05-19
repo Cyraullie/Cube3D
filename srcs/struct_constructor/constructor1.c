@@ -6,7 +6,7 @@
 /*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 16:42:35 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/05/16 17:09:50 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/05/19 10:27:23 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,5 +42,7 @@ t_data	*data_constructor(void)
 
 	data.window = window_constructor();
 	data.texture = texture_constructor();
+	data.segment = NULL;
+	data.seg_count = 0;
 	return (&data);
 }
