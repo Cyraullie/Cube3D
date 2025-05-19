@@ -6,7 +6,7 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 13:46:51 by cgoldens          #+#    #+#             */
-/*   Updated: 2025/05/19 16:01:14 by cgoldens         ###   ########.fr       */
+/*   Updated: 2025/05/19 16:09:08 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,10 @@ void	test(char *file, t_data *data)
 	while (buf != NULL)
 	{
 		//printf("%s", buf);
-		printf("%d_%s\n", add_struct(data->texture, buf), buf);
+		if (!(!ft_strcmp(buf, "\n")))
+		{
+			printf("%d_%s\n", add_struct(data->texture, buf), buf);
+		}
 		//add_struct(txtr, buf);
 		free(buf);
 		buf = get_next_line(fd);
