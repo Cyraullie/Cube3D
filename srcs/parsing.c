@@ -6,7 +6,7 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 13:46:51 by cgoldens          #+#    #+#             */
-/*   Updated: 2025/05/16 17:28:01 by cgoldens         ###   ########.fr       */
+/*   Updated: 2025/05/19 14:13:00 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int	add_struct(t_texture *txtr, char *str)
  * @param file 
  * @param txtr 
  */
-void	test(char *file, t_texture *txtr)
+void	test(char *file, t_data *data)
 {
 	int		fd;
 	char	*buf;
@@ -76,7 +76,7 @@ void	test(char *file, t_texture *txtr)
 	while (buf != NULL)
 	{
 		printf("%s", buf);
-		printf("%d_", add_struct(txtr, buf));
+		printf("%d_", add_struct(data->texture, buf));
 		//add_struct(txtr, buf);
 		free(buf);
 		buf = get_next_line(fd);

@@ -6,7 +6,7 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 13:46:48 by cgoldens          #+#    #+#             */
-/*   Updated: 2025/05/16 16:39:19 by cgoldens         ###   ########.fr       */
+/*   Updated: 2025/05/19 14:35:46 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,11 @@
  */
 int	main(int argc, char **argv)
 {
-	t_texture	txtr;
+	t_data	data;
+
+	data_constructor(&data);
 
 	(void)argc;
-	test(argv[1], &txtr);
+	test(argv[1], &data);
+	printf("\n%s\n", data.texture->n_path);
 }

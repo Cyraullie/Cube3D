@@ -6,7 +6,7 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 15:41:29 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/05/16 17:09:48 by cgoldens         ###   ########.fr       */
+/*   Updated: 2025/05/19 13:58:06 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,11 @@ typedef struct s_texture
 	int		f_color[3];
 	int		c_color[3];
 }	t_texture;
+
+typedef struct s_data
+{
+	t_window	*window;
+	t_texture	*texture;
+}	t_data;
 
 #endif
