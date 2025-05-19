@@ -9,16 +9,20 @@ OBJDIR = objs/
 
 SRCS = $(shell find $(SRCDIR) -type f -name "*.c")
 
-LIBFT_PATH = libft
+LIBFTDIR	= libft/
+MLXDIR		= minilibx/
 
-LIBFT = $(LIBFT_PATH)/libft.a
+LIBFT = $(LIBFTDIR)/libft.a
+MLX = $(MLXDIR)libmlx.a
+
+MLX_FLAGS = -L$(MLXDIR) -lmlx -lXext -lX11
 
 OBJS = $(SRCS:$(SRCDIR)%.c=$(OBJDIR)%.o)
 
 GREEN = \033[1;32m
 RESET = \033[0m
 
-all: header $(NAME)
+all: header $(NAME) $(LIBFT) $(MLX)
 
 header:
 	@echo "$(GREEN)"
@@ -31,23 +35,27 @@ header:
 	@echo "$(RESET)"
 
 $(OBJDIR)%.o: $(SRCDIR)%.c
-	@mkdir -p $(OBJDIR)
-	@$(CC) $(CFLAGS) -c $< -o $@
-
-$(NAME): $(OBJS) $(LIBFT)
-	@$(CC) $(CFLAGS) $(OBJS) $(LIBFT) -o $(NAME)
-
+	@mkdir -p $(dir $@)
+	@$(CC) $(CFLAGS) -c -o $@ $<
 
 $(LIBFT):
-	@$(MAKE) -C $(LIBFT_PATH)
+	make -C $(LIBFTDIR)
+
+$(MLX):
+	make -C $(MLXDIR)
+
+$(NAME): $(OBJS) $(LIBFT) $(MLX)
+	$(CC) $(CFLAGS) $(OBJS) -L$(MLXDIR) -lmlx -L$(LIBFTDIR) -lft -lXext -lX11 -lm -lbsd -o $(NAME)
 
 clean:
 	@rm -rf $(OBJDIR)
-	@$(MAKE) clean -C $(LIBFT_PATH)
+	@$(MAKE) clean -C $(LIBFTDIR)
+	@$(MAKE) clean -C $(MLXDIR)
 
 fclean: clean
 	@rm -f $(NAME)
-	@$(MAKE) fclean -C $(LIBFT_PATH)
+	make -C $(MLXDIR) fclean
+	make -C $(LIBFTDIR) fclean
 
 re: fclean all
 
