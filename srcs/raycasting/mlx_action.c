@@ -1,26 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing.c                                          :+:      :+:    :+:   */
+/*   mlx_action.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/16 13:46:51 by cgoldens          #+#    #+#             */
-/*   Updated: 2025/05/16 15:46:51 by cgoldens         ###   ########.fr       */
+/*   Created: 2025/05/19 15:06:39 by ktintim-          #+#    #+#             */
+/*   Updated: 2025/05/19 15:41:24 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3D.h"
+#include "../../includes/cub3D.h"
 
-void	test(char *file)
+//TODO free_all
+int	close_window(void *param)
 {
-	int		fd;
-	char	*buf;
+	t_data	*data;
 
-	buf = malloc(BUFFER_SIZE * sizeof(char *));
-
-	fd = open(file, O_RDONLY);
-	read(fd, buf, BUFFER_SIZE);
-	printf("%s\n", ft_split(buf, ' ')[0]);
+	data = (t_data *)param;
+	(void)data;
+	exit(0);
 }
 
+void	mlx_action(t_data *data)
+{
+	mlx_key_hook(data->window->win, key_handler, data);
+	mlx_hook(data->window->win, 17, 0, close_window, &data);
+	mlx_loop(data->window->mlx);
+}
