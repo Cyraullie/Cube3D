@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 13:46:48 by cgoldens          #+#    #+#             */
-/*   Updated: 2025/05/16 17:11:10 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/05/20 13:43:29 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,13 @@
  */
 int	main(int argc, char **argv)
 {
-	t_data	*data;
+	t_data	data;
 
-	data = data_constructor();
-	(void)argc;
-	test(argv[1]);
+	if (argc != 2)
+	{
+		printf("Error\n.cub file needed");
+		exit(EXIT_FAILURE);
+	}
+	data_constructor(&data);
+	parsing(argv[1], &data);
 }

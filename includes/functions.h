@@ -3,20 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   functions.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 15:46:40 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/05/16 17:13:31 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/05/20 13:33:46 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FUNCTIONS_H
 # define FUNCTIONS_H
 
-//struct_constructor
-	//constructor1
-t_window	*window_constructor(void);
-t_texture	*texture_constructor(void);
-t_data		*data_constructor(void);
+void	window_constructor(t_window *window);
+void	texture_constructor(t_texture *texture);
+void	data_constructor(t_data *data);
+
+void	parsing(char *file, t_data *data);
+int		check_texture(t_texture *txtr);
+void	strip_newline(char *str);
+void	free_array(char **tab);
+int		check_map(t_map *map);
+void	get_map_dimensions(char **lines, t_map *map);
+void	copy_map(char **lines, t_map *map);
 
 #endif
