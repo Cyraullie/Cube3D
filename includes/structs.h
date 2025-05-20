@@ -6,7 +6,7 @@
 /*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 15:41:29 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/05/19 10:27:07 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/05/20 10:18:19 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,13 @@ typedef struct s_texture
 	char	*e_path;
 	int		f_color[3];
 	int		c_color[3];
+
+	void	*black_img;
+	int		black_img_line_size;
+	char	*black_img_data;
+	void	*white_img;
+	int		white_img_line_size;
+	char	*white_img_data;
 }	t_texture;
 
 typedef struct s_data
