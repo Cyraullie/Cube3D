@@ -6,7 +6,7 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 16:42:35 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/05/19 16:16:41 by cgoldens         ###   ########.fr       */
+/*   Updated: 2025/05/20 10:50:38 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,18 @@ void	texture_constructor(t_texture *texture)
 	texture->e_path = NULL;
 }
 
+void	map_constructor(t_map *map)
+{
+	map->map = malloc(sizeof(char **));
+	map->cols = 0;
+	map->rows = 0;
+}
+
 void	data_constructor(t_data *data)
 {
 	data->texture = malloc(sizeof(t_texture));
 	data->map = malloc(sizeof(t_map));
 	//window_constructor(data->window );
 	texture_constructor(data->texture);
+	map_constructor(data->map);
 }

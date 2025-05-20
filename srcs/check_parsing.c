@@ -6,7 +6,7 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 14:56:59 by cgoldens          #+#    #+#             */
-/*   Updated: 2025/05/19 16:23:01 by cgoldens         ###   ########.fr       */
+/*   Updated: 2025/05/20 11:05:42 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,10 @@ int	check_texture(t_texture *txtr)
 
 int	check_map(t_map *map)
 {
-	int cols;
-	int rows;
+	int	cols;
+	int	rows;
+
+	printf("rows=%d\ncols=%d\n%s", map->rows, map->cols, map->map[0]);
 
 	rows = 0;
 	while (rows < map->rows)
@@ -71,7 +73,6 @@ int	check_map(t_map *map)
 			printf("%c", map->map[rows][cols]);
 			cols++;
 		}
-		printf("\n");
 		rows++;
 	}
 	return (0);

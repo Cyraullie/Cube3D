@@ -6,7 +6,7 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 13:46:51 by cgoldens          #+#    #+#             */
-/*   Updated: 2025/05/19 16:23:26 by cgoldens         ###   ########.fr       */
+/*   Updated: 2025/05/20 11:13:08 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,12 +71,47 @@ int	add_struct(t_texture *txtr, char *str)
 	return (1);
 }
 
-void	add_map(t_map *map, char *str)
+static void	get_map_dimensions(char **lines, t_map *map)
 {
-	strip_newline(str);
-	map->map[map->cols] = str;
-	map->rows = ft_strlen(str);
-	map->cols++;
+	int	i;
+	int	len;
+
+	len = 0;
+	i = 0;
+	map->rows = 0;
+	map->cols = 0;
+	while (lines[i])
+	{
+		len = ft_strlen(lines[i]);
+		if (len > map->cols)
+			map->cols = len;
+		map->rows++;
+		i++;
+	}
+}
+
+static void	copy_map(char **lines, t_map *map)
+{
+	int	i;
+
+	i = 0;
+	map->map = malloc(sizeof(char *) * (map->rows + 1));
+	if (!map->map)
+	{
+		perror("malloc map");
+		exit(EXIT_FAILURE);
+	}
+	while (i < map->rows)
+	{
+		map->map[i] = ft_strdup(lines[i]);
+		if (!map->map[i])
+		{
+			perror("malloc line");
+			exit(EXIT_FAILURE);
+		}
+		i++;
+	}
+	map->map[i] = NULL;
 }
 
 /**
@@ -90,33 +125,29 @@ void	test(char *file, t_data *data)
 	int		fd;
 	char	*buf;
 	int		count;
+	char	**raw_lines = malloc(sizeof(char *) * 1024);
+	int		line_idx = 0;
 
 	count = 0;
 	buf = malloc(BUFFER_SIZE * sizeof(char *));
-
 	fd = open(file, O_RDONLY);
-	//read(fd, buf, BUFFER_SIZE);
-	//printf("%s\n", buf);
 	buf = get_next_line(fd);
 	while (buf != NULL)
 	{
-		//printf("%s", buf);
 		if (!(!ft_strcmp(buf, "\n")))
 		{
 			if (count != MAX_DATA)
-			{
 				count += add_struct(data->texture, buf);
-				printf("%d_%s\n", count, buf);
-			}
 			else
-			{
-				add_map(data->map, buf);
-			}
+				raw_lines[line_idx++] = ft_strdup(buf);
 		}
 		free(buf);
 		buf = get_next_line(fd);
 	}
-	//TODO if incorrect free + exit
+	raw_lines[line_idx] = NULL;
+	get_map_dimensions(raw_lines, data->map);
+	copy_map(raw_lines, data->map);
+	free_array(raw_lines);
 	check_texture(data->texture);
 	check_map(data->map);
 	close(fd);
