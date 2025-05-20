@@ -13,7 +13,6 @@
 #ifndef FUNCTIONS_H
 # define FUNCTIONS_H
 
-
 void	window_constructor(t_window *window);
 void	texture_constructor(t_texture *texture);
 void	data_constructor(t_data *data);
