@@ -6,7 +6,7 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 14:56:59 by cgoldens          #+#    #+#             */
-/*   Updated: 2025/05/20 11:05:42 by cgoldens         ###   ########.fr       */
+/*   Updated: 2025/05/20 13:40:39 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,7 @@ int	check_path(char *path)
 	int		fd;
 	char	*tmp_path;
 
-//TODO check if I can keep that
-	tmp_path = ft_strjoin(path, ".png");
+	tmp_path = ft_strjoin(path, ".xpm");
 	fd = open(tmp_path, O_RDONLY);
 	free(tmp_path);
 	if (fd == -1)
@@ -40,7 +39,6 @@ int	check_path(char *path)
 		printf("Erreur\nThe path '%s' is incorrect\n", path);
 		close(fd);
 		return (1);
-		//exit(EXIT_FAILURE); // ou return si tu veux juste ignorer
 	}
 	close(fd);
 	return (0);
@@ -49,6 +47,7 @@ int	check_path(char *path)
 int	check_texture(t_texture *txtr)
 {
 	//TODO free and exit if caca
+	//TODO exit(EXIT_FAILURE);
 	if (check_color(txtr->c_color) || check_color(txtr->f_color))
 		printf("caca\n");
 	if (check_path(txtr->n_path) || check_path(txtr->s_path)

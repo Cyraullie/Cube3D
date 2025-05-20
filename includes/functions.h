@@ -6,7 +6,7 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 15:46:40 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/05/19 16:23:09 by cgoldens         ###   ########.fr       */
+/*   Updated: 2025/05/20 13:33:46 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,12 @@ void	window_constructor(t_window *window);
 void	texture_constructor(t_texture *texture);
 void	data_constructor(t_data *data);
 
-void	test(char *file, t_data *data);
-int	check_texture(t_texture *txtr);
+void	parsing(char *file, t_data *data);
+int		check_texture(t_texture *txtr);
 void	strip_newline(char *str);
 void	free_array(char **tab);
-int	check_map(t_map *map);
+int		check_map(t_map *map);
+void	get_map_dimensions(char **lines, t_map *map);
+void	copy_map(char **lines, t_map *map);
 
 #endif

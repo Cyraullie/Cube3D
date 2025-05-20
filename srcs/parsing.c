@@ -6,7 +6,7 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 13:46:51 by cgoldens          #+#    #+#             */
-/*   Updated: 2025/05/20 11:13:08 by cgoldens         ###   ########.fr       */
+/*   Updated: 2025/05/20 13:33:07 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,47 +71,27 @@ int	add_struct(t_texture *txtr, char *str)
 	return (1);
 }
 
-static void	get_map_dimensions(char **lines, t_map *map)
+void	parse_map(int fd, t_data *data)
 {
-	int	i;
-	int	len;
+	char	**raw_lines;
+	int		line_idx;
+	char	*buf;
 
-	len = 0;
-	i = 0;
-	map->rows = 0;
-	map->cols = 0;
-	while (lines[i])
+	line_idx = 0;
+	buf = malloc(BUFFER_SIZE * sizeof(char *));
+	raw_lines = malloc(sizeof(char *) * 1024);
+	buf = get_next_line(fd);
+	while (buf != NULL)
 	{
-		len = ft_strlen(lines[i]);
-		if (len > map->cols)
-			map->cols = len;
-		map->rows++;
-		i++;
+		if (!(!ft_strcmp(buf, "\n")))
+			raw_lines[line_idx++] = ft_strdup(buf);
+		free(buf);
+		buf = get_next_line(fd);
 	}
-}
-
-static void	copy_map(char **lines, t_map *map)
-{
-	int	i;
-
-	i = 0;
-	map->map = malloc(sizeof(char *) * (map->rows + 1));
-	if (!map->map)
-	{
-		perror("malloc map");
-		exit(EXIT_FAILURE);
-	}
-	while (i < map->rows)
-	{
-		map->map[i] = ft_strdup(lines[i]);
-		if (!map->map[i])
-		{
-			perror("malloc line");
-			exit(EXIT_FAILURE);
-		}
-		i++;
-	}
-	map->map[i] = NULL;
+	raw_lines[line_idx] = NULL;
+	get_map_dimensions(raw_lines, data->map);
+	copy_map(raw_lines, data->map);
+	free_array(raw_lines);
 }
 
 /**
@@ -120,13 +100,12 @@ static void	copy_map(char **lines, t_map *map)
  * @param file 
  * @param txtr 
  */
-void	test(char *file, t_data *data)
+void	parsing(char *file, t_data *data)
 {
 	int		fd;
 	char	*buf;
 	int		count;
-	char	**raw_lines = malloc(sizeof(char *) * 1024);
-	int		line_idx = 0;
+
 
 	count = 0;
 	buf = malloc(BUFFER_SIZE * sizeof(char *));
@@ -139,15 +118,11 @@ void	test(char *file, t_data *data)
 			if (count != MAX_DATA)
 				count += add_struct(data->texture, buf);
 			else
-				raw_lines[line_idx++] = ft_strdup(buf);
+				parse_map(fd, data);
 		}
 		free(buf);
 		buf = get_next_line(fd);
 	}
-	raw_lines[line_idx] = NULL;
-	get_map_dimensions(raw_lines, data->map);
-	copy_map(raw_lines, data->map);
-	free_array(raw_lines);
 	check_texture(data->texture);
 	check_map(data->map);
 	close(fd);
