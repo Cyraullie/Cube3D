@@ -6,7 +6,7 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 14:56:59 by cgoldens          #+#    #+#             */
-/*   Updated: 2025/05/20 13:40:39 by cgoldens         ###   ########.fr       */
+/*   Updated: 2025/05/20 13:46:02 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,8 @@ int	check_map(t_map *map)
 	int	cols;
 	int	rows;
 
-	printf("rows=%d\ncols=%d\n%s", map->rows, map->cols, map->map[0]);
-
+	if (map->rows == 0 || map->cols == 0)
+		return (1);
 	rows = 0;
 	while (rows < map->rows)
 	{

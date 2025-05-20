@@ -6,7 +6,7 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 13:46:51 by cgoldens          #+#    #+#             */
-/*   Updated: 2025/05/20 13:33:07 by cgoldens         ###   ########.fr       */
+/*   Updated: 2025/05/20 13:42:14 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,6 @@ int	add_struct(t_texture *txtr, char *str)
 
 	strip_newline(str);
 	tab = ft_split(str, ' ');
-
 	if (!ft_strncmp(tab[0], "NO", 3))
 		txtr->n_path = tab[1];
 	else if (!ft_strncmp(tab[0], "SO", 3))
@@ -106,7 +105,6 @@ void	parsing(char *file, t_data *data)
 	char	*buf;
 	int		count;
 
-
 	count = 0;
 	buf = malloc(BUFFER_SIZE * sizeof(char *));
 	fd = open(file, O_RDONLY);
@@ -127,4 +125,3 @@ void	parsing(char *file, t_data *data)
 	check_map(data->map);
 	close(fd);
 }
-
