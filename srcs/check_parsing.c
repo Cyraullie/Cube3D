@@ -6,7 +6,7 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 14:56:59 by cgoldens          #+#    #+#             */
-/*   Updated: 2025/05/20 13:46:02 by cgoldens         ###   ########.fr       */
+/*   Updated: 2025/05/20 14:12:34 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,11 +56,27 @@ int	check_texture(t_texture *txtr)
 	return (0);
 }
 
+int	check_spawn(char c, int i, t_map *map)
+{
+	if (c == 'N' || c == 'S' || c == 'E' || c == 'W')
+	{
+		i++;
+		if (i > 1)
+			return (printf("Error\nToo many spawn point\n"), 1);
+		map->direction = c;
+		return (i);
+	}
+	return (i);
+}
+
 int	check_map(t_map *map)
 {
-	int	cols;
-	int	rows;
+	int		cols;
+	int		rows;
+	char	c;
+	int		i;
 
+	i = 0;
 	if (map->rows == 0 || map->cols == 0)
 		return (1);
 	rows = 0;
@@ -69,10 +85,13 @@ int	check_map(t_map *map)
 		cols = 0;
 		while (cols < map->cols)
 		{
-			printf("%c", map->map[rows][cols]);
+			c = map->map[rows][cols];
+			i = check_spawn(c, i, map);
 			cols++;
 		}
 		rows++;
 	}
+	if (i == 0)
+		return (printf("Error\nNo spawn point\n"), 1);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 15:41:29 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/05/19 16:15:44 by cgoldens         ###   ########.fr       */
+/*   Updated: 2025/05/20 14:00:01 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ typedef struct s_map {
 	char	**map;
 	int		rows;
 	int		cols;
+	char	direction;
 }				t_map;
 
 typedef struct s_texture

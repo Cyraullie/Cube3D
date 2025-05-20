@@ -6,7 +6,7 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 13:46:48 by cgoldens          #+#    #+#             */
-/*   Updated: 2025/05/20 13:43:29 by cgoldens         ###   ########.fr       */
+/*   Updated: 2025/05/20 14:06:12 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,4 +27,5 @@ int	main(int argc, char **argv)
 	}
 	data_constructor(&data);
 	parsing(argv[1], &data);
+	printf("direction look : %c", data.map->direction);
 }
