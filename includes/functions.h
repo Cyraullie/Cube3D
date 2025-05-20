@@ -6,7 +6,7 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 15:46:40 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/05/20 13:33:46 by cgoldens         ###   ########.fr       */
+/*   Updated: 2025/05/20 14:46:55 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,6 @@ void	free_array(char **tab);
 int		check_map(t_map *map);
 void	get_map_dimensions(char **lines, t_map *map);
 void	copy_map(char **lines, t_map *map);
+int		is_valid_map_char(char c);
 
 #endif

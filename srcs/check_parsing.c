@@ -6,7 +6,7 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 14:56:59 by cgoldens          #+#    #+#             */
-/*   Updated: 2025/05/20 14:12:34 by cgoldens         ###   ########.fr       */
+/*   Updated: 2025/05/20 14:55:24 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,9 +62,11 @@ int	check_spawn(char c, int i, t_map *map)
 	{
 		i++;
 		if (i > 1)
-			return (printf("Error\nToo many spawn point\n"), 1);
+		{
+			printf("Error\nToo many spawn points\n");
+			exit(EXIT_FAILURE);
+		}
 		map->direction = c;
-		return (i);
 	}
 	return (i);
 }
@@ -74,9 +76,9 @@ int	check_map(t_map *map)
 	int		cols;
 	int		rows;
 	char	c;
-	int		i;
+	int		spawn_cnt;
 
-	i = 0;
+	spawn_cnt = 0;
 	if (map->rows == 0 || map->cols == 0)
 		return (1);
 	rows = 0;
@@ -86,12 +88,14 @@ int	check_map(t_map *map)
 		while (cols < map->cols)
 		{
 			c = map->map[rows][cols];
-			i = check_spawn(c, i, map);
+			if (!is_valid_map_char(c))
+				return (printf("Error\nForbidden character: '%c'\n", c), 1);
+			spawn_cnt = check_spawn(c, spawn_cnt, map);
 			cols++;
 		}
 		rows++;
 	}
-	if (i == 0)
+	if (spawn_cnt == 0)
 		return (printf("Error\nNo spawn point\n"), 1);
 	return (0);
 }

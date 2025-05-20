@@ -6,7 +6,7 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 13:46:51 by cgoldens          #+#    #+#             */
-/*   Updated: 2025/05/20 14:02:29 by cgoldens         ###   ########.fr       */
+/*   Updated: 2025/05/20 14:56:28 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ int	add_struct(t_texture *txtr, char *str)
 	return (1);
 }
 
-void	parse_map(int fd, t_data *data)
+void	parse_map(int fd, t_data *data, char *old_buf)
 {
 	char	**raw_lines;
 	int		line_idx;
@@ -79,7 +79,7 @@ void	parse_map(int fd, t_data *data)
 	line_idx = 0;
 	buf = malloc(BUFFER_SIZE * sizeof(char *));
 	raw_lines = malloc(sizeof(char *) * 1024);
-	buf = get_next_line(fd);
+	buf = old_buf;
 	while (buf != NULL)
 	{
 		if (!(!ft_strcmp(buf, "\n")))
@@ -106,7 +106,6 @@ void	parsing(char *file, t_data *data)
 	int		count;
 
 	count = 0;
-	buf = malloc(BUFFER_SIZE * sizeof(char *));
 	fd = open(file, O_RDONLY);
 	buf = get_next_line(fd);
 	while (buf != NULL)
@@ -116,7 +115,10 @@ void	parsing(char *file, t_data *data)
 			if (count != MAX_DATA)
 				count += add_struct(data->texture, buf);
 			else
-				parse_map(fd, data);
+			{
+				parse_map(fd, data, buf);
+				break ;
+			}
 		}
 		free(buf);
 		buf = get_next_line(fd);
