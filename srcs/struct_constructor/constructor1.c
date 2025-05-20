@@ -6,7 +6,7 @@
 /*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 16:42:35 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/05/20 11:10:41 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/05/20 16:03:53 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,24 @@ void	texture_constructor(t_texture *texture)
 	texture->e_path = NULL;
 }
 
+void	image_constructor(t_img *img, void *mlx)
+{
+	img->height = 11;
+	img->width = 11;
+	img->ptr = mlx_new_image(mlx, img->width, img->height);
+	img->addr = mlx_get_data_addr(img->ptr, &img->bpp, \
+		&img->line_length, &img->endian);
+}
+
+void	character_constructor(t_character *character, void *mlx)
+{
+	character->square = malloc(sizeof(t_img));
+	image_constructor(character->square, mlx);
+	character->fov = 0;
+	character->x_pose = 0;
+	character->y_pose = 0;
+}
+
 void	data_constructor(t_data *data)
 {
 	int	bpp;
@@ -39,8 +57,10 @@ void	data_constructor(t_data *data)
 	endian = 0;
 	data->texture = malloc(sizeof(t_texture));
 	data->window = malloc(sizeof(t_window));
+	data->character = malloc(sizeof(t_character));
 	window_constructor(data->window);
 	texture_constructor(data->texture);
+	character_constructor(data->character, data->window->mlx);
 	data->texture->black_img = mlx_new_image(data->window->mlx, 64, 64);
 	data->texture->black_img_data = mlx_get_data_addr(data->texture->black_img, \
 		&bpp, &(data->texture->black_img_line_size), &endian);
