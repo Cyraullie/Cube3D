@@ -1,14 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   load_screen.c                                      :+:      :+:    :+:   */
+/*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/16 14:47:12 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/05/16 16:12:19 by ktintim-         ###   ########.fr       */
+/*   Created: 2025/05/20 15:37:04 by cgoldens          #+#    #+#             */
+/*   Updated: 2025/05/20 16:26:17 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/cub3D.h"
+#include "../includes/cub3D.h"
+
+
+
+int	integrity_check(t_map *map)
+{
+	return (0);
+}
+
 

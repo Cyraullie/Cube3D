@@ -6,7 +6,7 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 13:46:48 by cgoldens          #+#    #+#             */
-/*   Updated: 2025/05/20 14:57:43 by cgoldens         ###   ########.fr       */
+/*   Updated: 2025/05/20 16:26:44 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,10 @@ int	main(int argc, char **argv)
 	}
 	data_constructor(&data);
 	parsing(argv[1], &data);
+	printf("%d__%d\n", data.map->cols, data.map->rows);
+	if (integrity_check(data.map))
+		printf("map not ok\n");
+	else
+		printf("map ok\n");
 	printf("direction look : %c", data.map->direction);
 }
