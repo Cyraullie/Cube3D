@@ -6,12 +6,17 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 15:59:14 by cgoldens          #+#    #+#             */
-/*   Updated: 2025/05/20 13:33:28 by cgoldens         ###   ########.fr       */
+/*   Updated: 2025/05/20 15:32:22 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3D.h"
 
+/**
+ * @brief delete '\n' char
+ * 
+ * @param str 
+ */
 void	strip_newline(char *str)
 {
 	int	len;
@@ -25,6 +30,12 @@ void	strip_newline(char *str)
 		str[len - 1] = '\0';
 }
 
+/**
+ * @brief Get the map dimensions object
+ * 
+ * @param lines 
+ * @param map 
+ */
 void	get_map_dimensions(char **lines, t_map *map)
 {
 	int	i;

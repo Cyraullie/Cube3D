@@ -6,12 +6,18 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 14:56:59 by cgoldens          #+#    #+#             */
-/*   Updated: 2025/05/20 14:55:24 by cgoldens         ###   ########.fr       */
+/*   Updated: 2025/05/20 15:33:51 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3D.h"
 
+/**
+ * @brief check is the color tab respect the range
+ * 
+ * @param color 
+ * @return int 
+ */
 int	check_color(int color[3])
 {
 	int	i;
@@ -26,6 +32,12 @@ int	check_color(int color[3])
 	return (0);
 }
 
+/**
+ * @brief check if texture path exist
+ * 
+ * @param path 
+ * @return int 
+ */
 int	check_path(char *path)
 {
 	int		fd;
@@ -44,6 +56,12 @@ int	check_path(char *path)
 	return (0);
 }
 
+/**
+ * @brief check if all texture data are correct
+ * 
+ * @param txtr 
+ * @return int 
+ */
 int	check_texture(t_texture *txtr)
 {
 	//TODO free and exit if caca
@@ -56,6 +74,14 @@ int	check_texture(t_texture *txtr)
 	return (0);
 }
 
+/**
+ * @brief check spawnpoint and add it in struct
+ * 
+ * @param c 
+ * @param i 
+ * @param map 
+ * @return int 
+ */
 int	check_spawn(char c, int i, t_map *map)
 {
 	if (c == 'N' || c == 'S' || c == 'E' || c == 'W')
@@ -71,6 +97,12 @@ int	check_spawn(char c, int i, t_map *map)
 	return (i);
 }
 
+/**
+ * @brief check the map if it's right
+ * 
+ * @param map 
+ * @return int 
+ */
 int	check_map(t_map *map)
 {
 	int		cols;

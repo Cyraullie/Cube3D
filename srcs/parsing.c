@@ -6,7 +6,7 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 13:46:51 by cgoldens          #+#    #+#             */
-/*   Updated: 2025/05/20 14:56:28 by cgoldens         ###   ########.fr       */
+/*   Updated: 2025/05/20 15:31:57 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	get_color(int color[3], char *str)
 }
 
 /**
- * @brief caca
+ * @brief add data with identifier in struct
  * 
  * @param txtr 
  * @param str 
@@ -70,6 +70,13 @@ int	add_struct(t_texture *txtr, char *str)
 	return (1);
 }
 
+/**
+ * @brief add map in data struct
+ * 
+ * @param fd 
+ * @param data 
+ * @param old_buf 
+ */
 void	parse_map(int fd, t_data *data, char *old_buf)
 {
 	char	**raw_lines;
@@ -94,10 +101,10 @@ void	parse_map(int fd, t_data *data, char *old_buf)
 }
 
 /**
- * @brief 
+ * @brief main function to parse .cub
  * 
  * @param file 
- * @param txtr 
+ * @param data 
  */
 void	parsing(char *file, t_data *data)
 {
