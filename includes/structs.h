@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kilian <kilian@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 15:41:29 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/05/21 13:14:02 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/05/21 21:35:59 by kilian           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,8 @@ typedef struct s_vars
 	int		src_y;
 	int		cx;
 	int		cy;
+	int		dest_cx;
+	int		dest_cy;
 	int		x;
 	int		y;
 }	t_vars;

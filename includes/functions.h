@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   functions.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kilian <kilian@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 15:46:40 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/05/21 12:43:32 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/05/21 21:11:20 by kilian           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int		close_window(void *param);
 	//key_handler.c
 int		key_handler(int key, void *param);
 	//draw_panel.c
-void	draw_panel(char *img_data, int size_line, int color);
+void	draw_square(t_img *img, int square_size, int color);
 void	draw_map(t_data *data, char *map[8]);
 void	draw_rotated_square(t_img *img, double angle_rad);
 	//rotate_image.c

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rotate_image.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kilian <kilian@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/21 10:49:54 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/05/21 13:31:50 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/05/21 21:38:21 by kilian           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ static void	create_image(t_img *src, t_img *dest, t_vars vars)
 
 /**
  * @brief take an image and rotate it of angle_degre degre and create a new 
- * 		image rotated in src
+ * 		image rotated in dest
  * 
  * @param src 	base image
  * @param dest 	pointer to rotated image
@@ -81,18 +81,20 @@ void	rotate_image(t_img *src, t_img *dest, double angle_degre)
 	vars.angle = angle_degre * M_PI / 180;
 	vars.cx = src->width / 2;
 	vars.cy = src->height / 2;
+	vars.dest_cx = dest->width / 2;
+	vars.dest_cy = dest->height / 2;
 	vars.y = 0;
 	while (vars.y < dest->height)
 	{
 		vars.x = 0;
 		while (vars.x < dest->width)
 		{
-			vars.dx = vars.x - vars.cx;
-			vars.dy = vars.y - vars.cy;
+			vars.dx = vars.x - vars.dest_cx;
+			vars.dy = vars.y - vars.dest_cy;
 			vars.src_x = (int)(cos(vars.angle) * vars.dx + \
-						sin(vars.angle) * vars.dy + vars.dx);
-			vars.src_y = (int)(-sin(vars.angle) * vars.dy + \
-						cos(vars.angle) * vars.dx + vars.cy);
+						sin(vars.angle) * vars.dy + vars.cx);
+			vars.src_y = (int)(-sin(vars.angle) * vars.dx + \
+						cos(vars.angle) * vars.dy + vars.cy);
 			create_image(src, dest, vars);
 			vars.x++;
 		}

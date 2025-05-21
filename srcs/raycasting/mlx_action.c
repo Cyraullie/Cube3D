@@ -6,7 +6,7 @@
 /*   By: kilian <kilian@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 15:06:39 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/05/21 19:36:27 by kilian           ###   ########.fr       */
+/*   Updated: 2025/05/21 21:23:58 by kilian           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,11 @@ void	put_character(t_data *data)
 			data->character->square->height, data->character->square->width);
 	rotate_image(data->character->square, &new_img, data->character->fov);
 	mlx_put_image_to_window(data->window->mlx, \
-				data->window->win, new_img.ptr, 200, 200);
+				data->window->win, new_img.ptr, 500, 300);
 	mlx_destroy_image(data->window->mlx, new_img.ptr);
 }
 
-static int	mlx_big_loop(t_data *data)
+static int	game_loop(t_data *data)
 {
 	// char *map[] = {
 	// 	"111111111111111",
@@ -48,6 +48,7 @@ static int	mlx_big_loop(t_data *data)
 	// };
 	// draw_map(data, map);
 	put_character(data);
+	mlx_put_image_to_window(data->window->mlx, data->window->win, data->character->square->ptr, 100, 100);
 	return (0);
 }
 
@@ -56,6 +57,6 @@ void	mlx_action(t_data *data, char *map[8])
 	(void)map;
 	mlx_key_hook(data->window->win, key_handler, data);
 	mlx_hook(data->window->win, 17, 0, close_window, &data);
-	mlx_loop_hook(data->window->mlx, mlx_big_loop, data);
+	mlx_loop_hook(data->window->mlx, game_loop, data);
 	mlx_loop(data->window->mlx);
 }

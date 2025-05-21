@@ -6,7 +6,7 @@
 /*   By: kilian <kilian@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 09:47:05 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/05/21 19:42:10 by kilian           ###   ########.fr       */
+/*   Updated: 2025/05/21 21:10:59 by kilian           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,25 +19,31 @@
  * @param size_line le meme que on a du envoyer dans mlx_get_data_adress
  * @param color 	la conversion decimal de l'hexa de la couleur quon veux
  */
-void	draw_panel(char *img_data, int size_line, int color)
+void	draw_square(t_img *img, int square_size, int color)
 {
-	int	y;
-	int	x;
+	int	y_x[2];
+	int	xstart_ystart[2];
 	int	pixel;
+	int	draw_x;
+	int	draw_y;
 
-	y = 0;
-	while (y < 64)
+	xstart_ystart[0] = (img->width - square_size) / 2;
+	xstart_ystart[1] = (img->height - square_size) / 2;
+	y_x[0] = 0;
+	while (y_x[0] < square_size)
 	{
-		x = 0;
-		while (x < 64)
+		y_x[1] = 0;
+		while (y_x[1] < square_size)
 		{
-			pixel = y * size_line + x * 4;
-			img_data[pixel + 0] = (color & 0xFF);
-			img_data[pixel + 1] = (color >> 8) & 0xFF;
-			img_data[pixel + 2] = (color >> 16) & 0xFF;
-			x++;
+			draw_x = xstart_ystart[0] + y_x[1];
+			draw_y = xstart_ystart[1] + y_x[0];
+			pixel = draw_y * img->line_length + draw_x * 4;
+			img->addr[pixel + 0] = (color & 0xFF);         // blue
+			img->addr[pixel + 1] = (color >> 8) & 0xFF;    // green
+			img->addr[pixel + 2] = (color >> 16) & 0xFF;   // red
+			y_x[1]++;
 		}
-		y++;
+		y_x[0]++;
 	}
 }
 
