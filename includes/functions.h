@@ -6,7 +6,7 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 15:46:40 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/05/20 16:26:24 by cgoldens         ###   ########.fr       */
+/*   Updated: 2025/05/21 15:40:00 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,10 @@ int		check_map(t_map *map);
 void	free_array(char **tab);
 //map.c
 int		integrity_check(t_map *map);
+int		is_player(char c);
+int		is_accessible(char c);
+int		is_valid_cell(t_map *map, int x, int y);
+char	**dup_map(t_map *map);
+int		flood_fill_from(t_map *map, int x, int y, char **visited);
 
 #endif

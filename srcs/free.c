@@ -6,12 +6,13 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 17:22:42 by cgoldens          #+#    #+#             */
-/*   Updated: 2025/05/20 15:34:11 by cgoldens         ###   ########.fr       */
+/*   Updated: 2025/05/21 15:39:11 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3D.h"
 
+//TODO do brief
 /**
  * @brief function to free an array
  * 
@@ -27,4 +28,23 @@ void	free_array(char **tab)
 	while (tab[j])
 		free(tab[j++]);
 	free(tab);
+}
+
+/**
+ * @brief 
+ * 
+ * @param visited 
+ * @param limit 
+ */
+void	free_visited_partial(char **visited, int limit)
+{
+	int	i;
+
+	i = 0;
+	while (i < limit)
+	{
+		free(visited[i]);
+		i++;
+	}
+	free(visited);
 }

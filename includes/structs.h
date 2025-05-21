@@ -6,7 +6,7 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 15:41:29 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/05/20 14:00:01 by cgoldens         ###   ########.fr       */
+/*   Updated: 2025/05/21 15:14:24 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,5 +46,10 @@ typedef struct s_data
 	t_texture	*texture;
 	t_map		*map;
 }	t_data;
+
+typedef struct s_coord {
+	int	x;
+	int	y;
+}	t_coord;
 
 #endif

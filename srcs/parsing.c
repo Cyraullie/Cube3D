@@ -6,7 +6,7 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 13:46:51 by cgoldens          #+#    #+#             */
-/*   Updated: 2025/05/20 15:31:57 by cgoldens         ###   ########.fr       */
+/*   Updated: 2025/05/21 15:06:48 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,10 @@ void	parse_map(int fd, t_data *data, char *old_buf)
 	while (buf != NULL)
 	{
 		if (!(!ft_strcmp(buf, "\n")))
+		{
+			strip_newline(buf);
 			raw_lines[line_idx++] = ft_strdup(buf);
+		}
 		free(buf);
 		buf = get_next_line(fd);
 	}
