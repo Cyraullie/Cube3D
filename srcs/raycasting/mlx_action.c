@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_action.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kilian <kilian@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 15:06:39 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/05/21 13:54:45 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/05/21 19:36:27 by kilian           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ void	put_character(t_data *data)
 	rotate_image(data->character->square, &new_img, data->character->fov);
 	mlx_put_image_to_window(data->window->mlx, \
 				data->window->win, new_img.ptr, 200, 200);
+	mlx_destroy_image(data->window->mlx, new_img.ptr);
 }
 
 static int	mlx_big_loop(t_data *data)

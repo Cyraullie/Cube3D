@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   constructor1.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kilian <kilian@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 16:42:35 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/05/21 12:42:36 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/05/21 19:39:44 by kilian           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	image_constructor(t_img *img, void *mlx, int height, int width)
 void	character_constructor(t_character *character, void *mlx)
 {
 	character->square = malloc(sizeof(t_img));
-	image_constructor(character->square, mlx, 15, 15);
+	image_constructor(character->square, mlx, 64, 64);
 	draw_panel(character->square->addr, \
 				character->square->line_length, 16711680);
 	character->fov = 0;
