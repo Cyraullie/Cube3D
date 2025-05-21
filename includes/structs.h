@@ -6,7 +6,7 @@
 /*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 15:41:29 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/05/20 15:10:12 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/05/21 13:14:02 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,5 +74,18 @@ typedef struct s_data
 	t_character	*character;
 	int			seg_count;
 }	t_data;
+
+typedef struct s_vars
+{
+	double	angle;
+	double	dx;
+	double	dy;
+	int		src_x;
+	int		src_y;
+	int		cx;
+	int		cy;
+	int		x;
+	int		y;
+}	t_vars;
 
 #endif

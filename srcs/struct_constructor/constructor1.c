@@ -6,7 +6,7 @@
 /*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 16:42:35 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/05/20 16:03:53 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/05/21 12:42:36 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,10 @@ void	texture_constructor(t_texture *texture)
 	texture->e_path = NULL;
 }
 
-void	image_constructor(t_img *img, void *mlx)
+void	image_constructor(t_img *img, void *mlx, int height, int width)
 {
-	img->height = 11;
-	img->width = 11;
+	img->height = height;
+	img->width = width;
 	img->ptr = mlx_new_image(mlx, img->width, img->height);
 	img->addr = mlx_get_data_addr(img->ptr, &img->bpp, \
 		&img->line_length, &img->endian);
@@ -42,7 +42,9 @@ void	image_constructor(t_img *img, void *mlx)
 void	character_constructor(t_character *character, void *mlx)
 {
 	character->square = malloc(sizeof(t_img));
-	image_constructor(character->square, mlx);
+	image_constructor(character->square, mlx, 15, 15);
+	draw_panel(character->square->addr, \
+				character->square->line_length, 16711680);
 	character->fov = 0;
 	character->x_pose = 0;
 	character->y_pose = 0;

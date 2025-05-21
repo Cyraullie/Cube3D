@@ -6,7 +6,7 @@
 /*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 09:47:05 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/05/20 15:33:27 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/05/21 10:49:28 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,33 +65,5 @@ void	draw_map(t_data *data, char *map[8])
 			j++;
 		}
 		i++;
-	}
-}
-
-void	draw_rotated_square(t_img *img, double angle_rad)
-{
-	int		x, y;
-	int		half = 5; // carré centré, taille totale 11
-	double	cx = img->width / 2.0;
-	double	cy = img->height / 2.0;
-
-	for (y = -half; y <= half; y++)
-	{
-		for (x = -half; x <= half; x++)
-		{
-			// Rotation autour du centre
-			double rx = cos(angle_rad) * x - sin(angle_rad) * y;
-			double ry = sin(angle_rad) * x + cos(angle_rad) * y;
-
-			int px = (int)(cx + rx);
-			int py = (int)(cy + ry);
-
-			// Vérifie que le pixel est bien dans l’image
-			if (px >= 0 && py >= 0 && px < img->width && py < img->height)
-			{
-				char *dst = img->addr + (py * img->line_length + px * (img->bpp / 8));
-				*(int *)dst = 0x00FF0000;
-			}
-		}
 	}
 }

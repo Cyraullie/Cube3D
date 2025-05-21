@@ -6,7 +6,7 @@
 /*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 15:06:39 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/05/20 16:11:39 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/05/21 13:54:45 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,24 +24,28 @@ int	close_window(void *param)
 
 void	put_character(t_data *data)
 {
-	draw_rotated_square(data->character->square, data->character->fov);
-	mlx_put_image_to_window(data->window->mlx, data->window->win, data->character->square->ptr, 100, 100);
+	t_img	new_img;
+
+	image_constructor(&new_img, data->window->mlx, \
+			data->character->square->height, data->character->square->width);
+	rotate_image(data->character->square, &new_img, data->character->fov);
+	mlx_put_image_to_window(data->window->mlx, \
+				data->window->win, new_img.ptr, 200, 200);
 }
 
 static int	mlx_big_loop(t_data *data)
 {
-	// mlx_clear_window(data->window->mlx, data->window->win);
-	char *map[] = {
-		"111111111111111",
-		"100000000000001",
-		"101111111110101",
-		"101000000010101",
-		"101000000010101",
-		"101000000010101",
-		"100000000000001",
-		"111111111111111"
-	};
-	draw_map(data, map);
+	// char *map[] = {
+	// 	"111111111111111",
+	// 	"100000000000001",
+	// 	"101111111110101",
+	// 	"101000000010101",
+	// 	"101000000010101",
+	// 	"101000000010101",
+	// 	"100000000000001",
+	// 	"111111111111111"
+	// };
+	// draw_map(data, map);
 	put_character(data);
 	return (0);
 }
