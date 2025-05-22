@@ -6,19 +6,22 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 15:37:04 by cgoldens          #+#    #+#             */
-/*   Updated: 2025/05/21 15:39:08 by cgoldens         ###   ########.fr       */
+/*   Updated: 2025/05/22 11:35:11 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3D.h"
-//TODO do brief
+
 /**
- * @brief 
- * 
- * @param map 
- * @param x 
- * @param y 
- * @return int 
+ * @brief Checks if all 4 neighboring cells around (x, y) are valid.
+ *
+ * Ensures that adjacent positions are within the map bounds and do not contain
+ * spaces or null characters, which would indicate a map leak.
+ *
+ * @param map Pointer to the map structure.
+ * @param x X coordinate (row) of the current position.
+ * @param y Y coordinate (column) of the current position.
+ * @return 1 if all neighbors are valid, 0 otherwise.
  */
 static int	check_neighbors(t_map *map, int x, int y)
 {
@@ -43,10 +46,13 @@ static int	check_neighbors(t_map *map, int x, int y)
 }
 
 /**
- * @brief 
- * 
- * @param map 
- * @return char** 
+ * @brief Allocates and initializes the visited matrix.
+ *
+ * The visited matrix tracks which cells have been visited during the flood fill.
+ * It is allocated based on the map's dimensions and initialized to zero.
+ *
+ * @param map Pointer to the map structure.
+ * @return A pointer to the allocated visited matrix, or NULL on failure.
  */
 static char	**init_visited(t_map *map)
 {
@@ -71,10 +77,13 @@ static char	**init_visited(t_map *map)
 }
 
 /**
- * @brief 
- * 
- * @param map 
- * @return int 
+ * @brief Performs flood fill to check if accessible zones are closed.
+ *
+ * Iterates over each cell in the map and applies the flood fill algorithm
+ * to accessible areas. If an invalid path is found, the function returns 0.
+ *
+ * @param map Pointer to the map structure.
+ * @return 1 if the map is valid (closed), 0 otherwise.
  */
 int	flood_fill_zone_check(t_map *map)
 {
@@ -104,10 +113,13 @@ int	flood_fill_zone_check(t_map *map)
 }
 
 /**
- * @brief 
- * 
- * @param map 
- * @return int 
+ * @brief Checks the integrity of the map.
+ *
+ * Runs a complete validation to ensure that the map does not contain leaks.
+ * Delegates the logic to flood_fill_zone_check.
+ *
+ * @param map Pointer to the map structure.
+ * @return 0 if the map is valid, 1 if the map is invalid.
  */
 int	integrity_check(t_map *map)
 {
