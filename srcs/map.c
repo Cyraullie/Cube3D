@@ -6,7 +6,7 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 15:37:04 by cgoldens          #+#    #+#             */
-/*   Updated: 2025/05/22 11:35:11 by cgoldens         ###   ########.fr       */
+/*   Updated: 2025/05/22 11:37:28 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
  * @param y Y coordinate (column) of the current position.
  * @return 1 if all neighbors are valid, 0 otherwise.
  */
-static int	check_neighbors(t_map *map, int x, int y)
+int	check_neighbors(t_map *map, int x, int y)
 {
 	const int	dx[4] = {-1, 1, 0, 0};
 	const int	dy[4] = {0, 0, -1, 1};
