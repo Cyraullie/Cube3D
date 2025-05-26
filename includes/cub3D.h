@@ -6,7 +6,7 @@
 /*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 13:50:46 by cgoldens          #+#    #+#             */
-/*   Updated: 2025/05/26 11:06:22 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/05/26 14:44:10 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@
 # define _USE_MATH_DEFINES
 # include <math.h>
 
-# define VIEW_SPEED 0.1
-# define MOOVE_SPPED 0.123
+# define VIEW_SPEED 0.7
+# define MOOVE_SPPED 5.
 
 # ifndef M_PI
 #  define M_PI 3.14159265358979323846

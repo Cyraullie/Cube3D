@@ -6,7 +6,7 @@
 /*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 15:46:40 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/05/23 10:20:31 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/05/26 13:51:02 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,4 +40,8 @@ void	draw_line(t_img *img, int color);
 void	rotate_image(t_img *src, t_img *dest, double angle_degre);
 void	put_pixel(t_img *img, int x, int y, int color);
 int		get_pixel(t_img *img, int x, int y);
+	//fusion_image.c
+void	fusion_image(t_img *screen_img, t_img *img, int x, int y);
+
+
 #endif

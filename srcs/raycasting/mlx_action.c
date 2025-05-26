@@ -6,7 +6,7 @@
 /*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 15:06:39 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/05/26 10:55:08 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/05/26 14:35:49 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	close_window(void *param)
 	exit(0);
 }
 
-void	put_character(t_data *data)
+static void	put_character(t_data *data, t_img *screen_img)
 {
 	t_img	new_img;
 
@@ -30,30 +30,60 @@ void	put_character(t_data *data)
 			data->character->square->height, data->character->square->width);
 	rotate_image(data->character->square, &new_img, \
 				data->character->angle_view);
-	mlx_put_image_to_window(data->window->mlx, \
-			data->window->win, new_img.ptr, \
-			data->character->x_pose, data->character->y_pose);
+	fusion_image(screen_img, &new_img, \
+				data->character->x_pose, data->character->y_pose);
 	mlx_destroy_image(data->window->mlx, new_img.ptr);
 }
 
-// char *map[] = {
-// 	"111111111111111",
-// 	"100000000000001",
-// 	"101111111110101",
-// 	"101000000010101",
-// 	"101000000010101",
-// 	"101000000010101",
-// 	"100000000000001",
-// 	"111111111111111"
-// };
-// draw_map(data, map);
+static void	put_map(t_data *data, t_img *screen_img)
+{
+	int		i;
+	int		j;
+	t_img	white_square;
+	char *map[] = {
+		"111111111111111",
+		"100000000000001",
+		"101111111110101",
+		"101000000010101",
+		"101000000010101",
+		"101000000010101",
+		"100000000000001",
+		"111111111111111"
+	};
+
+	image_constructor(&white_square, data->window->mlx, 63, 63);
+	draw_square(&white_square, 63, 16777215);
+	i = 0;
+	while (i < 8)
+	{
+		j = 0;
+		while (j < 15)
+		{
+			if (map[i][j] == '1')
+			{
+				fusion_image(screen_img, &white_square, (j * 64) - 1, (i * 64) - 1);
+			}
+			j++;
+		}
+		i++;
+	}
+	mlx_destroy_image(data->window->mlx, white_square.ptr);
+}
+
 static int	game_loop(void	*param)
 {
 	t_data	*data;
+	t_img	screen_image;
 
 	data = (t_data *)param;
+	image_constructor(&screen_image, data->window->mlx, 512, 960);
 	key_pressed(data);
-	put_character(data);
+	put_map(data, &screen_image);
+	put_character(data, &screen_image);
+	mlx_put_image_to_window(data->window->mlx, \
+		data->window->win, screen_image.ptr, 0, 0);
+	// mlx_clear_window(data->window->mlx, data->window->win);
+	mlx_destroy_image(data->window->mlx, screen_image.ptr);
 	return (0);
 }
 
