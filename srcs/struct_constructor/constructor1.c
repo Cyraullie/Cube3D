@@ -6,16 +6,16 @@
 /*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 16:42:35 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/05/26 14:54:25 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/05/26 15:21:29 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3D.h"
-
-void	window_constructor(t_window *window)
+//TODO a changer apres parce que plius comme ca :)
+void	window_constructor(t_window *window, t_map *map)
 {
 	window->mlx = mlx_init();
-	window->win = mlx_new_window(window->mlx, 960, 512, "Cub3D");
+	window->win = mlx_new_window(window->mlx, map->cols * 64, map->rows * 64, "Cub3D");
 }
 
 void	texture_constructor(t_texture *texture)
@@ -46,8 +46,8 @@ void	character_constructor(t_character *character, void *mlx)
 	draw_square(character->square, 30, 16711680);
 	draw_line(character->square, 65535);
 	character->angle_view = 180.0;
-	character->x_pose = 200.0;
-	character->y_pose = 200.0;
+	character->x_pose = 100.0;
+	character->y_pose = 100.0;
 }
 
 void	map_constructor(t_map *map)
@@ -57,16 +57,17 @@ void	map_constructor(t_map *map)
 	map->rows = 0;
 }
 
-void	data_constructor(t_data *data)
+void	data_constructor(t_data *data, char *argv)
 {
 	data->texture = malloc(sizeof(t_texture));
+	data->map = malloc(sizeof(t_map));
 	data->window = malloc(sizeof(t_window));
 	data->character = malloc(sizeof(t_character));
 	data->key = malloc(sizeof(t_key));
-	data->map = malloc(sizeof(t_map));
 	map_constructor(data->map);
-	window_constructor(data->window);
 	texture_constructor(data->texture);
+	parsing(argv, data);
+	window_constructor(data->window, data->map);
 	character_constructor(data->character, data->window->mlx);
 	key_constructor(data->key);
 }

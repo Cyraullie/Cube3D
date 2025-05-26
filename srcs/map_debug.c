@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_debug.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/21 15:22:20 by cgoldens          #+#    #+#             */
-/*   Updated: 2025/05/21 15:22:22 by cgoldens         ###   ########.fr       */
+/*   Updated: 2025/05/26 15:26:55 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,28 +22,7 @@ void	visio_map(char **map, int rows, int cols)
 	}
 }
 
-char	**dup_map(t_map *map)
-{
-	char	**copy = malloc(sizeof(char *) * (map->rows + 1));
-	if (!copy)
-		return (NULL);
-
-	for (int x = 0; x < map->rows; x++)
-	{
-		copy[x] = ft_strdup(map->map[x]);
-		if (!copy[x])
-		{
-			while (--x >= 0)
-				free(copy[x]);
-			free(copy);
-			return (NULL);
-		}
-	}
-	copy[map->rows] = NULL;
-	return (copy);
-}
-
-int	flood_fill_from(t_map *map, int x, int y, char **visited, char **debug_map)
+int	flood_fill_from_debug(t_map *map, int x, int y, char **visited, char **debug_map)
 {
 	if (!is_valid_cell(map, x, y))
 	{
@@ -99,7 +78,7 @@ int	flood_fill_from(t_map *map, int x, int y, char **visited, char **debug_map)
 		int nx = x + dx[i];
 		int ny = y + dy[i];
 
-		if (!flood_fill_from(map, nx, ny, visited, debug_map))
+		if (!flood_fill_from_debug(map, nx, ny, visited, debug_map))
 			return (0);
 	}
 
@@ -126,7 +105,7 @@ int	flood_fill_zone_check_debug(t_map *map)
 		{
 			if (!visited[x][y] && is_accessible(map->map[x][y]))
 			{
-				if (!flood_fill_from(map, x, y, visited, debug_map))
+				if (!flood_fill_from_debug(map, x, y, visited, debug_map))
 				{
 					printf("\n🧯 Map après inondation (debug):\n");
 					visio_map(debug_map, map->rows, map->cols);

@@ -6,7 +6,7 @@
 /*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 15:06:39 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/05/26 14:35:49 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/05/26 15:32:19 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,26 +40,16 @@ static void	put_map(t_data *data, t_img *screen_img)
 	int		i;
 	int		j;
 	t_img	white_square;
-	char *map[] = {
-		"111111111111111",
-		"100000000000001",
-		"101111111110101",
-		"101000000010101",
-		"101000000010101",
-		"101000000010101",
-		"100000000000001",
-		"111111111111111"
-	};
 
 	image_constructor(&white_square, data->window->mlx, 63, 63);
 	draw_square(&white_square, 63, 16777215);
 	i = 0;
-	while (i < 8)
+	while (i < data->map->rows)
 	{
 		j = 0;
-		while (j < 15)
+		while (j < data->map->cols)
 		{
-			if (map[i][j] == '1')
+			if (data->map->map[i][j] == '1')
 			{
 				fusion_image(screen_img, &white_square, (j * 64) - 1, (i * 64) - 1);
 			}
@@ -76,7 +66,8 @@ static int	game_loop(void	*param)
 	t_img	screen_image;
 
 	data = (t_data *)param;
-	image_constructor(&screen_image, data->window->mlx, 512, 960);
+	//visio_map(data->map->map, data->map->rows, data->map->cols);
+	image_constructor(&screen_image, data->window->mlx, data->map->rows * 64, data->map->cols * 64);
 	key_pressed(data);
 	put_map(data, &screen_image);
 	put_character(data, &screen_image);
@@ -87,9 +78,8 @@ static int	game_loop(void	*param)
 	return (0);
 }
 
-void	mlx_action(t_data *data, char *map[8])
+void	mlx_action(t_data *data)
 {
-	(void)map;
 	mlx_hook(data->window->win, 17, 0, close_window, data);
 	mlx_hook(data->window->win, 2, 1L << 0, key_press, data);
 	mlx_hook(data->window->win, 3, 1L << 1, key_unpress, data);

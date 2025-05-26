@@ -6,17 +6,14 @@
 /*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 15:46:40 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/05/26 14:48:21 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/05/26 15:25:33 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #ifndef FUNCTIONS_H
 # define FUNCTIONS_H
-//constructor.c
-void	window_constructor(t_window *window);
-void	texture_constructor(t_texture *texture);
-void	data_constructor(t_data *data);
+
 //parsing.c
 void	parsing(char *file, t_data *data);
 //checking_utils.c
@@ -42,16 +39,16 @@ int		check_neighbors(t_map *map, int x, int y);
 
 //struct_constructor
 	//constructor1.c
-void	window_constructor(t_window *window);
+void	window_constructor(t_window *window, t_map *map);
 void	texture_constructor(t_texture *texture);
-void	data_constructor(t_data *data);
+void	data_constructor(t_data *data, char *argv);
 void	image_constructor(t_img *img, void *mlx, int height, int width);
 	//constructor2.c
 void	key_constructor(t_key *key);
 
 //raycasting
 	//mlx_action.c
-void	mlx_action(t_data *data, char *map[8]);
+void	mlx_action(t_data *data);
 int		close_window(void *param);
 	//key_handler.c
 int		key_handler(int key, void *param);
@@ -70,5 +67,6 @@ int		get_pixel(t_img *img, int x, int y);
 	//fusion_image.c
 void	fusion_image(t_img *screen_img, t_img *img, int x, int y);
 
-
+//debug
+void	visio_map(char **map, int rows, int cols);
 #endif
