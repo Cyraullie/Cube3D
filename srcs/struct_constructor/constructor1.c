@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   constructor1.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 16:42:35 by ktintim-          #+#    #+#             */
 /*   Updated: 2025/05/20 14:05:33 by cgoldens         ###   ########.fr       */
