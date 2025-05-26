@@ -6,7 +6,7 @@
 /*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 16:42:35 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/05/20 14:05:33 by cgoldens         ###   ########.fr       */
+/*   Updated: 2025/05/26 14:54:25 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	window_constructor(t_window *window)
 {
 	window->mlx = mlx_init();
-	window->win = mlx_new_window(window->mlx, 960, 540, "Cub3D");
+	window->win = mlx_new_window(window->mlx, 960, 512, "Cub3D");
 }
 
 void	texture_constructor(t_texture *texture)
@@ -30,6 +30,26 @@ void	texture_constructor(t_texture *texture)
 	texture->e_path = NULL;
 }
 
+void	image_constructor(t_img *img, void *mlx, int height, int width)
+{
+	img->height = height;
+	img->width = width;
+	img->ptr = mlx_new_image(mlx, img->width, img->height);
+	img->addr = mlx_get_data_addr(img->ptr, &img->bpp, \
+		&img->line_length, &img->endian);
+}
+
+void	character_constructor(t_character *character, void *mlx)
+{
+	character->square = malloc(sizeof(t_img));
+	image_constructor(character->square, mlx, 64, 64);
+	draw_square(character->square, 30, 16711680);
+	draw_line(character->square, 65535);
+	character->angle_view = 180.0;
+	character->x_pose = 200.0;
+	character->y_pose = 200.0;
+}
+
 void	map_constructor(t_map *map)
 {
 	map->map = malloc(sizeof(char **));
@@ -40,8 +60,13 @@ void	map_constructor(t_map *map)
 void	data_constructor(t_data *data)
 {
 	data->texture = malloc(sizeof(t_texture));
+	data->window = malloc(sizeof(t_window));
+	data->character = malloc(sizeof(t_character));
+	data->key = malloc(sizeof(t_key));
 	data->map = malloc(sizeof(t_map));
-	//window_constructor(data->window );
-	texture_constructor(data->texture);
 	map_constructor(data->map);
+	window_constructor(data->window);
+	texture_constructor(data->texture);
+	character_constructor(data->character, data->window->mlx);
+	key_constructor(data->key);
 }

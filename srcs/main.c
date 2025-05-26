@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 13:46:48 by cgoldens          #+#    #+#             */
-/*   Updated: 2025/05/21 12:44:35 by cgoldens         ###   ########.fr       */
+/*   Updated: 2025/05/26 14:52:44 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,4 +32,20 @@ int	main(int argc, char **argv)
 	else
 		printf("map ok\n");
 	printf("direction look : %c", data.map->direction);
+	t_data	data;
+	char *map[] = {
+		"111111111111111",
+		"100000000000001",
+		"101111111110101",
+		"101000000010101",
+		"101000000010101",
+		"101000000010101",
+		"100000000000001",
+		"111111111111111"
+	};
+
+	data_constructor(&data);
+	(void)argc;
+	(void)argv;
+	mlx_action(&data, map);
 }

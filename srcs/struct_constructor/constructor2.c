@@ -1,26 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checking_utils.c                                   :+:      :+:    :+:   */
+/*   constructor2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/20 14:46:23 by cgoldens          #+#    #+#             */
-/*   Updated: 2025/05/26 14:55:41 by ktintim-         ###   ########.fr       */
+/*   Created: 2025/05/23 10:17:36 by ktintim-          #+#    #+#             */
+/*   Updated: 2025/05/26 14:58:11 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3D.h"
 
-/**
- * @brief check the char to know if it's a valid char in the map
- * 
- * @param c 
- * @return int 
- */
-int	is_valid_map_char(char c)
+void	key_constructor(t_key *key)
 {
-	return (c == '0' || c == '1' || c == '2' || c == '3'
-		|| c == 'N' || c == 'S' || c == 'E' || c == 'W'
-		|| c == ' ' || c == '\n' || c == '\0');
+	key->w = false;
+	key->s = false;
+	key->a = false;
+	key->d = false;
+	key->left = false;
+	key->right = false;
 }

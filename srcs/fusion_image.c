@@ -1,26 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checking_utils.c                                   :+:      :+:    :+:   */
+/*   fusion_image.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/20 14:46:23 by cgoldens          #+#    #+#             */
-/*   Updated: 2025/05/26 14:55:41 by ktintim-         ###   ########.fr       */
+/*   Created: 2025/05/26 13:43:21 by ktintim-          #+#    #+#             */
+/*   Updated: 2025/05/26 14:50:59 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3D.h"
+#include "../../includes/cub3D.h"
 
-/**
- * @brief check the char to know if it's a valid char in the map
- * 
- * @param c 
- * @return int 
- */
-int	is_valid_map_char(char c)
+void	fusion_image(t_img *screen_img, t_img *img, int x, int y)
 {
-	return (c == '0' || c == '1' || c == '2' || c == '3'
-		|| c == 'N' || c == 'S' || c == 'E' || c == 'W'
-		|| c == ' ' || c == '\n' || c == '\0');
+	int	i;
+	int	j;
+	int	color;
+
+	j = 0;
+	while (j < img->height)
+	{
+		i = 0;
+		while (i < img->width)
+		{
+			color = get_pixel(img, i, j);
+			if (color != 0x000000)
+				put_pixel(screen_img, x + i, y + j, color);
+			i++;
+		}
+		j++;
+	}
 }

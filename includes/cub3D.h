@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 13:50:46 by cgoldens          #+#    #+#             */
-/*   Updated: 2025/05/19 16:14:23 by cgoldens         ###   ########.fr       */
+/*   Updated: 2025/05/26 14:47:35 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,28 @@
 # include <stdio.h>
 # include <unistd.h>
 # include <stdlib.h>
+# define _USE_MATH_DEFINES
+# include <math.h>
+
+# define VIEW_SPEED 0.7
+# define MOOVE_SPPED 5.
+
+# ifndef M_PI
+#  define M_PI 3.14159265358979323846
+# endif
+
+# define KEY_W        119
+# define KEY_A        97
+# define KEY_S        115
+# define KEY_D        100
+
+# define KEY_UP       65362
+# define KEY_DOWN     65364
+# define KEY_LEFT     65361
+# define KEY_RIGHT    65363
+
+# define KEY_ESC      65307
+# define KEY_SPACE    32
 
 # define MAX_DATA 6
 
