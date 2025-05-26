@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_handler.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kilian <kilian@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 15:14:59 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/05/26 11:07:06 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/05/26 23:24:17 by kilian           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,15 +59,29 @@ int	key_unpress(int key, void *param)
 void	key_pressed(t_data *data)
 {
 	if (data->key->w == true)
-		data->character->y_pose -= MOOVE_SPPED;
+	{	// faut ameliorer la formule mais c un truc comme ca que faut faire
+		// remplacer par "data->character->y_pose -= MOOVE_SPPED;" pour version qui marche vite fait
+		data->character->x_pose += MOOVE_SPPED * cos(data->character->angle_view);
+		data->character->y_pose -= MOOVE_SPPED * sin(data->character->angle_view);
+	}
 	if (data->key->s == true)
+	{
 		data->character->y_pose += MOOVE_SPPED;
+	}
 	if (data->key->a == true)
+	{
 		data->character->x_pose -= MOOVE_SPPED;
+	}
 	if (data->key->d == true)
+	{
 		data->character->x_pose += MOOVE_SPPED;
+	}
 	if (data->key->left == true)
+	{
 		data->character->angle_view -= VIEW_SPEED;
+	}
 	if (data->key->right == true)
+	{
 		data->character->angle_view += VIEW_SPEED;
+	}
 }

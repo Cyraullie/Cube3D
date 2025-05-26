@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kilian <kilian@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 13:50:46 by cgoldens          #+#    #+#             */
-/*   Updated: 2025/05/26 14:47:35 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/05/26 23:02:06 by kilian           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 # define _USE_MATH_DEFINES
 # include <math.h>
 
-# define VIEW_SPEED 0.7
+# define VIEW_SPEED 3
 # define MOOVE_SPPED 5.
 
 # ifndef M_PI
