@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   constructor1.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kilian <kilian@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 16:42:35 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/05/21 21:30:44 by kilian           ###   ########.fr       */
+/*   Updated: 2025/05/26 10:44:09 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,10 @@ void	character_constructor(t_character *character, void *mlx)
 	character->square = malloc(sizeof(t_img));
 	image_constructor(character->square, mlx, 64, 64);
 	draw_square(character->square, 30, 16711680);
-	character->fov = 180;
-	character->x_pose = 0;
-	character->y_pose = 0;
+	draw_line(character->square, 65535);
+	character->angle_view = 180.0;
+	character->x_pose = 200.0;
+	character->y_pose = 200.0;
 }
 
 void	data_constructor(t_data *data)
@@ -54,7 +55,9 @@ void	data_constructor(t_data *data)
 	data->texture = malloc(sizeof(t_texture));
 	data->window = malloc(sizeof(t_window));
 	data->character = malloc(sizeof(t_character));
+	data->key = malloc(sizeof(t_key));
 	window_constructor(data->window);
 	texture_constructor(data->texture);
 	character_constructor(data->character, data->window->mlx);
+	key_constructor(data->key);
 }

@@ -3,15 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kilian <kilian@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 15:41:29 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/05/21 21:35:59 by kilian           ###   ########.fr       */
+/*   Updated: 2025/05/23 10:17:23 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCTS_H
 # define STRUCTS_H
+
+# include <stdbool.h>
 
 typedef struct s_segment
 {
@@ -41,7 +43,7 @@ typedef struct s_character
 {
 	double	x_pose;
 	double	y_pose;
-	double	fov;
+	double	angle_view;
 	t_img	*square;
 }	t_character;
 
@@ -66,8 +68,20 @@ typedef struct s_texture
 	char	*white_img_data;
 }	t_texture;
 
+typedef struct s_key
+{
+	bool	w;
+	bool	a;
+	bool	s;
+	bool	d;
+	bool	left;
+	bool	right;
+}	t_key;
+
+
 typedef struct s_data
 {
+	t_key		*key;
 	t_window	*window;
 	t_texture	*texture;
 	t_segment	*segment;

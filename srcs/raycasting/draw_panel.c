@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_panel.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kilian <kilian@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 09:47:05 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/05/21 21:10:59 by kilian           ###   ########.fr       */
+/*   Updated: 2025/05/22 16:55:53 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,24 @@ void	draw_map(t_data *data, char *map[8])
 			}
 			j++;
 		}
+		i++;
+	}
+}
+
+void	draw_line(t_img *img, int color)
+{
+	int	line_size;
+	int	cx;
+	int	cy;
+	int	i;
+
+	line_size = 100;
+	cx = img->height / 2;
+	cy = img->height / 2;
+	i = 0;
+	while (i < line_size && (cx + i) < img->width)
+	{
+		put_pixel(img, cx + i, cy, color);
 		i++;
 	}
 }
