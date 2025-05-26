@@ -6,7 +6,7 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 13:46:51 by cgoldens          #+#    #+#             */
-/*   Updated: 2025/05/20 13:42:14 by cgoldens         ###   ########.fr       */
+/*   Updated: 2025/05/21 15:06:48 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	get_color(int color[3], char *str)
 }
 
 /**
- * @brief caca
+ * @brief add data with identifier in struct
  * 
  * @param txtr 
  * @param str 
@@ -70,7 +70,14 @@ int	add_struct(t_texture *txtr, char *str)
 	return (1);
 }
 
-void	parse_map(int fd, t_data *data)
+/**
+ * @brief add map in data struct
+ * 
+ * @param fd 
+ * @param data 
+ * @param old_buf 
+ */
+void	parse_map(int fd, t_data *data, char *old_buf)
 {
 	char	**raw_lines;
 	int		line_idx;
@@ -79,11 +86,14 @@ void	parse_map(int fd, t_data *data)
 	line_idx = 0;
 	buf = malloc(BUFFER_SIZE * sizeof(char *));
 	raw_lines = malloc(sizeof(char *) * 1024);
-	buf = get_next_line(fd);
+	buf = old_buf;
 	while (buf != NULL)
 	{
 		if (!(!ft_strcmp(buf, "\n")))
+		{
+			strip_newline(buf);
 			raw_lines[line_idx++] = ft_strdup(buf);
+		}
 		free(buf);
 		buf = get_next_line(fd);
 	}
@@ -94,10 +104,10 @@ void	parse_map(int fd, t_data *data)
 }
 
 /**
- * @brief 
+ * @brief main function to parse .cub
  * 
  * @param file 
- * @param txtr 
+ * @param data 
  */
 void	parsing(char *file, t_data *data)
 {
@@ -106,7 +116,6 @@ void	parsing(char *file, t_data *data)
 	int		count;
 
 	count = 0;
-	buf = malloc(BUFFER_SIZE * sizeof(char *));
 	fd = open(file, O_RDONLY);
 	buf = get_next_line(fd);
 	while (buf != NULL)
@@ -116,7 +125,10 @@ void	parsing(char *file, t_data *data)
 			if (count != MAX_DATA)
 				count += add_struct(data->texture, buf);
 			else
-				parse_map(fd, data);
+			{
+				parse_map(fd, data, buf);
+				break ;
+			}
 		}
 		free(buf);
 		buf = get_next_line(fd);

@@ -1,35 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   checking_utils.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/16 13:46:48 by cgoldens          #+#    #+#             */
-/*   Updated: 2025/05/21 12:44:35 by cgoldens         ###   ########.fr       */
+/*   Created: 2025/05/20 14:46:23 by cgoldens          #+#    #+#             */
+/*   Updated: 2025/05/26 14:40:06 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3D.h"
 
 /**
- * @brief main function
+ * @brief check the char to know if it's a valid char in the map
  * 
+ * @param c 
+ * @return int 
  */
-int	main(int argc, char **argv)
+int	is_valid_map_char(char c)
 {
-	t_data	data;
-
-	if (argc != 2)
-	{
-		printf("Error\n.cub file needed");
-		exit(EXIT_FAILURE);
-	}
-	data_constructor(&data);
-	parsing(argv[1], &data);
-	if (integrity_check(data.map))
-		printf("map not ok\n");
-	else
-		printf("map ok\n");
-	printf("direction look : %c", data.map->direction);
+	return (c == '0' || c == '1' || c == '2' || c == '3'
+		|| c == 'N' || c == 'S' || c == 'E' || c == 'W'
+		|| c == ' ' || c == '\n' || c == '\0');
 }
