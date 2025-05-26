@@ -6,7 +6,7 @@
 /*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 15:41:29 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/05/23 10:17:23 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/05/26 14:48:34 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,13 @@ typedef struct s_window
 	void	*mlx;
 	void	*win;
 }	t_window;
+
+typedef struct s_map {
+	char	**map;
+	int		rows;
+	int		cols;
+	char	direction;
+}				t_map;
 
 typedef struct s_img {
 	void	*ptr;
@@ -84,10 +91,16 @@ typedef struct s_data
 	t_key		*key;
 	t_window	*window;
 	t_texture	*texture;
+	t_map		*map;
 	t_segment	*segment;
 	t_character	*character;
 	int			seg_count;
 }	t_data;
+
+typedef struct s_coord {
+	int	x;
+	int	y;
+}	t_coord;
 
 typedef struct s_vars
 {

@@ -6,7 +6,7 @@
 /*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 16:42:35 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/05/26 10:44:09 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/05/26 14:54:25 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,12 +50,21 @@ void	character_constructor(t_character *character, void *mlx)
 	character->y_pose = 200.0;
 }
 
+void	map_constructor(t_map *map)
+{
+	map->map = malloc(sizeof(char **));
+	map->cols = 0;
+	map->rows = 0;
+}
+
 void	data_constructor(t_data *data)
 {
 	data->texture = malloc(sizeof(t_texture));
 	data->window = malloc(sizeof(t_window));
 	data->character = malloc(sizeof(t_character));
 	data->key = malloc(sizeof(t_key));
+	data->map = malloc(sizeof(t_map));
+	map_constructor(data->map);
 	window_constructor(data->window);
 	texture_constructor(data->texture);
 	character_constructor(data->character, data->window->mlx);

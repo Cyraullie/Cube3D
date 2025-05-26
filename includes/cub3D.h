@@ -6,7 +6,7 @@
 /*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 13:50:46 by cgoldens          #+#    #+#             */
-/*   Updated: 2025/05/26 14:44:10 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/05/26 14:47:35 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,5 +45,7 @@
 
 # define KEY_ESC      65307
 # define KEY_SPACE    32
+
+# define MAX_DATA 6
 
 #endif
