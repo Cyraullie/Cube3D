@@ -6,7 +6,7 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 14:56:59 by cgoldens          #+#    #+#             */
-/*   Updated: 2025/05/20 15:33:51 by cgoldens         ###   ########.fr       */
+/*   Updated: 2025/05/27 10:54:59 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	check_color(int color[3])
 	while (i < 3)
 	{
 		if (!(color[i] >= 0 && color[i] <= 255))
-			return (1);
+			return (printf("Erreur\nThe color channel number %d is not valid.\n", i + 1), 1);
 		i++;
 	}
 	return (0);
@@ -67,10 +67,10 @@ int	check_texture(t_texture *txtr)
 	//TODO free and exit if caca
 	//TODO exit(EXIT_FAILURE);
 	if (check_color(txtr->c_color) || check_color(txtr->f_color))
-		printf("caca\n");
+		return (1);
 	if (check_path(txtr->n_path) || check_path(txtr->s_path)
 		|| check_path(txtr->e_path) || check_path(txtr->w_path))
-		printf("cacaV2\n");
+		return (1);
 	return (0);
 }
 
@@ -82,19 +82,31 @@ int	check_texture(t_texture *txtr)
  * @param map 
  * @return int 
  */
-int	check_spawn(char c, int i, t_map *map)
+int	check_spawn(char c, t_map *map, int cols, int rows)
 {
 	if (c == 'N' || c == 'S' || c == 'E' || c == 'W')
 	{
-		i++;
-		if (i > 1)
+		if (map->c_x != 0.0 && map->c_y != 0.0)
 		{
 			printf("Error\nToo many spawn points\n");
 			exit(EXIT_FAILURE);
 		}
-		map->direction = c;
+		else
+		{
+			if (c == 'E')
+				map->direction = EAST;
+			else if (c == 'S')
+				map->direction = SOUTH;
+			else if (c == 'W')
+				map->direction = WEST;
+			else if (c == 'N')
+				map->direction = NORTH;
+			map->c_x = cols * PIXEL + 0.5;
+			map->c_y = rows * PIXEL + 0.5;
+			return (1);
+		}
 	}
-	return (i);
+	return (0);
 }
 
 /**
@@ -113,19 +125,17 @@ int	check_map(t_map *map)
 	spawn_cnt = 0;
 	if (map->rows == 0 || map->cols == 0)
 		return (1);
-	rows = 0;
-	while (rows < map->rows)
+	rows = -1;
+	while (++rows < map->rows)
 	{
-		cols = 0;
-		while (cols < map->cols)
+		cols = -1;
+		while (++cols < map->cols)
 		{
 			c = map->map[rows][cols];
 			if (!is_valid_map_char(c))
 				return (printf("Error\nForbidden character: '%c'\n", c), 1);
-			spawn_cnt = check_spawn(c, spawn_cnt, map);
-			cols++;
+			spawn_cnt += check_spawn(c, map, cols, rows);
 		}
-		rows++;
 	}
 	if (spawn_cnt == 0)
 		return (printf("Error\nNo spawn point\n"), 1);
