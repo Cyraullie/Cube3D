@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   functions.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 15:46:40 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/05/26 15:25:33 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/05/27 11:01:41 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 # define FUNCTIONS_H
 
 //parsing.c
-void	parsing(char *file, t_data *data);
+void	parsing(int fd, t_data *data);
 //checking_utils.c
 int		is_valid_map_char(char c);
 //parsing_utils.c
@@ -38,13 +38,14 @@ int		flood_fill_from(t_map *map, int x, int y, char **visited);
 int		check_neighbors(t_map *map, int x, int y);
 
 //struct_constructor
-	//constructor1.c
+	//game_constructor.c
 void	window_constructor(t_window *window, t_map *map);
-void	texture_constructor(t_texture *texture);
 void	data_constructor(t_data *data, char *argv);
-void	image_constructor(t_img *img, void *mlx, int height, int width);
-	//constructor2.c
 void	key_constructor(t_key *key);
+	//graphic_constructor.c
+void	texture_constructor(t_texture *texture);
+void	map_constructor(t_map *map);
+void	image_constructor(t_img *img, void *mlx, int height, int width);
 
 //raycasting
 	//mlx_action.c
