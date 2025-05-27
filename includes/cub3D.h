@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kilian <kilian@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 13:50:46 by cgoldens          #+#    #+#             */
 /*   Updated: 2025/05/27 10:39:16 by cgoldens         ###   ########.fr       */
@@ -33,7 +33,7 @@
 # define SOUTH 90.0
 # define WEST 180.0
 
-# define VIEW_SPEED 0.7
+# define VIEW_SPEED 3
 # define MOOVE_SPPED 5.
 
 # ifndef M_PI
