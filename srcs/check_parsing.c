@@ -6,7 +6,7 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 14:56:59 by cgoldens          #+#    #+#             */
-/*   Updated: 2025/05/27 10:54:59 by cgoldens         ###   ########.fr       */
+/*   Updated: 2025/05/28 12:51:43 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ int	check_color(int color[3])
 	while (i < 3)
 	{
 		if (!(color[i] >= 0 && color[i] <= 255))
-			return (printf("Erreur\nThe color channel number %d is not valid.\n", i + 1), 1);
+			return (printf("Erreur\nThe color channel nb %d is not valid.\n"\
+				, i + 1), 1);
 		i++;
 	}
 	return (0);
@@ -65,7 +66,6 @@ int	check_path(char *path)
 int	check_texture(t_texture *txtr)
 {
 	//TODO free and exit if caca
-	//TODO exit(EXIT_FAILURE);
 	if (check_color(txtr->c_color) || check_color(txtr->f_color))
 		return (1);
 	if (check_path(txtr->n_path) || check_path(txtr->s_path)

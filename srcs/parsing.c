@@ -6,12 +6,11 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 13:46:51 by cgoldens          #+#    #+#             */
-/*   Updated: 2025/05/27 10:51:06 by cgoldens         ###   ########.fr       */
+/*   Updated: 2025/05/28 12:52:24 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3D.h"
-//TODO check data missing or incorrect
 
 /**
  * @brief Get the color object
