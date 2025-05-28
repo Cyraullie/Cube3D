@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 13:50:46 by cgoldens          #+#    #+#             */
-/*   Updated: 2025/05/28 11:02:01 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/05/28 13:21:41 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@
 
 # define KEY_ESC      65307
 # define KEY_SPACE    32
+# define KEY_E        101
 
 # define MAX_DATA 6
 
