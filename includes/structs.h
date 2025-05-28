@@ -6,7 +6,7 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 15:41:29 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/05/28 12:55:38 by cgoldens         ###   ########.fr       */
+/*   Updated: 2025/05/28 14:00:21 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,8 @@ typedef struct s_key
 	bool	a;
 	bool	s;
 	bool	d;
+	bool	e;
+	bool	e_lock;
 	bool	left;
 	bool	right;
 }	t_key;

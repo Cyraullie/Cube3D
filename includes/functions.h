@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   functions.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 15:46:40 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/05/28 11:02:11 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/05/28 13:36:18 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ int		check_map(t_map *map);
 void	free_array(char **tab);
 void	free_visited_partial(char **visited, int limit);
 //map.c
+void	open_door(t_data *data);
 int		integrity_check(t_map *map);
 int		is_player(char c);
 int		is_accessible(char c);
@@ -62,6 +63,7 @@ int		check_w(t_data *data);
 int		check_s(t_data *data);
 int		check_a(t_data *data);
 int		check_d(t_data *data);
+int		check_door(t_data *data);
 	//draw_panel.c
 void	draw_square(t_img *img, int square_size, int color);
 void	draw_map(t_data *data, char *map[8]);

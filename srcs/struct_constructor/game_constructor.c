@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_constructor.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 16:42:35 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/05/28 11:03:05 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/05/28 13:34:30 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ void	key_constructor(t_key *key)
 	key->s = false;
 	key->a = false;
 	key->d = false;
+	key->e = false;
 	key->left = false;
 	key->right = false;
 }
