@@ -6,7 +6,7 @@
 /*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 16:42:35 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/05/26 15:21:29 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/05/27 14:59:43 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	character_constructor(t_character *character, void *mlx)
 {
 	character->square = malloc(sizeof(t_img));
 	image_constructor(character->square, mlx, 64, 64);
-	draw_square(character->square, 30, 16711680);
+	draw_square(character->square, 20, 16711680);
 	draw_line(character->square, 65535);
 	character->angle_view = 180.0;
 	character->x_pose = 100.0;

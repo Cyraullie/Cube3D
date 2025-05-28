@@ -3,14 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   rotate_image.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kilian <kilian@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/21 10:49:54 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/05/21 21:38:21 by kilian           ###   ########.fr       */
+/*   Updated: 2025/05/27 09:37:38 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3D.h"
+
+double	return_radian(double angle_degre)
+{
+	return (angle_degre * M_PI / 180);
+}
 
 /**
  * @brief Get the color of the pixel at x;y on the image
@@ -78,7 +83,7 @@ void	rotate_image(t_img *src, t_img *dest, double angle_degre)
 {
 	t_vars	vars;
 
-	vars.angle = angle_degre * M_PI / 180;
+	vars.angle = return_radian(angle_degre);
 	vars.cx = src->width / 2;
 	vars.cy = src->height / 2;
 	vars.dest_cx = dest->width / 2;

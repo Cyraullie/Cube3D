@@ -6,7 +6,7 @@
 /*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 15:46:40 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/05/26 15:25:33 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/05/27 11:33:02 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,10 +51,16 @@ void	key_constructor(t_key *key);
 void	mlx_action(t_data *data);
 int		close_window(void *param);
 	//key_handler.c
-int		key_handler(int key, void *param);
 int		key_press(int key, void *param);
 int		key_unpress(int key, void *param);
 void	key_pressed(t_data *data);
+double	new_x(double angle);
+double	new_y(double angle);
+	//control.c
+int		check_w(t_data *data);
+int		check_s(t_data *data);
+int		check_a(t_data *data);
+int		check_d(t_data *data);
 	//draw_panel.c
 void	draw_square(t_img *img, int square_size, int color);
 void	draw_map(t_data *data, char *map[8]);
@@ -64,6 +70,7 @@ void	draw_line(t_img *img, int color);
 void	rotate_image(t_img *src, t_img *dest, double angle_degre);
 void	put_pixel(t_img *img, int x, int y, int color);
 int		get_pixel(t_img *img, int x, int y);
+double	return_radian(double angle_degre);
 	//fusion_image.c
 void	fusion_image(t_img *screen_img, t_img *img, int x, int y);
 
