@@ -6,7 +6,7 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 15:41:29 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/05/27 10:30:47 by cgoldens         ###   ########.fr       */
+/*   Updated: 2025/05/28 12:55:38 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,9 @@ typedef struct s_texture
 	void	*white_img;
 	int		white_img_line_size;
 	char	*white_img_data;
+	void	*door_img;
+	int		door_img_line_size;
+	char	*door_img_data;
 }	t_texture;
 
 typedef struct s_key
