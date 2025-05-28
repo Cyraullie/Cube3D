@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kilian <kilian@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 13:50:46 by cgoldens          #+#    #+#             */
-/*   Updated: 2025/05/27 10:39:16 by cgoldens         ###   ########.fr       */
+/*   Updated: 2025/05/28 11:02:01 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@
 # define WEST 180.0
 
 # define VIEW_SPEED 3
-# define MOOVE_SPPED 5.
+# define MOOVE_SPPED 5
 
 # ifndef M_PI
 #  define M_PI 3.14159265358979323846

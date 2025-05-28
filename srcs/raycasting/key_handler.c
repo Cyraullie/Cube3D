@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_handler.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kilian <kilian@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 15:14:59 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/05/26 23:24:17 by kilian           ###   ########.fr       */
+/*   Updated: 2025/05/27 11:38:05 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,32 +56,40 @@ int	key_unpress(int key, void *param)
 	return (0);
 }
 
+double	new_x(double angle)
+{
+	return (MOOVE_SPPED * cos(return_radian(angle)));
+}
+
+double	new_y(double angle)
+{
+	return (MOOVE_SPPED * sin(return_radian(angle)));
+}
+
 void	key_pressed(t_data *data)
 {
-	if (data->key->w == true)
-	{	// faut ameliorer la formule mais c un truc comme ca que faut faire
-		// remplacer par "data->character->y_pose -= MOOVE_SPPED;" pour version qui marche vite fait
-		data->character->x_pose += MOOVE_SPPED * cos(data->character->angle_view);
-		data->character->y_pose -= MOOVE_SPPED * sin(data->character->angle_view);
-	}
-	if (data->key->s == true)
+	if (data->key->w == true && check_w(data) == 0)
 	{
-		data->character->y_pose += MOOVE_SPPED;
+		data->character->x_pose += new_x(data->character->angle_view);
+		data->character->y_pose += new_y(data->character->angle_view);
 	}
-	if (data->key->a == true)
+	if (data->key->s == true && check_s(data) == 0)
 	{
-		data->character->x_pose -= MOOVE_SPPED;
+		data->character->x_pose -= new_x(data->character->angle_view);
+		data->character->y_pose -= new_y(data->character->angle_view);
 	}
-	if (data->key->d == true)
+	if (data->key->a == true && check_a(data) == 0)
 	{
-		data->character->x_pose += MOOVE_SPPED;
+		data->character->x_pose += new_x(data->character->angle_view - 90);
+		data->character->y_pose += new_y(data->character->angle_view - 90);
+	}
+	if (data->key->d == true && check_d(data) == 0)
+	{
+		data->character->x_pose += new_x(data->character->angle_view + 90);
+		data->character->y_pose += new_y(data->character->angle_view + 90);
 	}
 	if (data->key->left == true)
-	{
 		data->character->angle_view -= VIEW_SPEED;
-	}
 	if (data->key->right == true)
-	{
 		data->character->angle_view += VIEW_SPEED;
-	}
 }
