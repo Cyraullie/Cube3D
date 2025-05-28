@@ -6,7 +6,7 @@
 /*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 13:50:46 by cgoldens          #+#    #+#             */
-/*   Updated: 2025/05/27 09:57:16 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/05/28 11:02:01 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,13 @@
 # include <stdlib.h>
 # define _USE_MATH_DEFINES
 # include <math.h>
+
+# define PIXEL 64
+
+# define NORTH 270.0
+# define EAST 0.0
+# define SOUTH 90.0
+# define WEST 180.0
 
 # define VIEW_SPEED 3
 # define MOOVE_SPPED 5

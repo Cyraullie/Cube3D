@@ -6,7 +6,7 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 13:46:51 by cgoldens          #+#    #+#             */
-/*   Updated: 2025/05/21 15:06:48 by cgoldens         ###   ########.fr       */
+/*   Updated: 2025/05/27 10:51:06 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,14 +109,12 @@ void	parse_map(int fd, t_data *data, char *old_buf)
  * @param file 
  * @param data 
  */
-void	parsing(char *file, t_data *data)
+void	parsing(int fd, t_data *data)
 {
-	int		fd;
 	char	*buf;
 	int		count;
 
 	count = 0;
-	fd = open(file, O_RDONLY);
 	buf = get_next_line(fd);
 	while (buf != NULL)
 	{
@@ -133,7 +131,8 @@ void	parsing(char *file, t_data *data)
 		free(buf);
 		buf = get_next_line(fd);
 	}
-	check_texture(data->texture);
-	check_map(data->map);
-	close(fd);
+	if (check_texture(data->texture))
+		exit(EXIT_FAILURE);
+	if (check_map(data->map))
+		exit(EXIT_FAILURE);
 }
