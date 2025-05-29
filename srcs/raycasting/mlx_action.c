@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_action.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kilian <kilian@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 15:06:39 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/05/26 15:32:19 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/05/29 19:04:49 by kilian           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ static int	game_loop(void	*param)
 	key_pressed(data);
 	put_map(data, &screen_image);
 	put_character(data, &screen_image);
+	dda(data, &screen_image);
 	mlx_put_image_to_window(data->window->mlx, \
 		data->window->win, screen_image.ptr, 0, 0);
 	// mlx_clear_window(data->window->mlx, data->window->win);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   functions.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kilian <kilian@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 15:46:40 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/05/28 11:02:11 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/05/29 18:57:18 by kilian           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,8 @@ int		get_pixel(t_img *img, int x, int y);
 double	return_radian(double angle_degre);
 	//fusion_image.c
 void	fusion_image(t_img *screen_img, t_img *img, int x, int y);
+	//DDA.c
+void	dda(t_data *data, t_img *scn_img);
 
 //debug
 void	visio_map(char **map, int rows, int cols);

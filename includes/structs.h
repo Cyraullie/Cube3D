@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kilian <kilian@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 15:41:29 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/05/29 11:17:30 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/05/29 18:50:18 by kilian           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,8 @@ typedef struct s_data
 	int			seg_count;
 }	t_data;
 
-typedef struct s_coord {
+typedef struct s_coord
+{
 	int	x;
 	int	y;
 }	t_coord;
@@ -124,7 +125,6 @@ typedef struct s_dda
 	double	step_size;
 	double	x;
 	double	y;
-	double	step_size;
 	int		angle;
 }	t_dda;
 
