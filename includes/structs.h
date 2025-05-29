@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 15:41:29 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/05/27 10:30:47 by cgoldens         ###   ########.fr       */
+/*   Updated: 2025/05/29 11:17:30 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,5 +118,14 @@ typedef struct s_vars
 	int		x;
 	int		y;
 }	t_vars;
+
+typedef struct s_dda
+{
+	double	step_size;
+	double	x;
+	double	y;
+	double	step_size;
+	int		angle;
+}	t_dda;
 
 #endif
