@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   DDA.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kilian <kilian@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/28 13:12:53 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/05/29 19:23:56 by kilian           ###   ########.fr       */
+/*   Updated: 2025/05/30 11:50:09 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ static void	intersection_point(t_dda *vars, t_data *data, double angle)
 	double	ray_y;
 	double	ray_angle;
 
-	ray_x = data->character->x_pose;
-	ray_y = data->character->y_pose;
+	ray_x = data->character->x_pose + (data->character->square->width / 2);
+	ray_y = data->character->y_pose + (data->character->square->height / 2);
 	if (angle > 360)
 		angle -= 360;
 	else if (angle < 0)
@@ -27,10 +27,10 @@ static void	intersection_point(t_dda *vars, t_data *data, double angle)
 	ray_angle = return_radian(angle);
 	while (data->map->map[(int)(ray_y / PIXEL)][(int)(ray_x / PIXEL)] != '1')
 	{
-		ray_x += cos(ray_angle) * vars->step_size;
+		ray_x += cos(ray_angle) * vars->step_size; 
 		// printf("ray_x : %f\n", ray_x);
 		ray_y += sin(ray_angle) * vars->step_size;
-		// printf("ray_y : %f\n", ray_y);
+		// printf("ray_y : %f\n", ray_y);juik
 	}
 	vars->x = ray_x;
 	vars->y = ray_y;
@@ -59,13 +59,13 @@ static void	dda_algo(t_dda vars, t_data *data, t_img *scn_img)
 	int		steps;
 	int		i;
 
-	dx = vars.x - data->character->x_pose;
-	dy = vars.y - data->character->y_pose;
+	dx = vars.x - (data->character->x_pose + (data->character->square->width / 2));
+	dy = vars.y - (data->character->y_pose + (data->character->square->height / 2));
 	steps = return_abs_max((int)dx, (int)dy);
 	xinc = dx / (float)steps;
 	yinc = dy / (float)steps;
-	x = data->character->x_pose;
-	y = data->character->y_pose;
+	x = data->character->x_pose + (data->character->square->width / 2);
+	y = data->character->y_pose + (data->character->square->height / 2);
 	i = 0;
 	while (i < steps)
 	{
@@ -87,6 +87,7 @@ void	dda(t_data *data, t_img *scn_img)
 	while (i < FOV)
 	{
 		intersection_point(&vars, data, (vars.angle + i));
+		put_pixel(scn_img, vars.x, vars.y, 3342080);
 		dda_algo(vars, data, scn_img);
 		i++;
 	}
