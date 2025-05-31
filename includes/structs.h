@@ -6,7 +6,7 @@
 /*   By: kilian <kilian@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 15:41:29 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/05/29 18:50:18 by kilian           ###   ########.fr       */
+/*   Updated: 2025/05/31 11:42:25 by kilian           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,5 +127,23 @@ typedef struct s_dda
 	double	y;
 	int		angle;
 }	t_dda;
+
+typedef struct s_grid
+{
+	double	ray_x;
+	double	ray_y;
+	double	ray_angle;
+	double	dir_x;
+	double	dir_y;
+	int		map_x;
+	int		map_y;
+	double	delta_dist_x;
+	double	delta_dist_y;
+	int		step_x;
+	int		step_y;
+	double	side_dist_x;
+	double	side_dist_y;
+	int		side;
+}	t_grid;
 
 #endif

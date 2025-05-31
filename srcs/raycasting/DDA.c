@@ -3,38 +3,38 @@
 /*                                                        :::      ::::::::   */
 /*   DDA.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kilian <kilian@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/28 13:12:53 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/05/30 11:50:09 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/05/31 12:16:08 by kilian           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3D.h"
 
-static void	intersection_point(t_dda *vars, t_data *data, double angle)
-{
-	double	ray_x;
-	double	ray_y;
-	double	ray_angle;
+// static void	intersection_point(t_dda *vars, t_data *data, double angle)
+// {
+// 	double	ray_x;
+// 	double	ray_y;
+// 	double	ray_angle;
 
-	ray_x = data->character->x_pose + (data->character->square->width / 2);
-	ray_y = data->character->y_pose + (data->character->square->height / 2);
-	if (angle > 360)
-		angle -= 360;
-	else if (angle < 0)
-		angle += 360;
-	ray_angle = return_radian(angle);
-	while (data->map->map[(int)(ray_y / PIXEL)][(int)(ray_x / PIXEL)] != '1')
-	{
-		ray_x += cos(ray_angle) * vars->step_size; 
-		// printf("ray_x : %f\n", ray_x);
-		ray_y += sin(ray_angle) * vars->step_size;
-		// printf("ray_y : %f\n", ray_y);juik
-	}
-	vars->x = ray_x;
-	vars->y = ray_y;
-}
+// 	ray_x = data->character->x_pose + (data->character->square->width / 2);
+// 	ray_y = data->character->y_pose + (data->character->square->height / 2);
+// 	while (angle > 360)
+// 		angle -= 360;
+// 	while (angle < 0)
+// 		angle += 360;
+// 	ray_angle = return_radian(angle);
+// 	while (data->map->map[(int)(ray_y / PIXEL)][(int)(ray_x / PIXEL)] != '1')
+// 	{
+// 		ray_x += cos(ray_angle) * vars->step_size;
+// 		// printf("ray_x : %f\n", ray_x);
+// 		ray_y += sin(ray_angle) * vars->step_size;
+// 		// printf("ray_y : %f\n", ray_y);juik
+// 	}
+// 	vars->x = ray_x;
+// 	vars->y = ray_y;
+// }
 
 static int	return_abs_max(int a, int b)
 {
@@ -42,7 +42,7 @@ static int	return_abs_max(int a, int b)
 		a *= -1;
 	if (b < 0)
 		b *= -1;
-	if (a < b)
+	if (a > b)
 		return (a);
 	else
 		return (b);

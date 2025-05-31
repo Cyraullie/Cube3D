@@ -6,7 +6,7 @@
 /*   By: kilian <kilian@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 13:50:46 by cgoldens          #+#    #+#             */
-/*   Updated: 2025/05/29 18:29:38 by kilian           ###   ########.fr       */
+/*   Updated: 2025/05/31 12:59:25 by kilian           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
 # include <math.h>
 
 # define PIXEL 64
-# define FOV 60
+# define FOV 6
 
 # define NORTH 270.0
 # define EAST 0.0
