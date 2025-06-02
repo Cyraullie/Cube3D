@@ -6,7 +6,7 @@
 /*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 16:42:35 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/05/28 11:03:05 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/06/02 10:56:07 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ void	character_constructor(t_character *character, void *mlx, t_map *map)
 	character->square = malloc(sizeof(t_img));
 	image_constructor(character->square, mlx, PIXEL, PIXEL);
 	draw_square(character->square, 20, 16711680);
-	draw_line(character->square, 65535);
 	character->angle_view = map->direction;
 	character->x_pose = map->c_x;
 	character->y_pose = map->c_y;
