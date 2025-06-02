@@ -6,7 +6,7 @@
 /*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 15:46:40 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/05/28 11:02:11 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/06/02 10:49:02 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,10 @@ int		get_pixel(t_img *img, int x, int y);
 double	return_radian(double angle_degre);
 	//fusion_image.c
 void	fusion_image(t_img *screen_img, t_img *img, int x, int y);
+	//DDA.c
+void	dda(t_data *data, t_img *scn_img);
+	//grid_search.c
+// void	intersection_point(t_dda *vars, t_data *data, double angle);
 
 //debug
 void	visio_map(char **map, int rows, int cols);

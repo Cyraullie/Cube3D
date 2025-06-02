@@ -6,7 +6,7 @@
 /*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 13:50:46 by cgoldens          #+#    #+#             */
-/*   Updated: 2025/05/28 11:02:01 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/06/02 10:54:57 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@
 # include <math.h>
 
 # define PIXEL 64
+# define FOV 60
 
 # define NORTH 270.0
 # define EAST 0.0
