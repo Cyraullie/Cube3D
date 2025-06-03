@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kilian <kilian@student.42.fr>              +#+  +:+       +#+        */
+/*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 15:41:29 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/05/31 11:42:25 by kilian           ###   ########.fr       */
+/*   Updated: 2025/06/03 15:46:29 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,9 @@ typedef struct s_texture
 	void	*white_img;
 	int		white_img_line_size;
 	char	*white_img_data;
+	void	*door_img;
+	int		door_img_line_size;
+	char	*door_img_data;
 }	t_texture;
 
 typedef struct s_key
@@ -83,6 +86,8 @@ typedef struct s_key
 	bool	a;
 	bool	s;
 	bool	d;
+	bool	e;
+	bool	e_lock;
 	bool	left;
 	bool	right;
 }	t_key;

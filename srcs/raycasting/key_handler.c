@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_handler.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 15:14:59 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/05/27 11:38:05 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/05/28 14:01:08 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ int	key_press(int key, void *param)
 		data->key->left = true;
 	if (key == KEY_RIGHT)
 		data->key->right = true;
+	if (key == KEY_E)
+		data->key->e = true;
 	return (0);
 }
 
@@ -53,6 +55,11 @@ int	key_unpress(int key, void *param)
 		data->key->left = false;
 	if (key == KEY_RIGHT)
 		data->key->right = false;
+	if (key == KEY_E)
+	{
+		data->key->e = false;
+		data->key->e_lock = false;
+	}
 	return (0);
 }
 
@@ -92,4 +99,11 @@ void	key_pressed(t_data *data)
 		data->character->angle_view -= VIEW_SPEED;
 	if (data->key->right == true)
 		data->character->angle_view += VIEW_SPEED;
+	if (data->key->e == true && data->key->e_lock == false)
+	{
+		if (check_door(data) == 1)
+			open_door(data);
+		data->key->e_lock = true;
+	}
+
 }

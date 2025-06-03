@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_action.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kilian <kilian@student.42.fr>              +#+  +:+       +#+        */
+/*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 15:06:39 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/05/29 19:04:49 by kilian           ###   ########.fr       */
+/*   Updated: 2025/06/03 15:46:38 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,13 @@ static void	put_map(t_data *data, t_img *screen_img)
 	int		i;
 	int		j;
 	t_img	white_square;
+	t_img	door;
 
 	image_constructor(&white_square, data->window->mlx, 63, 63);
 	draw_square(&white_square, 63, 16777215);
+
+	image_constructor(&door, data->window->mlx, 63, 63);
+	draw_square(&door, 63, 5979153);
 	i = 0;
 	while (i < data->map->rows)
 	{
@@ -50,14 +54,17 @@ static void	put_map(t_data *data, t_img *screen_img)
 		while (j < data->map->cols)
 		{
 			if (data->map->map[i][j] == '1')
-			{
-				fusion_image(screen_img, &white_square, (j * 64) - 1, (i * 64) - 1);
-			}
+				fusion_image(screen_img, &white_square, (j * 64) - 1, \
+					(i * 64) - 1);
+			if (data->map->map[i][j] == '2')
+				fusion_image(screen_img, &door, (j * 64) - 1, \
+					(i * 64) - 1);
 			j++;
 		}
 		i++;
 	}
 	mlx_destroy_image(data->window->mlx, white_square.ptr);
+	mlx_destroy_image(data->window->mlx, door.ptr);
 }
 
 static int	game_loop(void	*param)

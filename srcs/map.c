@@ -6,7 +6,7 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 15:37:04 by cgoldens          #+#    #+#             */
-/*   Updated: 2025/05/22 11:37:28 by cgoldens         ###   ########.fr       */
+/*   Updated: 2025/05/28 14:02:31 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,4 +126,23 @@ int	integrity_check(t_map *map)
 	if (!flood_fill_zone_check(map))
 		return (1);
 	return (0);
+}
+
+void	open_door(t_data *data)
+{
+	double	pose_x;
+	double	pose_y;
+	int		x;
+	int		y;
+
+	pose_x = data->character->x_pose + new_x(data->character->angle_view) + 32;
+	pose_y = data->character->y_pose + new_y(data->character->angle_view) + 32;
+	x = (int)pose_x / PIXEL;
+	y = (int)pose_y / PIXEL;
+	if (data->map->map[y][x] == '2')
+		data->map->map[y][x] = '3';
+	else if (data->map->map[y][x] == '3')
+		data->map->map[y][x] = '2';
+	else
+		return ;
 }

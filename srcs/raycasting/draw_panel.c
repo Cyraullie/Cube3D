@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_panel.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 09:47:05 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/05/26 13:47:59 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/05/28 13:38:00 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,15 +59,14 @@ void	draw_map(t_data *data, char *map[8])
 		while (j < 15)
 		{
 			if (map[i][j] == '1')
-			{
 				mlx_put_image_to_window(data->window->mlx, data->window->win, \
-					data->texture->white_img, (j * 64), (i * 64));
-			}
-			else if (map[i][j] == '0')
-			{
+					data->texture->white_img, (j * PIXEL), (i * PIXEL));
+			else if (map[i][j] == '2')
 				mlx_put_image_to_window(data->window->mlx, data->window->win, \
-					data->texture->black_img, (j * 64), (i * 64));
-			}
+					data->texture->door_img, (j * PIXEL), (i * PIXEL));
+			else if (map[i][j] == '0' || map[i][j] == '3')
+				mlx_put_image_to_window(data->window->mlx, data->window->win, \
+					data->texture->black_img, (j * PIXEL), (i * PIXEL));
 			j++;
 		}
 		i++;
