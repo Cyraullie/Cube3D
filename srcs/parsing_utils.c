@@ -6,7 +6,7 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 15:59:14 by cgoldens          #+#    #+#             */
-/*   Updated: 2025/05/20 15:32:22 by cgoldens         ###   ########.fr       */
+/*   Updated: 2025/06/03 16:07:45 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,28 +53,4 @@ void	get_map_dimensions(char **lines, t_map *map)
 		map->rows++;
 		i++;
 	}
-}
-
-void	copy_map(char **lines, t_map *map)
-{
-	int	i;
-
-	i = 0;
-	map->map = malloc(sizeof(char *) * (map->rows + 1));
-	if (!map->map)
-	{
-		perror("malloc map");
-		exit(EXIT_FAILURE);
-	}
-	while (i < map->rows)
-	{
-		map->map[i] = ft_strdup(lines[i]);
-		if (!map->map[i])
-		{
-			perror("malloc line");
-			exit(EXIT_FAILURE);
-		}
-		i++;
-	}
-	map->map[i] = NULL;
 }

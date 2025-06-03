@@ -6,7 +6,7 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 13:46:51 by cgoldens          #+#    #+#             */
-/*   Updated: 2025/05/28 12:52:24 by cgoldens         ###   ########.fr       */
+/*   Updated: 2025/06/03 16:01:18 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,6 @@ void	parse_map(int fd, t_data *data, char *old_buf)
 	char	*buf;
 
 	line_idx = 0;
-	buf = malloc(BUFFER_SIZE * sizeof(char *));
 	raw_lines = malloc(sizeof(char *) * 1024);
 	buf = old_buf;
 	while (buf != NULL)
@@ -117,6 +116,7 @@ void	parsing(int fd, t_data *data)
 	buf = get_next_line(fd);
 	while (buf != NULL)
 	{
+		printf("%s", buf);
 		if (!(!ft_strcmp(buf, "\n")))
 		{
 			if (count != MAX_DATA)

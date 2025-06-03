@@ -6,7 +6,7 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 15:37:04 by cgoldens          #+#    #+#             */
-/*   Updated: 2025/05/28 14:02:31 by cgoldens         ###   ########.fr       */
+/*   Updated: 2025/06/03 16:00:18 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	check_neighbors(t_map *map, int x, int y)
 	{
 		nx = x + dx[i];
 		ny = y + dy[i];
-		if (!is_valid_cell(map, nx, ny))
+		if (!is_valid_cell(map, x, y) || y >= (int)ft_strlen(map->map[x]))
 			return (0);
 		if (map->map[nx][ny] == ' ' || map->map[nx][ny] == '\0')
 			return (0);
