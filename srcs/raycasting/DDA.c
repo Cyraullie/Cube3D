@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   DDA.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/28 13:12:53 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/06/02 11:01:32 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/06/04 15:21:08 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ static void	intersection_point(t_dda *vars, t_data *data, double angle)
 	while (angle < 0)
 		angle += 360;
 	ray_angle = return_radian(angle);
-	while (data->map->map[(int)(ray_y / PIXEL)][(int)(ray_x / PIXEL)] != '1')
+	while (data->map->map[(int)(ray_y / PIXEL)][(int)(ray_x / PIXEL)] != '1' &&
+		data->map->map[(int)(ray_y / PIXEL)][(int)(ray_x / PIXEL)] != '2')
 	{
 		ray_x += cos(ray_angle) * vars->step_size;
 		ray_y += sin(ray_angle) * vars->step_size;
