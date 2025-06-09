@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   functions.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 15:46:40 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/06/03 16:03:29 by cgoldens         ###   ########.fr       */
+/*   Updated: 2025/06/09 17:55:27 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int		check_neighbors(t_map *map, int x, int y);
 
 //struct_constructor
 	//game_constructor.c
-void	window_constructor(t_window *window, t_map *map);
+void	window_constructor(t_window *window);
 void	data_constructor(t_data *data, char *argv);
 void	key_constructor(t_key *key);
 	//graphic_constructor.c
@@ -67,8 +67,9 @@ int		check_door(t_data *data);
 	//draw_panel.c
 void	draw_square(t_img *img, int square_size, int color);
 void	draw_map(t_data *data, char *map[8]);
-void	draw_rotated_square(t_img *img, double angle_rad);
 void	draw_line(t_img *img, int color);
+void	draw_floor(t_img *scn_img, int color);
+void	draw_ceiling(t_img *scn_img, int color);
 	//rotate_image.c
 void	rotate_image(t_img *src, t_img *dest, double angle_degre);
 void	put_pixel(t_img *img, int x, int y, int color);
@@ -78,6 +79,10 @@ double	return_radian(double angle_degre);
 void	fusion_image(t_img *screen_img, t_img *img, int x, int y);
 	//DDA.c
 void	dda(t_data *data, t_img *scn_img);
+void	intersection_point(t_dda *vars, t_data *data, double angle);
+	//raycasting.c
+void	raycasting(t_data *data, t_img *scn_img);
+int 	rgb_to_hex(int color[3]);
 	//grid_search.c
 // void	intersection_point(t_dda *vars, t_data *data, double angle);
 

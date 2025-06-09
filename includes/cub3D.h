@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 13:50:46 by cgoldens          #+#    #+#             */
-/*   Updated: 2025/06/03 15:46:14 by cgoldens         ###   ########.fr       */
+/*   Updated: 2025/06/09 17:05:50 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,14 @@
 # include <stdio.h>
 # include <unistd.h>
 # include <stdlib.h>
-# define _USE_MATH_DEFINES
+# include <stdbool.h>
 # include <math.h>
 
 # define PIXEL 64
 # define FOV 60
+
+# define SCR_HEIGHT 1080
+# define SCR_WEIGHT 1920
 
 # define NORTH			270.0
 # define EAST			0.0
@@ -37,6 +40,7 @@
 # define VIEW_SPEED		3
 # define MOOVE_SPPED	5
 
+# define _USE_MATH_DEFINES
 # ifndef M_PI
 #  define M_PI			3.14159265358979323846
 # endif

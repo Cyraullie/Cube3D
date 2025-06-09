@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_constructor.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 16:42:35 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/06/03 15:46:45 by cgoldens         ###   ########.fr       */
+/*   Updated: 2025/06/09 17:58:37 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,10 @@
  * @param window 
  * @param map 
  */
-void	window_constructor(t_window *window, t_map *map)
+void	window_constructor(t_window *window)
 {
 	window->mlx = mlx_init();
-	window->win = mlx_new_window(window->mlx, map->cols * PIXEL, \
-		map->rows * PIXEL, "Cub3D");
+	window->win = mlx_new_window(window->mlx, SCR_WEIGHT, SCR_HEIGHT, "Cub3D");
 }
 
 /**
@@ -78,7 +77,7 @@ void	data_constructor(t_data *data, char *argv)
 	texture_constructor(data->texture);
 	parsing(fd, data);
 	close(fd);
-	window_constructor(data->window, data->map);
+	window_constructor(data->window);
 	character_constructor(data->character, data->window->mlx, data->map);
 	key_constructor(data->key);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_panel.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 09:47:05 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/05/28 13:38:00 by cgoldens         ###   ########.fr       */
+/*   Updated: 2025/06/09 18:02:25 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,5 +88,41 @@ void	draw_line(t_img *img, int color)
 	{
 		put_pixel(img, cx + i, cy, color);
 		i++;
+	}
+}
+
+void	draw_floor(t_img *scn_img, int color)
+{
+	int	x;
+	int	y;
+
+	x = 0;
+	while (x <= SCR_WEIGHT)
+	{
+		y = 0;
+		while (y < (SCR_HEIGHT / 2))
+		{
+			put_pixel(scn_img, x, y, color);
+			y++;
+		}
+		x++;
+	}
+}
+
+void	draw_ceiling(t_img *scn_img, int color)
+{
+	int	x;
+	int	y;
+
+	x = 0;
+	while (x <= SCR_WEIGHT)
+	{
+		y = SCR_HEIGHT / 2;
+		while (y <= SCR_HEIGHT)
+		{
+			put_pixel(scn_img, x, y, color);
+			y++;
+		}
+		x++;
 	}
 }
