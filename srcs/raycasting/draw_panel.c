@@ -6,7 +6,7 @@
 /*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 09:47:05 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/06/09 18:02:25 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/06/09 18:37:36 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,8 @@ void	draw_floor(t_img *scn_img, int color)
 		y = 0;
 		while (y < (SCR_HEIGHT / 2))
 		{
-			put_pixel(scn_img, x, y, color);
+			if (get_pixel(scn_img, x, y) == 0x000000)
+				put_pixel(scn_img, x, y, color);
 			y++;
 		}
 		x++;
@@ -120,7 +121,8 @@ void	draw_ceiling(t_img *scn_img, int color)
 		y = SCR_HEIGHT / 2;
 		while (y <= SCR_HEIGHT)
 		{
-			put_pixel(scn_img, x, y, color);
+			if (get_pixel(scn_img, x, y) == 0x000000)
+				put_pixel(scn_img, x, y, color);
 			y++;
 		}
 		x++;

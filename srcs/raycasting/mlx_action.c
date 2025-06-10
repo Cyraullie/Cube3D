@@ -6,7 +6,7 @@
 /*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 15:06:39 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/06/09 18:02:36 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/06/09 19:07:54 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,18 +73,16 @@ static int	game_loop(void	*param)
 	t_img	screen_image;
 
 	data = (t_data *)param;
-	//visio_map(data->map->map, data->map->rows, data->map->cols);
 	image_constructor(&screen_image, data->window->mlx, SCR_HEIGHT, SCR_WEIGHT);
 	key_pressed(data);
 	// put_map(data, &screen_image);
 	// put_character(data, &screen_image);
 	// dda(data, &screen_image);
+	raycasting(data, &screen_image);
 	draw_floor(&screen_image, rgb_to_hex(data->texture->f_color));
 	draw_ceiling(&screen_image, rgb_to_hex(data->texture->c_color));
-	raycasting(data, &screen_image);
 	mlx_put_image_to_window(data->window->mlx, \
 		data->window->win, screen_image.ptr, 0, 0);
-	// mlx_clear_window(data->window->mlx, data->window->win);
 	mlx_destroy_image(data->window->mlx, screen_image.ptr);
 	return (0);
 }
