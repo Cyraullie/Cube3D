@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   DDA.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/28 13:12:53 by ktintim-          #+#    #+#             */
 /*   Updated: 2025/06/12 15:25:18 by ktintim-         ###   ########.fr       */
