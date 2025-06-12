@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_handler.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 15:14:59 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/05/28 14:01:08 by cgoldens         ###   ########.fr       */
+/*   Updated: 2025/06/12 14:10:32 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,11 +99,14 @@ void	key_pressed(t_data *data)
 		data->character->angle_view -= VIEW_SPEED;
 	if (data->key->right == true)
 		data->character->angle_view += VIEW_SPEED;
+	if (data->character->angle_view >= 360)
+		data->character->angle_view -= 360;
+	else if (data->character->angle_view < 0)
+		data->character->angle_view += 360;
 	if (data->key->e == true && data->key->e_lock == false)
 	{
 		if (check_door(data) == 1)
 			open_door(data);
 		data->key->e_lock = true;
 	}
-
 }
