@@ -6,7 +6,7 @@
 /*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/06 15:12:24 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/06/12 15:29:46 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/06/12 17:14:26 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void	raycasting(t_data *data, t_img *scn_img)
 		angle_offset = ((double)i / SCR_WEIGHT - 0.5) * FOV;
 		ray_angle = data->character->angle_view + angle_offset;
 		intersection_point(data, &grid, ray_angle);
-		// grid.dst = PIXEL * (grid.dst * cos(ray_angle));
+		grid.dst *= cos(return_radian(angle_offset));
 		grid.dst *= PIXEL;
 		if (grid.dst == 0)
 			grid.dst = 0.1;

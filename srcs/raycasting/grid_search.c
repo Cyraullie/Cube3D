@@ -6,7 +6,7 @@
 /*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/31 11:24:44 by kilian            #+#    #+#             */
-/*   Updated: 2025/06/12 15:24:59 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/06/12 17:01:54 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ static void	init_grid(t_grid *vars, t_data *data, double angle)
 	vars->ray_angle = return_radian(angle);
 	vars->dir_x = cos(vars->ray_angle);
 	vars->dir_y = sin(vars->ray_angle);
-	printf("dir_x : %f, dir_y : %f\n", vars->dir_x, vars->dir_y);
 
 	vars->map_x = (int)(vars->ray_x / PIXEL);
 	vars->map_y = (int)(vars->ray_y / PIXEL);
