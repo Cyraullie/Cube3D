@@ -6,7 +6,7 @@
 /*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/21 10:49:54 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/05/30 10:36:53 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/06/12 15:20:01 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 double	return_radian(double angle_degre)
 {
-	return (angle_degre * M_PI / 180);
+	return (angle_degre * M_PI / 180.0);
 }
 
 /**

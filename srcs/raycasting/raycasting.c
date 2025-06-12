@@ -6,7 +6,7 @@
 /*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/06 15:12:24 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/06/10 14:35:41 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/06/12 15:29:46 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,8 @@ void	draw_vertical_line(t_img *img, int x, int line_height, int color)
 
 void	raycasting(t_data *data, t_img *scn_img)
 {
+	t_grid	grid;
 	double	line_h;
-	double	dst;
 	double	ray_angle;
 	double	angle_offset;
 	int		i;
@@ -67,17 +67,18 @@ void	raycasting(t_data *data, t_img *scn_img)
 	{
 		angle_offset = ((double)i / SCR_WEIGHT - 0.5) * FOV;
 		ray_angle = data->character->angle_view + angle_offset;
-		dst = intersection_point(data, ray_angle);
-		// printf("dst : %f\n", dst);
-		if (dst == 0)
-			dst = 0.1;
-		line_h = (PIXEL * SCR_HEIGHT) / dst;
+		intersection_point(data, &grid, ray_angle);
+		// grid.dst = PIXEL * (grid.dst * cos(ray_angle));
+		grid.dst *= PIXEL;
+		if (grid.dst == 0)
+			grid.dst = 0.1;
+		line_h = (PIXEL * SCR_HEIGHT) / grid.dst;
 		if (line_h > SCR_HEIGHT)
 			line_h = SCR_HEIGHT;
-		// if (is_whole_number(vars.x))
+		if (grid.side == 0)
 			draw_vertical_line(scn_img, i, line_h, 0x880000);
-		// else
-		// 	draw_vertical_line(scn_img, i, line_h, 0x008800);
+		else
+			draw_vertical_line(scn_img, i, line_h, 0x008800);
 		i++;
 	}
 }

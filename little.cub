@@ -2,8 +2,8 @@ NO ./assets/wall_north
 SO ./assets/wall_south
 WE ./assets/wall_west
 EA ./assets/wall_east
-F 120,50,0
-C 125,15,0
+F 29,247,247
+C 1,221,45
 1111
 100111
 1000W1

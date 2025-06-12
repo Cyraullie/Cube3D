@@ -6,7 +6,7 @@
 /*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/31 11:24:44 by kilian            #+#    #+#             */
-/*   Updated: 2025/06/10 15:47:41 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/06/12 15:24:59 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ static void	init_grid(t_grid *vars, t_data *data, double angle)
 	vars->ray_angle = return_radian(angle);
 	vars->dir_x = cos(vars->ray_angle);
 	vars->dir_y = sin(vars->ray_angle);
+	printf("dir_x : %f, dir_y : %f\n", vars->dir_x, vars->dir_y);
 
 	vars->map_x = (int)(vars->ray_x / PIXEL);
 	vars->map_y = (int)(vars->ray_y / PIXEL);
@@ -35,25 +36,25 @@ static void	direction(t_grid *vars)
 	{
 		vars->step_x = -1;
 		vars->side_dist_x = \
-			(vars->ray_x - vars->map_x * PIXEL) * vars->delta_dist_x;
+			(vars->ray_x / PIXEL - vars->map_x) * vars->delta_dist_x;
 	}
 	else
 	{
 		vars->step_x = 1;
 		vars->side_dist_x = \
-			((vars->map_x + 1) * PIXEL - vars->ray_x) * vars->delta_dist_x;
+			((vars->map_x + 1) - vars->ray_x / PIXEL) * vars->delta_dist_x;
 	}
 	if (vars->dir_y < 0)
 	{
 		vars->step_y = -1;
 		vars->side_dist_y = \
-			(vars->ray_y - vars->map_y * PIXEL) * vars->delta_dist_y;
+			(vars->ray_y / PIXEL - vars->map_y) * vars->delta_dist_y;
 	}
 	else
 	{
 		vars->step_y = 1;
 		vars->side_dist_y = \
-			((vars->map_y + 1) * PIXEL - vars->ray_y) * vars->delta_dist_y;
+			((vars->map_y + 1) - vars->ray_y / PIXEL) * vars->delta_dist_y;
 	}
 }
 
@@ -67,42 +68,36 @@ static void	dda_loop(t_grid *vars, t_data *data)
 	{
 		if (vars->side_dist_x < vars->side_dist_y)
 		{
-			// printf("dist_x before %f\n", vars->side_dist_x);
 			vars->side_dist_x += vars->delta_dist_x;
-			// printf("dist_x after %f\n", vars->side_dist_x);
 			vars->map_x += vars->step_x;
 			vars->side = 0;
 		}
 		else
 		{
-			// printf("dist_x before %f\n", vars->side_dist_y);
 			vars->side_dist_y += vars->delta_dist_y;
-			// printf("dist_x after %f\n", vars->side_dist_y);z
 			vars->map_y += vars->step_y;
 			vars->side = 1;
 		}
 		if (data->map->map[vars->map_y][vars->map_x] == '1')
 			hit = 1;
 	}
-	// printf("map[%i][%i]\n", vars->map_y, vars->map_x);
 }
 
-double	intersection_point(t_data *data, double angle)
+void	intersection_point(t_data *data, t_grid *grid, double angle)
 {
-	t_grid	grid;
-
-	init_grid(&grid, data, angle);
-	direction(&grid);
-	dda_loop(&grid, data);
-
-	if (grid.side == 0)
+	if (angle >= 360)
+		angle -= 360;
+	else if (angle < 0)
+		angle += 360;
+	init_grid(grid, data, angle);
+	direction(grid);
+	dda_loop(grid, data);
+	if (grid->side == 0)
 	{
-		// printf("side_dist_x : %f\n", grid.side_dist_x);
-		return (grid.side_dist_x - grid.delta_dist_x);
+		grid->dst = grid->side_dist_x - grid->delta_dist_x;
 	}
 	else
 	{
-		// printf("side_dist_y : %f\n", grid.side_dist_y);
-		return (grid.side_dist_y - grid.delta_dist_y);
+		grid->dst = grid->side_dist_y - grid->delta_dist_y;
 	}
 }

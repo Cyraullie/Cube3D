@@ -6,7 +6,7 @@
 /*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 15:41:29 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/06/09 17:09:59 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/06/12 15:31:25 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,8 +136,14 @@ typedef struct s_dda
 
 typedef struct s_grid
 {
+	// double	camera_x;
+	// double	scale;
+	// double	planex;
+	// double	planey;
 	double	ray_x;
 	double	ray_y;
+	// double	ray_dir_x;
+	// double	ray_dir_y;
 	double	ray_angle;
 	double	dir_x;
 	double	dir_y;
@@ -150,6 +156,7 @@ typedef struct s_grid
 	double	side_dist_x;
 	double	side_dist_y;
 	int		side;
+	double	dst;
 }	t_grid;
 
 #endif

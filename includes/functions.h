@@ -6,7 +6,7 @@
 /*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 15:46:40 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/06/10 11:06:31 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/06/12 14:49:42 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ void	dda(t_data *data, t_img *scn_img);
 void	raycasting(t_data *data, t_img *scn_img);
 int		rgb_to_hex(int color[3]);
 	//grid_search.c
-double	intersection_point(t_data *data, double angle);
+void	intersection_point(t_data *data, t_grid *grid, double angle);
 
 //debug
 void	visio_map(char **map, int rows, int cols);
