@@ -6,7 +6,7 @@
 /*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 15:46:40 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/06/12 14:49:42 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/06/13 15:14:44 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ int		close_window(void *param);
 	//key_handler.c
 int		key_press(int key, void *param);
 int		key_unpress(int key, void *param);
+int		mouse_move(int x, int y, void *param);
 void	key_pressed(t_data *data);
 double	new_x(double angle);
 double	new_y(double angle);

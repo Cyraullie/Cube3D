@@ -6,7 +6,7 @@
 /*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 15:14:59 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/06/12 14:10:32 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/06/13 15:18:19 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,25 @@ int	key_unpress(int key, void *param)
 		data->key->e = false;
 		data->key->e_lock = false;
 	}
+	return (0);
+}
+
+int	mouse_move(int x, int y, void *param)
+{
+	t_data	*data;
+
+	data = (t_data *)param;
+	(void)y;
+	if (x > (SCR_WEIGHT / 2))
+	{
+		data->character->angle_view += VIEW_SPEED / 1.5;
+	}
+	else if (x < (SCR_WEIGHT / 2))
+	{
+		data->character->angle_view -= VIEW_SPEED / 1.5;
+	}
+	mlx_mouse_move(data->window->mlx, data->window->win, \
+					SCR_WEIGHT / 2, SCR_HEIGHT / 2);
 	return (0);
 }
 
