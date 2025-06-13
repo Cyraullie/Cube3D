@@ -6,7 +6,7 @@
 /*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/06 15:12:24 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/06/12 17:14:26 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/06/13 11:17:03 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,8 @@
 
 int	rgb_to_hex(int color[3])
 {
-	return (color[0] << 16) | (color[1] << 8) | color[2];
+	return ((color[0] << 16) | (color[1] << 8) | color[2]);
 }
-
-// static bool	is_whole_number(double n)
-// {
-// 	return (n == floor(n));
-// }
 
 double	pythagor(double x1, double x2, double y1, double y2)
 {
