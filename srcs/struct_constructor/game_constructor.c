@@ -6,7 +6,7 @@
 /*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 16:42:35 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/06/09 17:58:37 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/06/13 15:48:54 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ void	data_constructor(t_data *data, char *argv)
 	int		fd;
 
 	fd = open(argv, O_RDONLY);
+	data->actual_frame = get_time();
 	data->texture = malloc(sizeof(t_texture));
 	data->map = malloc(sizeof(t_map));
 	data->window = malloc(sizeof(t_window));

@@ -6,7 +6,7 @@
 /*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 15:46:40 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/06/13 15:14:44 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/06/13 15:48:29 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,78 +15,79 @@
 # define FUNCTIONS_H
 
 //parsing.c
-void	parsing(int fd, t_data *data);
+void		parsing(int fd, t_data *data);
 //checking_utils.c
-int		is_valid_map_char(char c);
+int			is_valid_map_char(char c);
 //parsing_utils.c
-void	strip_newline(char *str);
-void	get_map_dimensions(char **lines, t_map *map);
-void	copy_map(char **raw_lines, t_map *map);
+void		strip_newline(char *str);
+void		get_map_dimensions(char **lines, t_map *map);
+void		copy_map(char **raw_lines, t_map *map);
 //check_parsing.c
-int		check_texture(t_texture *txtr);
-int		check_map(t_map *map);
+int			check_texture(t_texture *txtr);
+int			check_map(t_map *map);
 //free.c
-void	free_array(char **tab);
-void	free_visited_partial(char **visited, int limit);
+void		free_array(char **tab);
+void		free_visited_partial(char **visited, int limit);
 //map.c
-void	open_door(t_data *data);
-int		integrity_check(t_map *map);
-int		is_player(char c);
-int		is_accessible(char c);
-int		is_valid_cell(t_map *map, int x, int y);
-char	**dup_map(t_map *map);
-int		flood_fill_from(t_map *map, int x, int y, char **visited);
-int		check_neighbors(t_map *map, int x, int y);
+void		open_door(t_data *data);
+int			integrity_check(t_map *map);
+int			is_player(char c);
+int			is_accessible(char c);
+int			is_valid_cell(t_map *map, int x, int y);
+char		**dup_map(t_map *map);
+int			flood_fill_from(t_map *map, int x, int y, char **visited);
+int			check_neighbors(t_map *map, int x, int y);
 
 //struct_constructor
 	//game_constructor.c
-void	window_constructor(t_window *window);
-void	data_constructor(t_data *data, char *argv);
-void	key_constructor(t_key *key);
+void		window_constructor(t_window *window);
+void		data_constructor(t_data *data, char *argv);
+void		key_constructor(t_key *key);
 	//graphic_constructor.c
-void	texture_constructor(t_texture *texture);
-void	map_constructor(t_map *map);
-void	image_constructor(t_img *img, void *mlx, int height, int width);
+void		texture_constructor(t_texture *texture);
+void		map_constructor(t_map *map);
+void		image_constructor(t_img *img, void *mlx, int height, int width);
 
 //raycasting
 	//mlx_action.c
-void	mlx_action(t_data *data);
-int		close_window(void *param);
+void		mlx_action(t_data *data);
+int			close_window(void *param);
+long long	get_time(void);
 	//key_handler.c
-int		key_press(int key, void *param);
-int		key_unpress(int key, void *param);
-int		mouse_move(int x, int y, void *param);
-void	key_pressed(t_data *data);
-double	new_x(double angle);
-double	new_y(double angle);
+int			key_press(int key, void *param);
+int			key_unpress(int key, void *param);
+int			mouse_move(int x, int y, void *param);
+void		key_pressed(t_data *data);
+double		new_x(double angle);
+double		new_y(double angle);
 	//control.c
-int		check_w(t_data *data);
-int		check_s(t_data *data);
-int		check_a(t_data *data);
-int		check_d(t_data *data);
-int		check_door(t_data *data);
+int			check_w(t_data *data);
+int			check_s(t_data *data);
+int			check_a(t_data *data);
+int			check_d(t_data *data);
+int			check_door(t_data *data);
 	//draw_panel.c
-void	draw_square(t_img *img, int square_size, int color);
-void	draw_map(t_data *data, char *map[8]);
-void	draw_line(t_img *img, int color);
-void	draw_floor(t_img *scn_img, int color);
-void	draw_ceiling(t_img *scn_img, int color);
+void		draw_square(t_img *img, int square_size, int color);
+void		draw_map(t_data *data, char *map[8]);
+void		draw_line(t_img *img, int color);
+void		draw_floor(t_img *scn_img, int color);
+void		draw_ceiling(t_img *scn_img, int color);
 	//rotate_image.c
-void	rotate_image(t_img *src, t_img *dest, double angle_degre);
-void	put_pixel(t_img *img, int x, int y, int color);
-int		get_pixel(t_img *img, int x, int y);
-double	return_radian(double angle_degre);
+void		rotate_image(t_img *src, t_img *dest, double angle_degre);
+void		put_pixel(t_img *img, int x, int y, int color);
+int			get_pixel(t_img *img, int x, int y);
+double		return_radian(double angle_degre);
 	//fusion_image.c
-void	fusion_image(t_img *screen_img, t_img *img, int x, int y);
+void		fusion_image(t_img *screen_img, t_img *img, int x, int y);
 	//DDA.c
-void	dda(t_data *data, t_img *scn_img);
+void		dda(t_data *data, t_img *scn_img);
 // void	intersection_point(t_dda *vars, t_data *data, double angle);
 	//raycasting.c
-void	raycasting(t_data *data, t_img *scn_img);
-int		rgb_to_hex(int color[3]);
+void		raycasting(t_data *data, t_img *scn_img);
+int			rgb_to_hex(int color[3]);
 	//grid_search.c
-void	intersection_point(t_data *data, t_grid *grid, double angle);
+void		intersection_point(t_data *data, t_grid *grid, double angle);
 
 //debug
-void	visio_map(char **map, int rows, int cols);
+void		visio_map(char **map, int rows, int cols);
 #endif

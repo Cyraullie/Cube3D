@@ -6,7 +6,7 @@
 /*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 13:50:46 by cgoldens          #+#    #+#             */
-/*   Updated: 2025/06/09 17:05:50 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/06/13 15:45:09 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include "functions.h"
 # include "../libft/libft.h"
 # include <sys/types.h>
+# include <sys/time.h>
 # include <sys/stat.h>
 # include <fcntl.h>
 # include <stdio.h>

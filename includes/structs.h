@@ -6,7 +6,7 @@
 /*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 15:41:29 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/06/12 15:31:25 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/06/13 15:46:47 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,8 @@ typedef struct s_data
 	t_map		*map;
 	t_segment	*segment;
 	t_character	*character;
-	int			seg_count;
+	long long	last_frame;
+	long long	actual_frame;
 }	t_data;
 
 typedef struct s_coord
@@ -136,14 +137,8 @@ typedef struct s_dda
 
 typedef struct s_grid
 {
-	// double	camera_x;
-	// double	scale;
-	// double	planex;
-	// double	planey;
 	double	ray_x;
 	double	ray_y;
-	// double	ray_dir_x;
-	// double	ray_dir_y;
 	double	ray_angle;
 	double	dir_x;
 	double	dir_y;
