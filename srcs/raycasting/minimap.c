@@ -6,7 +6,7 @@
 /*   By: kilian <kilian@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/15 11:27:46 by kilian            #+#    #+#             */
-/*   Updated: 2025/06/15 11:41:45 by kilian           ###   ########.fr       */
+/*   Updated: 2025/06/15 12:06:03 by kilian           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,8 @@
 
 void	put_minimap(t_data *data, t_img *scn_img)
 {
-
+	(void)data;
+	(void)scn_img;
 	// put_map(data, &screen_image);
 	// put_character(data, &screen_image);
 	// dda(data, &screen_image);
