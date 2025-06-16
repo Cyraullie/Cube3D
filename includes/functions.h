@@ -6,7 +6,7 @@
 /*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 15:46:40 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/06/13 15:48:29 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/06/16 13:34:37 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,8 @@ int			check_s(t_data *data);
 int			check_a(t_data *data);
 int			check_d(t_data *data);
 int			check_door(t_data *data);
+	//minimap.c
+void		put_minimap(t_data *data, t_img *scn_img);
 	//draw_panel.c
 void		draw_square(t_img *img, int square_size, int color);
 void		draw_map(t_data *data, char *map[8]);

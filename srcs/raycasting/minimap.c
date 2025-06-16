@@ -3,67 +3,140 @@
 /*                                                        :::      ::::::::   */
 /*   minimap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kilian <kilian@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/15 11:27:46 by kilian            #+#    #+#             */
-/*   Updated: 2025/06/15 12:06:03 by kilian           ###   ########.fr       */
+/*   Updated: 2025/06/16 14:10:44 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3D.h"
 
-// static void	put_character(t_data *data, t_img *screen_img)
-// {
-// 	t_img	new_img;
+void draw_square_image(t_img *img, int x, int y, int size, int color)
+{
+	int i, j;
+	for (i = 0; i < size; i++)
+	{
+		for (j = 0; j < size; j++)
+		{
+			put_pixel(img, x + j, y + i, color);
+		}
+	}
+}
 
-// 	image_constructor(&new_img, data->window->mlx, 
-// 			data->character->square->height, data->character->square->width);
-// 	rotate_image(data->character->square, &new_img, 
-// 				data->character->angle_view);
-// 	fusion_image(screen_img, &new_img, 
-// 				data->character->x_pose, data->character->y_pose);
-// 	mlx_destroy_image(data->window->mlx, new_img.ptr);
-// }
+void draw_circle(t_img *img, int xc, int yc, int r, int color)
+{
+	int x = 0;
+	int y = r;
+	int d = 3 - 2 * r;
 
-// static void	put_map(t_data *data, t_img *screen_img)
-// {
-// 	int		i;
-// 	int		j;
-// 	t_img	white_square;
-// 	t_img	door;
+	while (y >= x)
+	{
+		put_pixel(img, xc + x, yc + y, color);
+		put_pixel(img, xc - x, yc + y, color);
+		put_pixel(img, xc + x, yc - y, color);
+		put_pixel(img, xc - x, yc - y, color);
+		put_pixel(img, xc + y, yc + x, color);
+		put_pixel(img, xc - y, yc + x, color);
+		put_pixel(img, xc + y, yc - x, color);
+		put_pixel(img, xc - y, yc - x, color);
+		x++;
+		if (d > 0)
+		{
+			y--;
+			d = d + 4 * (x - y) + 10;
+		}
+		else
+			d = d + 4 * x + 6;
+	}
+}
 
-// 	image_constructor(&white_square, data->window->mlx, 63, 63);
-// 	draw_square(&white_square, 63, 16777215);
+void draw_line_image(t_img *img, int x0, int y0, int x1, int y1, int color)
+{
+	int dx = abs(x1 - x0);
+	int dy = abs(y1 - y0);
+	int sx = (x0 < x1) ? 1 : -1;
+	int sy = (y0 < y1) ? 1 : -1;
+	int err = dx - dy;
 
-// 	image_constructor(&door, data->window->mlx, 63, 63);
-// 	draw_square(&door, 63, 5979153);
-// 	i = 0;
-// 	while (i < data->map->rows)
-// 	{
-// 		j = 0;
-// 		while (j < data->map->cols)
-// 		{
-// 			if (data->map->map[i][j] == '1')
-// 				fusion_image(screen_img, &white_square, (j * 64) - 1, 
-// 					(i * 64) - 1);
-// 			if (data->map->map[i][j] == '2')
-// 				fusion_image(screen_img, &door, (j * 64) - 1, 
-// 					(i * 64) - 1);
-// 			j++;
-// 		}
-// 		i++;
-// 	}
-// 	mlx_destroy_image(data->window->mlx, white_square.ptr);
-// 	mlx_destroy_image(data->window->mlx, door.ptr);
-// }
+	while (1)
+	{
+		put_pixel(img, x0, y0, color);
+		if (x0 == x1 && y0 == y1)
+			break;
+		int e2 = 2 * err;
+		if (e2 > -dy) { err -= dy; x0 += sx; }
+		if (e2 < dx) { err += dx; y0 += sy; }
+	}
+}
+
+void draw_minimap_rotating(t_img *minimap, t_data *data)
+{
+	int px = data->character->x_pose;
+	int py = data->character->y_pose;
+	double angle = data->character->angle_view;
+	int center_x = MINIMAP_SIZE / 2;
+	int center_y = MINIMAP_SIZE / 2;
+
+	int half = VISIBLE_TILES / 2;
+
+	for (int my = -half; my <= half; my++)
+	{
+		for (int mx = -half; mx <= half; mx++)
+		{
+			int map_x = px / TILE_SIZE + mx;
+			int map_y = py / TILE_SIZE + my;
+
+			if (map_x < 0 || map_y < 0 || map_y >= data->map->rows || map_x >= data->map->cols)
+				continue;
+
+			// position relative (en pixels) par rapport au joueur
+			double rel_x = mx * TILE_SIZE - (px % TILE_SIZE);
+			double rel_y = my * TILE_SIZE - (py % TILE_SIZE);
+
+			// rotation
+			double rot_x = rel_x * cos(-angle) - rel_y * sin(-angle);
+			double rot_y = rel_x * sin(-angle) + rel_y * cos(-angle);
+
+			// position sur la minimap
+			int draw_x = center_x + (int)rot_x;
+			int draw_y = center_y + (int)rot_y;
+
+			// masque circulaire
+			// int dx = draw_x - center_x;
+			// int dy = draw_y - center_y;
+			// if (dx * dx + dy * dy < MINIMAP_RADIUS * MINIMAP_RADIUS)
+			// {
+				int color = (data->map->map[map_y][map_x] == '1') ? 0x888888 : 0x222222;
+				if (data->map->map[map_y][map_x] != '.')
+				{
+					int zoom = TILE_SIZE / 4;
+					draw_square_image(minimap, draw_x - zoom / 2, draw_y - zoom / 2, zoom, color);
+				}
+			// }
+		}
+	}
+
+	// Dessiner le joueur au centre
+	draw_circle(minimap, center_x, center_y, 3, 0x00FF00);
+
+	// Dessiner la direction
+	int dir_len = 10;
+	int dir_x = center_x + cos(angle) * dir_len;
+	int dir_y = center_y + -sin(angle) * dir_len;
+	draw_line_image(minimap, center_x, center_y, dir_x, dir_y, 0xFF0000);
+}
 
 void	put_minimap(t_data *data, t_img *scn_img)
 {
-	(void)data;
+	t_img	minimap;
+
 	(void)scn_img;
-	// put_map(data, &screen_image);
-	// put_character(data, &screen_image);
-	// dda(data, &screen_image);
+	image_constructor(&minimap, data->window->mlx, MINIMAP_SIZE, MINIMAP_SIZE);
+	draw_minimap_rotating(&minimap, data);
+	mlx_put_image_to_window(data->window->mlx, data->window->win, minimap.ptr, 0, 0);
+	// fusion_image(scn_img, &minimap, SCR_WEIGHT - (MINIMAP_SIZE + 20), 20);
+	mlx_destroy_image(data->window->mlx, minimap.ptr);
 }
 
 // 1. savoir ou placer la map

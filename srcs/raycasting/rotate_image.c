@@ -6,7 +6,7 @@
 /*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/21 10:49:54 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/06/12 15:20:01 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/06/16 13:58:37 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,13 +46,12 @@ int	get_pixel(t_img *img, int x, int y)
  */
 void	put_pixel(t_img *img, int x, int y, int color)
 {
-	char	*pixel;
+	char	*dst;
 
 	if (x < 0 || y < 0 || x >= img->width || y >= img->height)
 		return ;
-
-	pixel = img->addr + (y * img->line_length + x * (img->bpp / 8));
-	*(int *)pixel = color;
+	dst = img->addr + (y * img->line_length + x * (img->bpp / 8));
+	*(unsigned int *)dst = (unsigned int)color;
 }
 
 static void	create_image(t_img *src, t_img *dest, t_vars vars)

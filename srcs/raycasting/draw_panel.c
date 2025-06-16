@@ -6,7 +6,7 @@
 /*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 09:47:05 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/06/09 18:37:36 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/06/16 13:09:26 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,9 @@ void	draw_square(t_img *img, int square_size, int color)
 			draw_x = xstart_ystart[0] + y_x[1];
 			draw_y = xstart_ystart[1] + y_x[0];
 			pixel = draw_y * img->line_length + draw_x * 4;
-			img->addr[pixel + 0] = (color & 0xFF);         // blue
-			img->addr[pixel + 1] = (color >> 8) & 0xFF;    // green
-			img->addr[pixel + 2] = (color >> 16) & 0xFF;   // red
+			img->addr[pixel + 0] = (color & 0xFF);
+			img->addr[pixel + 1] = (color >> 8) & 0xFF;
+			img->addr[pixel + 2] = (color >> 16) & 0xFF;
 			y_x[1]++;
 		}
 		y_x[0]++;
