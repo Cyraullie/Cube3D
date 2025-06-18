@@ -6,7 +6,7 @@
 /*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 13:50:46 by cgoldens          #+#    #+#             */
-/*   Updated: 2025/06/16 13:05:33 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/06/18 13:41:18 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@
 # define PIXEL 64
 # define FOV 60
 
-# define MINIMAP_SIZE 200
-# define MINIMAP_RADIUS 100
+# define MINIMAP_SIZE 300
+# define MINIMAP_RADIUS 150
 # define TILE_SIZE 32
 # define VISIBLE_TILES 11
 
