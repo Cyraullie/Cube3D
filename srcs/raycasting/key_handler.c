@@ -6,7 +6,7 @@
 /*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 15:14:59 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/06/13 15:18:19 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/06/18 16:22:47 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,16 +69,16 @@ int	mouse_move(int x, int y, void *param)
 
 	data = (t_data *)param;
 	(void)y;
-	if (x > (SCR_WEIGHT / 2))
+	if (x > (SCR_WIDTH / 2))
 	{
 		data->character->angle_view += VIEW_SPEED / 1.5;
 	}
-	else if (x < (SCR_WEIGHT / 2))
+	else if (x < (SCR_WIDTH / 2))
 	{
 		data->character->angle_view -= VIEW_SPEED / 1.5;
 	}
 	mlx_mouse_move(data->window->mlx, data->window->win, \
-					SCR_WEIGHT / 2, SCR_HEIGHT / 2);
+					SCR_WIDTH / 2, SCR_HEIGHT / 2);
 	return (0);
 }
 

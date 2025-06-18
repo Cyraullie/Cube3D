@@ -6,7 +6,7 @@
 /*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/15 11:27:46 by kilian            #+#    #+#             */
-/*   Updated: 2025/06/18 14:27:24 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/06/18 16:22:47 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,6 +119,6 @@ void	put_minimap(t_data *data, t_img *scn_img)
 	(void)scn_img;
 	image_constructor(&minimap, data->window->mlx, MINIMAP_SIZE, MINIMAP_SIZE);
 	draw_minimap(&minimap, data);
-	fusion_image(scn_img, &minimap, SCR_WEIGHT - (MINIMAP_SIZE + 20), 20);
+	fusion_image(scn_img, &minimap, SCR_WIDTH - (MINIMAP_SIZE + 20), 20);
 	mlx_destroy_image(data->window->mlx, minimap.ptr);
 }

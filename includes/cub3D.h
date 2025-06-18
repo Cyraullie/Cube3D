@@ -6,7 +6,7 @@
 /*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 13:50:46 by cgoldens          #+#    #+#             */
-/*   Updated: 2025/06/18 13:41:18 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/06/18 16:22:47 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@
 # define VISIBLE_TILES 11
 
 # define SCR_HEIGHT 1080
-# define SCR_WEIGHT 1920
+# define SCR_WIDTH 1920
 
 # define NORTH			270.0
 # define EAST			0.0

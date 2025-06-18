@@ -6,7 +6,7 @@
 /*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 16:42:35 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/06/13 15:48:54 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/06/18 16:22:47 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 void	window_constructor(t_window *window)
 {
 	window->mlx = mlx_init();
-	window->win = mlx_new_window(window->mlx, SCR_WEIGHT, SCR_HEIGHT, "Cub3D");
+	window->win = mlx_new_window(window->mlx, SCR_WIDTH, SCR_HEIGHT, "Cub3D");
 }
 
 /**
