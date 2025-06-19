@@ -6,7 +6,7 @@
 /*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 13:50:46 by cgoldens          #+#    #+#             */
-/*   Updated: 2025/06/18 16:22:47 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/06/19 11:12:00 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,21 +27,25 @@
 # include <stdbool.h>
 # include <math.h>
 
-# define PIXEL 64
-# define FOV 60
+# define PIXEL			64
+# define FOV			60
 
-# define MINIMAP_SIZE 300
-# define MINIMAP_RADIUS 150
-# define TILE_SIZE 32
-# define VISIBLE_TILES 11
+# define MINIMAP_SIZE	300
+# define MINIMAP_RADIUS	150
+# define TILE_SIZE		32
+# define VISIBLE_TILES	11
 
-# define SCR_HEIGHT 1080
-# define SCR_WIDTH 1920
+# define SCR_HEIGHT		1080
+# define SCR_WIDTH		1920
 
 # define NORTH			270.0
 # define EAST			0.0
 # define SOUTH			90.0
 # define WEST			180.0
+# define N				1
+# define S				2
+# define W				3
+# define E				4
 
 # define VIEW_SPEED		3
 # define MOOVE_SPPED	5

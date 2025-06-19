@@ -6,7 +6,7 @@
 /*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 15:41:29 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/06/18 16:23:40 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/06/19 11:19:25 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,7 +128,7 @@ typedef struct s_dda
 typedef struct s_grid
 {
 	int		x;
-	double	x_percent;
+	double	percent;
 	double	ray_x;
 	double	ray_y;
 	double	ray_angle;

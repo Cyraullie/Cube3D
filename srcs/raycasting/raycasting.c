@@ -6,7 +6,7 @@
 /*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/06 15:12:24 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/06/18 16:22:47 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/06/19 15:48:20 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,21 +49,21 @@ static void	draw_vertical_line(t_img *img, int x, int line_height, int color)
 	}
 }
 
-static void	draw_line(t_img *scn_img, t_grid grid, double line_h, t_data *data)
-{
-	int	text_x;
-	int	text_y;
-	int	start;
-	int	end;
+// static void	draw_line(t_img *scn_img, t_grid grid, double line_h, t_data *data)
+// {
+// 	int	text_x;
+// 	int	text_y;
+// 	int	start;
+// 	int	end;
 
-	start = (SCR_HEIGHT / 2) - (line_h / 2);
-	if (start < 0)
-		start = 0;
-	end = (SCR_HEIGHT / 2) + (line_h / 2);
-	if (end > SCR_HEIGHT)
-		end = SCR_HEIGHT;
+// 	start = (SCR_HEIGHT / 2) - (line_h / 2);
+// 	if (start < 0)
+// 		start = 0;
+// 	end = (SCR_HEIGHT / 2) + (line_h / 2);
+// 	if (end > SCR_HEIGHT)
+// 		end = SCR_HEIGHT;
 	
-}
+// }
 
 void	raycasting(t_data *data, t_img *scn_img)
 {
@@ -78,6 +78,7 @@ void	raycasting(t_data *data, t_img *scn_img)
 		angle_offset = ((double)grid.x / SCR_WIDTH - 0.5) * FOV;
 		ray_angle = data->character->angle_view + angle_offset;
 		intersection_point(data, &grid, ray_angle);
+		printf("percent : %f\n", grid.percent);
 		grid.dst *= cos(return_radian(angle_offset));
 		grid.dst *= PIXEL;
 		if (grid.dst == 0)
@@ -85,7 +86,7 @@ void	raycasting(t_data *data, t_img *scn_img)
 		line_h = (PIXEL * SCR_HEIGHT) / grid.dst;
 		if (line_h > SCR_HEIGHT)
 			line_h = SCR_HEIGHT;
-		if (grid.side == 0)
+		if (grid.side == W || grid.side == E)
 			draw_vertical_line(scn_img, grid.x, line_h, 0x880000);
 		else
 			draw_vertical_line(scn_img, grid.x, line_h, 0x008800);
