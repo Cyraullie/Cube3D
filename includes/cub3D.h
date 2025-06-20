@@ -6,7 +6,7 @@
 /*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 13:50:46 by cgoldens          #+#    #+#             */
-/*   Updated: 2025/06/19 11:12:00 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/06/20 10:26:11 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
 # include <math.h>
 
 # define PIXEL			64
-# define FOV			60
+# define FOV			66
 
 # define MINIMAP_SIZE	300
 # define MINIMAP_RADIUS	150
