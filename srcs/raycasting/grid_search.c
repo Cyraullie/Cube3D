@@ -6,7 +6,7 @@
 /*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/31 11:24:44 by kilian            #+#    #+#             */
-/*   Updated: 2025/06/20 10:52:25 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/06/20 13:38:01 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,13 +119,13 @@ void	intersection_point(t_data *data, t_grid *grid, double angle)
 	if (grid->side == W || grid->side == E)
 	{
 		grid->dst = grid->side_dist_x - grid->delta_dist_x;
-		hit_y = data->character->y_pose + grid->ray_dir_y * grid->dst;
+		hit_y = (data->character->y_pose / PIXEL) + grid->ray_dir_y * grid->dst;
 		grid->percent = hit_y - floor(hit_y);
 	}
 	else
 	{
 		grid->dst = grid->side_dist_y - grid->delta_dist_y;
-		hit_x = data->character->x_pose + grid->ray_dir_x * grid->dst;
+		hit_x = (data->character->x_pose / PIXEL) + grid->ray_dir_x * grid->dst;
 		grid->percent = hit_x - floor(hit_x);
 	}
 }

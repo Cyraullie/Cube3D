@@ -6,7 +6,7 @@
 /*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 15:41:29 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/06/19 16:16:13 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/06/20 11:23:48 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -150,6 +150,7 @@ typedef struct s_grid
 	double	plane_x;
 	double	plane_y;
 	double	fov_scale;
+	double	line_h;
 }	t_grid;
 
 #endif

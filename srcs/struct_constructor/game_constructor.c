@@ -6,7 +6,7 @@
 /*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 16:42:35 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/06/18 16:22:47 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/06/20 11:45:42 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,14 @@ void	data_constructor(t_data *data, char *argv)
 	parsing(fd, data);
 	close(fd);
 	window_constructor(data->window);
+	xpm_img_constructor(data->texture->north, data->texture->n_path, \
+						data->window->mlx);
+	xpm_img_constructor(data->texture->south, data->texture->s_path, \
+						data->window->mlx);
+	xpm_img_constructor(data->texture->east, data->texture->e_path, \
+						data->window->mlx);
+	xpm_img_constructor(data->texture->west, data->texture->w_path, \
+						data->window->mlx);
 	character_constructor(data->character, data->window->mlx, data->map);
 	key_constructor(data->key);
 }
