@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   grid_search.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kilian <kilian@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/31 11:24:44 by kilian            #+#    #+#             */
-/*   Updated: 2025/06/20 13:38:01 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/06/21 12:27:19 by kilian           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,8 @@ static void	init_grid(t_grid *vars, t_data *data, double angle)
 	vars->ray_angle = return_radian(angle);
 	vars->dir_x = cos(vars->ray_angle);
 	vars->dir_y = sin(vars->ray_angle);
-	vars->plane_x = -vars->dir_y * vars->fov_scale;
-	vars->plane_y = vars->dir_x * vars->fov_scale;
-	vars->ray_dir_x = vars->dir_x + vars->plane_x * vars->camera_x;
-	vars->ray_dir_y = vars->dir_y + vars->plane_y * vars->camera_x;
+	vars->ray_dir_x = vars->dir_x + data->character->plane_x * vars->camera_x;
+	vars->ray_dir_y = vars->dir_y + data->character->plane_y * vars->camera_x;
 	vars->map_x = (int)(vars->ray_x / PIXEL);
 	vars->map_y = (int)(vars->ray_y / PIXEL);
 	vars->delta_dist_x = fabs(1.0 / vars->dir_x);

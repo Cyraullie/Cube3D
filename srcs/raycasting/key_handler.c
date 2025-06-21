@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_handler.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kilian <kilian@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 15:14:59 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/06/18 16:22:47 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/06/21 12:21:47 by kilian           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,8 @@ double	new_y(double angle)
 
 void	key_pressed(t_data *data)
 {
+	double	old_plane_x;
+
 	if (data->key->w == true && check_w(data) == 0)
 	{
 		data->character->x_pose += new_x(data->character->angle_view);
@@ -108,11 +110,21 @@ void	key_pressed(t_data *data)
 	{
 		data->character->x_pose += new_x(data->character->angle_view - 90);
 		data->character->y_pose += new_y(data->character->angle_view - 90);
+		old_plane_x = data->character->plane_x;
+		data->character->plane_x = old_plane_x * cos(VIEW_SPEED) \
+								- data->character->plane_y * sin(VIEW_SPEED);
+		data->character->plane_y = old_plane_x * sin(VIEW_SPEED) \
+								- data->character->plane_y * cos(VIEW_SPEED);
 	}
 	if (data->key->d == true && check_d(data) == 0)
 	{
 		data->character->x_pose += new_x(data->character->angle_view + 90);
 		data->character->y_pose += new_y(data->character->angle_view + 90);
+		old_plane_x = data->character->plane_x;
+		data->character->plane_x = old_plane_x * cos(-VIEW_SPEED) \
+								- data->character->plane_y * sin(-VIEW_SPEED);
+		data->character->plane_y = old_plane_x * sin(-VIEW_SPEED) \
+								- data->character->plane_y * cos(-VIEW_SPEED);
 	}
 	if (data->key->left == true)
 		data->character->angle_view -= VIEW_SPEED;

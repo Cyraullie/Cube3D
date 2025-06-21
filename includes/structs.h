@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kilian <kilian@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 15:41:29 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/06/20 11:23:48 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/06/21 12:03:25 by kilian           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,8 @@ typedef struct s_character
 	double	x_pose;
 	double	y_pose;
 	double	angle_view;
+	double	plane_x;
+	double	plane_y;
 	t_img	*square;
 }	t_character;
 
@@ -147,8 +149,6 @@ typedef struct s_grid
 	double	camera_x;
 	double	ray_dir_x;
 	double	ray_dir_y;
-	double	plane_x;
-	double	plane_y;
 	double	fov_scale;
 	double	line_h;
 }	t_grid;

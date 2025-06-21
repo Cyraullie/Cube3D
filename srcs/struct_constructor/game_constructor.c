@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_constructor.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kilian <kilian@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 16:42:35 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/06/20 11:45:42 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/06/21 12:04:01 by kilian           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,8 @@ void	character_constructor(t_character *character, void *mlx, t_map *map)
 	character->angle_view = map->direction;
 	character->x_pose = map->c_x;
 	character->y_pose = map->c_y;
+	character->plane_x = 0.0;
+	character->plane_y = 0.66;
 }
 
 /**
