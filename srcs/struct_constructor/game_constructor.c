@@ -6,7 +6,7 @@
 /*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 16:42:35 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/06/13 15:48:54 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/06/26 11:12:20 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 void	window_constructor(t_window *window)
 {
 	window->mlx = mlx_init();
-	window->win = mlx_new_window(window->mlx, SCR_WEIGHT, SCR_HEIGHT, "Cub3D");
+	window->win = mlx_new_window(window->mlx, SCR_WIDTH, SCR_HEIGHT, "Cub3D");
 }
 
 /**
@@ -49,12 +49,12 @@ void	key_constructor(t_key *key)
  */
 void	character_constructor(t_character *character, void *mlx, t_map *map)
 {
-	character->square = malloc(sizeof(t_img));
-	image_constructor(character->square, mlx, PIXEL, PIXEL);
-	draw_square(character->square, 20, 16711680);
+	(void)mlx;
 	character->angle_view = map->direction;
 	character->x_pose = map->c_x;
 	character->y_pose = map->c_y;
+	character->plane_x = 0.0;
+	character->plane_y = 0.66;
 }
 
 /**
@@ -79,6 +79,14 @@ void	data_constructor(t_data *data, char *argv)
 	parsing(fd, data);
 	close(fd);
 	window_constructor(data->window);
+	xpm_img_constructor(data->texture->north, data->texture->n_path, \
+						data->window->mlx);
+	xpm_img_constructor(data->texture->south, data->texture->s_path, \
+						data->window->mlx);
+	xpm_img_constructor(data->texture->east, data->texture->e_path, \
+						data->window->mlx);
+	xpm_img_constructor(data->texture->west, data->texture->w_path, \
+						data->window->mlx);
 	character_constructor(data->character, data->window->mlx, data->map);
 	key_constructor(data->key);
 }

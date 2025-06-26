@@ -6,7 +6,7 @@
 /*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/28 13:12:53 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/06/16 10:48:39 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/06/26 11:13:22 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ void	put_line(double dst, t_img *scn_img, t_data *data, double angle)
 	double	ray_y;
 	int		i;
 
-	ray_x = data->character->x_pose + data->character->square->width / 2;
-	ray_y = data->character->y_pose + data->character->square->height / 2;
+	ray_x = data->character->x_pose + PIXEL / 2;
+	ray_y = data->character->y_pose + PIXEL / 2;
 	i = 0;
 	while (i < (int)dst)
 	{

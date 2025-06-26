@@ -6,7 +6,7 @@
 /*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 09:47:05 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/06/16 13:09:26 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/06/19 18:59:39 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,32 +47,6 @@ void	draw_square(t_img *img, int square_size, int color)
 	}
 }
 
-void	draw_map(t_data *data, char *map[8])
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	while (i < 8)
-	{
-		j = 0;
-		while (j < 15)
-		{
-			if (map[i][j] == '1')
-				mlx_put_image_to_window(data->window->mlx, data->window->win, \
-					data->texture->white_img, (j * PIXEL), (i * PIXEL));
-			else if (map[i][j] == '2')
-				mlx_put_image_to_window(data->window->mlx, data->window->win, \
-					data->texture->door_img, (j * PIXEL), (i * PIXEL));
-			else if (map[i][j] == '0' || map[i][j] == '3')
-				mlx_put_image_to_window(data->window->mlx, data->window->win, \
-					data->texture->black_img, (j * PIXEL), (i * PIXEL));
-			j++;
-		}
-		i++;
-	}
-}
-
 void	draw_line(t_img *img, int color)
 {
 	int	line_size;
@@ -97,7 +71,7 @@ void	draw_floor(t_img *scn_img, int color)
 	int	y;
 
 	x = 0;
-	while (x <= SCR_WEIGHT)
+	while (x <= SCR_WIDTH)
 	{
 		y = 0;
 		while (y < (SCR_HEIGHT / 2))
@@ -116,7 +90,7 @@ void	draw_ceiling(t_img *scn_img, int color)
 	int	y;
 
 	x = 0;
-	while (x <= SCR_WEIGHT)
+	while (x <= SCR_WIDTH)
 	{
 		y = SCR_HEIGHT / 2;
 		while (y <= SCR_HEIGHT)

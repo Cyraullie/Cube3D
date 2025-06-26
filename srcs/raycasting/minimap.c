@@ -6,7 +6,7 @@
 /*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/15 11:27:46 by kilian            #+#    #+#             */
-/*   Updated: 2025/06/18 14:27:24 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/06/26 11:14:24 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,9 +55,9 @@ char	get_tile(t_data *data, int x, int y)
 	int	map_x;
 	int	map_y;
 
-	world_x = ((data->character->x_pose + data->character->square->width) \
+	world_x = ((data->character->x_pose + PIXEL / 2) \
 					/ PIXEL) * TILE_SIZE - MINIMAP_RADIUS + x;
-	world_y = ((data->character->y_pose + data->character->square->height) \
+	world_y = ((data->character->y_pose + PIXEL / 2) \
 					/ PIXEL) * TILE_SIZE - MINIMAP_RADIUS + y;
 	world_x -= TILE_SIZE / 2;
 	world_y -= TILE_SIZE / 2;
@@ -119,6 +119,6 @@ void	put_minimap(t_data *data, t_img *scn_img)
 	(void)scn_img;
 	image_constructor(&minimap, data->window->mlx, MINIMAP_SIZE, MINIMAP_SIZE);
 	draw_minimap(&minimap, data);
-	fusion_image(scn_img, &minimap, SCR_WEIGHT - (MINIMAP_SIZE + 20), 20);
+	fusion_image(scn_img, &minimap, SCR_WIDTH - (MINIMAP_SIZE + 20), 20);
 	mlx_destroy_image(data->window->mlx, minimap.ptr);
 }

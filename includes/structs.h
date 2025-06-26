@@ -6,7 +6,7 @@
 /*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 15:41:29 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/06/13 15:46:47 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/06/26 11:12:43 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,31 +53,22 @@ typedef struct s_character
 	double	x_pose;
 	double	y_pose;
 	double	angle_view;
-	t_img	*square;
+	double	plane_x;
+	double	plane_y;
 }	t_character;
 
 typedef struct s_texture
 {
-	void	*north;
-	void	*south;
-	void	*west;
-	void	*east;
+	t_img	*north;
 	char	*n_path;
+	t_img	*south;
 	char	*s_path;
+	t_img	*west;
 	char	*w_path;
+	t_img	*east;
 	char	*e_path;
 	int		f_color[3];
 	int		c_color[3];
-
-	void	*black_img;
-	int		black_img_line_size;
-	char	*black_img_data;
-	void	*white_img;
-	int		white_img_line_size;
-	char	*white_img_data;
-	void	*door_img;
-	int		door_img_line_size;
-	char	*door_img_data;
 }	t_texture;
 
 typedef struct s_key
@@ -137,6 +128,8 @@ typedef struct s_dda
 
 typedef struct s_grid
 {
+	int		x;
+	double	percent;
 	double	ray_x;
 	double	ray_y;
 	double	ray_angle;
@@ -152,6 +145,11 @@ typedef struct s_grid
 	double	side_dist_y;
 	int		side;
 	double	dst;
+	double	camera_x;
+	double	ray_dir_x;
+	double	ray_dir_y;
+	double	fov_scale;
+	double	line_h;
 }	t_grid;
 
 #endif
