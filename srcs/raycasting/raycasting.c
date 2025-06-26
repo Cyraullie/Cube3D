@@ -36,7 +36,8 @@ static int	get_texture_pixel(t_data *data, double line_h, \
 
 	if (grid->side == N)
 	{
-		text_x = data->texture->north->width * grid->percent;
+		text_x = (int)(data->texture->north->width * grid->percent);
+		text_x = data->texture->north->width - text_x - 1;
 		text_y = y * data->texture->north->height / line_h;
 		return (get_pixel(data->texture->north, text_x, text_y));
 	}
@@ -56,7 +57,8 @@ static int	get_texture_pixel(t_data *data, double line_h, \
 	}
 	else if (grid->side == W)
 	{
-		text_x = data->texture->west->width * grid->percent;
+		text_x = (int)(data->texture->west->width * grid->percent);
+		text_x = data->texture->west->width - text_x - 1;
 		text_y = y * data->texture->west->height / line_h;
 		return (get_pixel(data->texture->west, text_x, text_y));
 	}
@@ -86,16 +88,19 @@ static void	draw_vertical_line(t_img *scn_img, t_grid *grid, \
 	int	color;
 
 	start = (SCR_HEIGHT / 2) - (line_h / 2);
-	if (start < 0)
-		start = 0;
+	// if (start < 0)
+	// 	start = 0;
 	end = (SCR_HEIGHT / 2) + (line_h / 2);
 	// if (end > SCR_HEIGHT)
 	// 	end = SCR_HEIGHT;
 	y = start;
 	while (y < end)
 	{
-		color = get_texture_pixel(data, line_h, grid, y - start);
-		put_pixel(scn_img, grid->x, y, color);
+		if (y > 0)
+		{
+			color = get_texture_pixel(data, line_h, grid, y - start);
+			put_pixel(scn_img, grid->x, y, color);
+		}
 		y++;
 	}
 }
