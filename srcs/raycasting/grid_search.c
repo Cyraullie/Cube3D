@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   grid_search.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/31 11:24:44 by kilian            #+#    #+#             */
-/*   Updated: 2025/06/26 11:14:45 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/06/26 13:55:08 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,16 @@ static void	dda_loop(t_grid *vars, t_data *data, double angle)
 		}
 		if (data->map->map[vars->map_y][vars->map_x] == '1')
 			hit = 1;
+		if (data->map->map[vars->map_y][vars->map_x] == '2')
+		{
+			hit = 1;
+			vars->side = 5;
+		}
+		if (data->map->map[vars->map_y][vars->map_x] == '3')
+		{
+			hit = 1;
+			vars->side = 6;
+		}
 	}
 }
 
