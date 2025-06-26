@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   grid_search.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kilian <kilian@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/31 11:24:44 by kilian            #+#    #+#             */
-/*   Updated: 2025/06/21 12:27:19 by kilian           ###   ########.fr       */
+/*   Updated: 2025/06/26 11:14:45 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ static void	init_grid(t_grid *vars, t_data *data, double angle)
 	vars->camera_x = 2 * vars->x / (double)SCR_WIDTH - 1;
 	vars->fov_scale = tan(return_radian(FOV / 2));
 	vars->ray_x = data->character->x_pose + \
-					(data->character->square->width / 2);
+					(PIXEL / 2);
 	vars->ray_y = data->character->y_pose + \
-					(data->character->square->height / 2);
+					(PIXEL / 2);
 	vars->ray_angle = return_radian(angle);
 	vars->dir_x = cos(vars->ray_angle);
 	vars->dir_y = sin(vars->ray_angle);

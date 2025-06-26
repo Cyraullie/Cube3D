@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_constructor.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kilian <kilian@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 16:42:35 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/06/21 12:04:01 by kilian           ###   ########.fr       */
+/*   Updated: 2025/06/26 11:12:20 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,7 @@ void	key_constructor(t_key *key)
  */
 void	character_constructor(t_character *character, void *mlx, t_map *map)
 {
-	character->square = malloc(sizeof(t_img));
-	image_constructor(character->square, mlx, PIXEL, PIXEL);
-	draw_square(character->square, 20, 16711680);
+	(void)mlx;
 	character->angle_view = map->direction;
 	character->x_pose = map->c_x;
 	character->y_pose = map->c_y;

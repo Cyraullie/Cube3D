@@ -6,7 +6,7 @@
 /*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/15 11:27:46 by kilian            #+#    #+#             */
-/*   Updated: 2025/06/18 16:22:47 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/06/26 11:14:24 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,9 +55,9 @@ char	get_tile(t_data *data, int x, int y)
 	int	map_x;
 	int	map_y;
 
-	world_x = ((data->character->x_pose + data->character->square->width) \
+	world_x = ((data->character->x_pose + PIXEL / 2) \
 					/ PIXEL) * TILE_SIZE - MINIMAP_RADIUS + x;
-	world_y = ((data->character->y_pose + data->character->square->height) \
+	world_y = ((data->character->y_pose + PIXEL / 2) \
 					/ PIXEL) * TILE_SIZE - MINIMAP_RADIUS + y;
 	world_x -= TILE_SIZE / 2;
 	world_y -= TILE_SIZE / 2;
