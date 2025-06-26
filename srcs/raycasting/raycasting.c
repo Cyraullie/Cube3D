@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/06 15:12:24 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/06/26 13:42:50 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/06/26 13:51:42 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,13 +55,28 @@ static int	get_texture_pixel(t_data *data, double line_h, \
 		text_y = y * data->texture->east->height / line_h;
 		return (get_pixel(data->texture->east, text_x, text_y));
 	}
-	else
+	else if (grid->side == W)
 	{
 		text_x = (int)(data->texture->west->width * grid->percent);
 		text_x = data->texture->west->width - text_x - 1;
 		text_y = y * data->texture->west->height / line_h;
 		return (get_pixel(data->texture->west, text_x, text_y));
 	}
+	else if (grid->side == CD)
+	{
+		text_x = data->texture->c_door->width * grid->percent;
+		text_x = data->texture->c_door->width - text_x - 1;
+		text_y = y * data->texture->c_door->height / line_h;
+		return (get_pixel(data->texture->c_door, text_x, text_y));
+	}
+	else if (grid->side == OD)
+	{
+		text_x = data->texture->o_door->width * grid->percent;
+		text_x = data->texture->o_door->width - text_x - 1;
+		text_y = y * data->texture->o_door->height / line_h;
+		return (get_pixel(data->texture->o_door, text_x, text_y));
+	}
+	return (0);
 }
 
 static void	draw_vertical_line(t_img *scn_img, t_grid *grid, \

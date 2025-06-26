@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_constructor.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 16:42:35 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/06/26 11:12:20 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/06/26 13:37:11 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,22 @@ void	character_constructor(t_character *character, void *mlx, t_map *map)
 	character->plane_y = 0.66;
 }
 
+void	load_image(t_data *data)
+{
+	xpm_img_constructor(data->texture->north, data->texture->n_path, \
+						data->window->mlx);
+	xpm_img_constructor(data->texture->south, data->texture->s_path, \
+						data->window->mlx);
+	xpm_img_constructor(data->texture->east, data->texture->e_path, \
+						data->window->mlx);
+	xpm_img_constructor(data->texture->west, data->texture->w_path, \
+						data->window->mlx);
+	xpm_img_constructor(data->texture->c_door, CLOSE_DOOR_TXTR, \
+						data->window->mlx);
+	xpm_img_constructor(data->texture->o_door, OPEN_DOOR_TXTR, \
+						data->window->mlx);
+}
+
 /**
  * @brief constructor of data structure
  * 
@@ -79,14 +95,7 @@ void	data_constructor(t_data *data, char *argv)
 	parsing(fd, data);
 	close(fd);
 	window_constructor(data->window);
-	xpm_img_constructor(data->texture->north, data->texture->n_path, \
-						data->window->mlx);
-	xpm_img_constructor(data->texture->south, data->texture->s_path, \
-						data->window->mlx);
-	xpm_img_constructor(data->texture->east, data->texture->e_path, \
-						data->window->mlx);
-	xpm_img_constructor(data->texture->west, data->texture->w_path, \
-						data->window->mlx);
+	load_image(data);
 	character_constructor(data->character, data->window->mlx, data->map);
 	key_constructor(data->key);
 }
