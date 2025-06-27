@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/06 15:12:24 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/06/26 13:51:42 by cgoldens         ###   ########.fr       */
+/*   Updated: 2025/06/27 19:28:59 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,6 +115,7 @@ void	raycasting(t_data *data, t_img *scn_img)
 	grid.x = 0;
 	while (grid.x < SCR_WIDTH)
 	{
+		// probleme dans langle de fils de pute
 		angle_offset = ((double)grid.x / SCR_WIDTH - 0.5) * FOV;
 		ray_angle = data->character->angle_view + angle_offset;
 		intersection_point(data, &grid, ray_angle);

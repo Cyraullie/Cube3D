@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   grid_search.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/31 11:24:44 by kilian            #+#    #+#             */
-/*   Updated: 2025/06/26 13:55:08 by cgoldens         ###   ########.fr       */
+/*   Updated: 2025/06/27 11:50:18 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,4 +136,8 @@ void	intersection_point(t_data *data, t_grid *grid, double angle)
 		hit_x = (data->character->x_pose / PIXEL) + grid->ray_dir_x * grid->dst;
 		grid->percent = hit_x - floor(hit_x);
 	}
+	if (grid->percent < 0.5)
+		grid->percent += 0.5;
+	else if (grid->percent > 0.5)
+		grid->percent -= 0.5;
 }
