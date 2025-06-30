@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 13:50:46 by cgoldens          #+#    #+#             */
-/*   Updated: 2025/06/26 13:44:04 by cgoldens         ###   ########.fr       */
+/*   Updated: 2025/06/27 19:25:57 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@
 # define TILE_SIZE		32
 # define VISIBLE_TILES	11
 
-# define SCR_HEIGHT		1080
-# define SCR_WIDTH		1920
+# define SCR_HEIGHT		1000
+# define SCR_WIDTH		2000
 
 # define NORTH			270.0
 # define EAST			0.0
