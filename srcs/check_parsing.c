@@ -6,7 +6,7 @@
 /*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 14:56:59 by cgoldens          #+#    #+#             */
-/*   Updated: 2025/06/20 11:49:49 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/06/30 16:31:36 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,6 @@ int	check_path(char *path)
  */
 int	check_texture(t_texture *txtr)
 {
-	//TODO free and exit if caca
 	if (check_color(txtr->c_color) || check_color(txtr->f_color))
 		return (1);
 	if (check_path(txtr->n_path) || check_path(txtr->s_path)

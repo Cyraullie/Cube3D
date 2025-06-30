@@ -6,7 +6,7 @@
 /*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/15 11:27:46 by kilian            #+#    #+#             */
-/*   Updated: 2025/06/26 11:31:56 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/06/30 16:36:10 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,30 +21,32 @@
 // 	y = MINIMAP_RADIUS;
 // }
 
-void draw_circle(t_img *img, int xc, int yc, int r, int color)
+static void	draw_circle(t_img *img, int xc, int yc, int r)
 {
-	int x = 0;
-	int y = r;
-	int d = 3 - 2 * r;
+	int	x_y[2];
+	int	d;
 
-	while (y >= x)
+	x_y[0] = 0;
+	x_y[1] = r;
+	d = 3 - 2 * r;
+	while (x_y[1] >= x_y[0])
 	{
-		put_pixel(img, xc + x, yc + y, color);
-		put_pixel(img, xc - x, yc + y, color);
-		put_pixel(img, xc + x, yc - y, color);
-		put_pixel(img, xc - x, yc - y, color);
-		put_pixel(img, xc + y, yc + x, color);
-		put_pixel(img, xc - y, yc + x, color);
-		put_pixel(img, xc + y, yc - x, color);
-		put_pixel(img, xc - y, yc - x, color);
-		x++;
+		put_pixel(img, xc + x_y[0], yc + x_y[1], 0x00FF00);
+		put_pixel(img, xc - x_y[0], yc + x_y[1], 0x00FF00);
+		put_pixel(img, xc + x_y[0], yc - x_y[1], 0x00FF00);
+		put_pixel(img, xc - x_y[0], yc - x_y[1], 0x00FF00);
+		put_pixel(img, xc + x_y[1], yc + x_y[0], 0x00FF00);
+		put_pixel(img, xc - x_y[1], yc + x_y[0], 0x00FF00);
+		put_pixel(img, xc + x_y[1], yc - x_y[0], 0x00FF00);
+		put_pixel(img, xc - x_y[1], yc - x_y[0], 0x00FF00);
+		x_y[0]++;
 		if (d > 0)
 		{
-			y--;
-			d = d + 4 * (x - y) + 10;
+			x_y[1]--;
+			d = d + 4 * (x_y[0] - x_y[1]) + 10;
 		}
 		else
-			d = d + 4 * x + 6;
+			d = d + 4 * x_y[0] + 6;
 	}
 }
 
@@ -66,7 +68,6 @@ char	get_tile(t_data *data, int x, int y)
 	if (map_x < 0 || map_y < 0 || \
 		map_x >= data->map->cols || map_y >= data->map->rows)
 		return ('\0');
-
 	return (data->map->map[map_y][map_x]);
 }
 
@@ -109,7 +110,7 @@ void	draw_minimap(t_img *minimap, t_data *data)
 		}
 		y++;
 	}
-	draw_circle(minimap, MINIMAP_RADIUS, MINIMAP_RADIUS, 3, 0x00FF00);
+	draw_circle(minimap, MINIMAP_RADIUS, MINIMAP_RADIUS, 3);
 }
 
 void	put_minimap(t_data *data, t_img *scn_img)

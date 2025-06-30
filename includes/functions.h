@@ -6,7 +6,7 @@
 /*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 15:46:40 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/06/20 11:45:29 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/06/30 16:39:52 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,9 +54,10 @@ void		xpm_img_constructor(t_img *img, char *path, void *mlx);
 void		mlx_action(t_data *data);
 int			close_window(void *param);
 long long	get_time(void);
-	//key_handler.c
+	//key_press.c
 int			key_press(int key, void *param);
 int			key_unpress(int key, void *param);
+	//key_handler.c
 int			mouse_move(int x, int y, void *param);
 void		key_pressed(t_data *data);
 double		new_x(double angle);

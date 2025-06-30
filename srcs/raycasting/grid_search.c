@@ -6,7 +6,7 @@
 /*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/31 11:24:44 by kilian            #+#    #+#             */
-/*   Updated: 2025/06/30 16:12:24 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/06/30 16:51:58 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ static void	init_grid(t_grid *vars, t_data *data, double angle)
 	vars->map_y = (int)(vars->ray_y / PIXEL);
 	vars->delta_dist_x = fabs(1.0 / vars->dir_x);
 	vars->delta_dist_y = fabs(1.0 / vars->dir_y);
+	vars->door_side = 0;
 }
 
 static void	direction(t_grid *vars)
@@ -75,11 +76,9 @@ static int	return_side(double angle, int index)
 
 static void	dda_loop(t_grid *vars, t_data *data, double angle)
 {
-	int	hit;
-
-	hit = 0;
+	vars->hit_wall = 0;
 	vars->side = 0;
-	while (!hit)
+	while (!vars->hit_wall)
 	{
 		if (vars->side_dist_x < vars->side_dist_y)
 		{
@@ -93,15 +92,12 @@ static void	dda_loop(t_grid *vars, t_data *data, double angle)
 			vars->map_y += vars->step_y;
 			vars->side = return_side(angle, 0);
 		}
-		if (data->map->map[vars->map_y][vars->map_x] == '1')
+		if (data->map->map[vars->map_y][vars->map_x] == '1' || \
+			data->map->map[vars->map_y][vars->map_x] == '2')
 		{
-			hit = 1;
-			vars->door_side = 0;
-		}
-		if (data->map->map[vars->map_y][vars->map_x] == '2')
-		{
-			hit = 1;
-			vars->door_side = CD;
+			vars->hit_wall = 1;
+			if (data->map->map[vars->map_y][vars->map_x] == '2')
+				vars->door_side = 1;
 		}
 	}
 }
