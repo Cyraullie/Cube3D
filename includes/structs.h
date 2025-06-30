@@ -6,7 +6,7 @@
 /*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 15:41:29 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/06/30 16:19:43 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/06/30 16:12:49 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,10 +148,6 @@ typedef struct s_grid
 	int		side;
 	int		door_side;
 	double	dst;
-	double	camera_x;
-	double	ray_dir_x;
-	double	ray_dir_y;
-	double	fov_scale;
 	double	line_h;
 }	t_grid;
 
