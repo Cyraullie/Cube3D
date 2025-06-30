@@ -6,7 +6,7 @@
 /*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/27 10:47:50 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/06/18 15:38:03 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/06/30 16:58:20 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,7 @@ int	check_s(t_data *data)
 	pose_x = data->character->x_pose - new_x(data->character->angle_view) + 32;
 	pose_y = data->character->y_pose - new_y(data->character->angle_view) + 32;
 	x = (int)pose_x / PIXEL;
-	y = (int)pose_y / PIXEL;\
-				
+	y = (int)pose_y / PIXEL;
 	if (data->map->map[y][x] == '1' || data->map->map[y][x] == '2' \
 		|| data->map->map[y][x] == ' ')
 		return (1);

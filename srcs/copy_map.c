@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   copy_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 15:59:14 by cgoldens          #+#    #+#             */
-/*   Updated: 2025/06/03 16:08:29 by cgoldens         ###   ########.fr       */
+/*   Updated: 2025/06/30 16:31:51 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,4 +118,3 @@ void	copy_map(char **raw_lines, t_map *map)
 		return ;
 	fill_map_lines(raw_lines, map, max_len);
 }
-

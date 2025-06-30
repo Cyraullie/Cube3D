@@ -6,7 +6,7 @@
 /*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 13:46:48 by cgoldens          #+#    #+#             */
-/*   Updated: 2025/06/26 13:43:38 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/06/30 16:31:13 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,5 @@ int	main(int argc, char **argv)
 		exit(EXIT_FAILURE);
 	}
 	data_constructor(&data, argv[1]);
-	// if (integrity_check(data.map))
-	// 	printf("map not ok\n");
-	// else
-	// 	printf("map ok\n");
-	// printf("direction look : %0.1f\n", data.map->direction);
-	// visio_map(data.map->map, data.map->rows, data.map->cols);
-	// printf("player position : x:%0.1f y:%0.1f\n", (data.map->c_x- 0.5) / 64, (data.map->c_y - 0.5) / 64);
 	mlx_action(&data);
 }

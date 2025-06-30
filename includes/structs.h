@@ -6,7 +6,7 @@
 /*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 15:41:29 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/06/30 16:12:49 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/06/30 16:43:37 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,6 +147,7 @@ typedef struct s_grid
 	double	side_dist_y;
 	int		side;
 	int		door_side;
+	int		hit_wall;
 	double	dst;
 	double	line_h;
 }	t_grid;

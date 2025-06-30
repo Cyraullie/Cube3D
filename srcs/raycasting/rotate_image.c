@@ -6,7 +6,7 @@
 /*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/21 10:49:54 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/06/16 13:58:37 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/06/30 16:37:02 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ int	get_pixel(t_img *img, int x, int y)
 
 	if (x < 0 || y < 0 || x >= img->width || y >= img->height)
 		return (0);
-
 	pixel = img->addr + (y * img->line_length + x * (img->bpp / 8));
 	return (*(int *)pixel);
 }
