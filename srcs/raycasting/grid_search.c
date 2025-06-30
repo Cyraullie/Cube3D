@@ -94,16 +94,14 @@ static void	dda_loop(t_grid *vars, t_data *data, double angle)
 			vars->side = return_side(angle, 0);
 		}
 		if (data->map->map[vars->map_y][vars->map_x] == '1')
+		{
 			hit = 1;
+			vars->door_side = 0;
+		}
 		if (data->map->map[vars->map_y][vars->map_x] == '2')
 		{
 			hit = 1;
-			vars->side = 5;
-		}
-		if (data->map->map[vars->map_y][vars->map_x] == '3')
-		{
-			hit = 1;
-			vars->side = 6;
+			vars->door_side = CD;
 		}
 	}
 }

@@ -146,6 +146,7 @@ typedef struct s_grid
 	double	side_dist_x;
 	double	side_dist_y;
 	int		side;
+	int		door_side;
 	double	dst;
 	double	line_h;
 }	t_grid;

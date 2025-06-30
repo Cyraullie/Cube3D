@@ -34,47 +34,43 @@ static int	get_texture_pixel(t_data *data, double line_h, \
 	int	text_x;
 	int	text_y;
 
-	if (grid->side == N)
-	{
-		text_x = (int)(data->texture->north->width * grid->percent);
-		text_x = data->texture->north->width - text_x - 1;
-		text_y = y * data->texture->north->height / line_h;
-		return (get_pixel(data->texture->north, text_x, text_y));
-	}
-	else if (grid->side == S)
-	{
-		text_x = (int)(data->texture->south->width * grid->percent);
-		text_x = data->texture->south->width - text_x - 1;
-		text_y = y * data->texture->south->height / line_h;
-		return (get_pixel(data->texture->south, text_x, text_y));
-	}
-	else if (grid->side == E)
-	{
-		text_x = data->texture->east->width * grid->percent;
-		text_x = data->texture->east->width - text_x - 1;
-		text_y = y * data->texture->east->height / line_h;
-		return (get_pixel(data->texture->east, text_x, text_y));
-	}
-	else if (grid->side == W)
-	{
-		text_x = (int)(data->texture->west->width * grid->percent);
-		text_x = data->texture->west->width - text_x - 1;
-		text_y = y * data->texture->west->height / line_h;
-		return (get_pixel(data->texture->west, text_x, text_y));
-	}
-	else if (grid->side == CD)
+	if (grid->door_side != 0)
 	{
 		text_x = data->texture->c_door->width * grid->percent;
 		text_x = data->texture->c_door->width - text_x - 1;
 		text_y = y * data->texture->c_door->height / line_h;
 		return (get_pixel(data->texture->c_door, text_x, text_y));
 	}
-	else if (grid->side == OD)
+	else
 	{
-		text_x = data->texture->o_door->width * grid->percent;
-		text_x = data->texture->o_door->width - text_x - 1;
-		text_y = y * data->texture->o_door->height / line_h;
-		return (get_pixel(data->texture->o_door, text_x, text_y));
+		if (grid->side == N)
+		{
+			text_x = (int)(data->texture->north->width * grid->percent);
+			text_x = data->texture->north->width - text_x - 1;
+			text_y = y * data->texture->north->height / line_h;
+			return (get_pixel(data->texture->north, text_x, text_y));
+		}
+		else if (grid->side == S)
+		{
+			text_x = (int)(data->texture->south->width * grid->percent);
+			text_x = data->texture->south->width - text_x - 1;
+			text_y = y * data->texture->south->height / line_h;
+			return (get_pixel(data->texture->south, text_x, text_y));
+		}
+		else if (grid->side == E)
+		{
+			text_x = data->texture->east->width * grid->percent;
+			text_x = data->texture->east->width - text_x - 1;
+			text_y = y * data->texture->east->height / line_h;
+			return (get_pixel(data->texture->east, text_x, text_y));
+		}
+		else if (grid->side == W)
+		{
+			text_x = (int)(data->texture->west->width * grid->percent);
+			text_x = data->texture->west->width - text_x - 1;
+			text_y = y * data->texture->west->height / line_h;
+			return (get_pixel(data->texture->west, text_x, text_y));
+		}
 	}
 	return (0);
 }
@@ -88,11 +84,7 @@ static void	draw_vertical_line(t_img *scn_img, t_grid *grid, \
 	int	color;
 
 	start = (SCR_HEIGHT / 2) - (line_h / 2);
-	// if (start < 0)
-	// 	start = 0;
 	end = (SCR_HEIGHT / 2) + (line_h / 2);
-	// if (end > SCR_HEIGHT)
-	// 	end = SCR_HEIGHT;
 	y = start;
 	while (y < end)
 	{
