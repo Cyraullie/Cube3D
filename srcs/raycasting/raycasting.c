@@ -6,7 +6,7 @@
 /*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/06 15:12:24 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/06/30 13:54:07 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/06/30 16:12:33 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,6 @@ void	raycasting(t_data *data, t_img *scn_img)
 	grid.x = 0;
 	while (grid.x < SCR_WIDTH)
 	{
-		// probleme dans langle de fils de pute
 		angle_offset = ((double)grid.x / SCR_WIDTH - 0.5) * FOV;
 		ray_angle = data->character->angle_view + angle_offset;
 		intersection_point(data, &grid, ray_angle);
@@ -123,8 +122,6 @@ void	raycasting(t_data *data, t_img *scn_img)
 		if (grid.dst == 0)
 			grid.dst = 0.1;
 		line_h = SCR_HEIGHT / grid.dst;
-		// if (line_h > SCR_HEIGHT)
-		// 	line_h = SCR_HEIGHT;
 		draw_vertical_line(scn_img, &grid, line_h, data);
 		grid.x++;
 	}
