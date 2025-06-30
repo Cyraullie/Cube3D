@@ -6,7 +6,7 @@
 /*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/31 11:24:44 by kilian            #+#    #+#             */
-/*   Updated: 2025/06/27 11:50:18 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/06/30 14:27:45 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,17 +127,15 @@ void	intersection_point(t_data *data, t_grid *grid, double angle)
 	if (grid->side == W || grid->side == E)
 	{
 		grid->dst = grid->side_dist_x - grid->delta_dist_x;
-		hit_y = (data->character->y_pose / PIXEL) + grid->ray_dir_y * grid->dst;
+		hit_y = ((data->character->y_pose + PIXEL / 2) / PIXEL) + grid->ray_dir_y * (grid->dst);
 		grid->percent = hit_y - floor(hit_y);
+		// printf("for angle : %f - hit_y : %f - percent = %f\n", angle, hit_y, grid->percent);
 	}
 	else
 	{
 		grid->dst = grid->side_dist_y - grid->delta_dist_y;
-		hit_x = (data->character->x_pose / PIXEL) + grid->ray_dir_x * grid->dst;
+		hit_x = ((data->character->x_pose + PIXEL / 2) / PIXEL) + grid->ray_dir_x * (grid->dst);
 		grid->percent = hit_x - floor(hit_x);
+		// printf("for angle : %f - hit_x : %f - percent = %f\n", angle, hit_x, grid->percent);
 	}
-	if (grid->percent < 0.5)
-		grid->percent += 0.5;
-	else if (grid->percent > 0.5)
-		grid->percent -= 0.5;
 }
