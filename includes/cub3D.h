@@ -6,7 +6,7 @@
 /*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 13:50:46 by cgoldens          #+#    #+#             */
-/*   Updated: 2025/06/27 19:25:57 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/06/30 17:24:04 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,8 @@
 # define CD				5
 # define OD				6
 
-# define VIEW_SPEED		3
-# define MOOVE_SPPED	5
+# define VIEW_SPEED		200
+# define MOVE_SPEED		300
 
 # define _USE_MATH_DEFINES
 # ifndef M_PI

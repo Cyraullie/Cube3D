@@ -6,7 +6,7 @@
 /*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 15:41:29 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/06/30 16:43:37 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/06/30 17:06:21 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,8 @@ typedef struct s_character
 	double	x_pose;
 	double	y_pose;
 	double	angle_view;
-	double	plane_x;
-	double	plane_y;
+	double	view_speed;
+	double	move_speed;
 }	t_character;
 
 typedef struct s_texture

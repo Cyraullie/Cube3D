@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_constructor.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 16:42:35 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/06/26 13:37:11 by cgoldens         ###   ########.fr       */
+/*   Updated: 2025/06/30 17:19:44 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,8 @@ void	character_constructor(t_character *character, void *mlx, t_map *map)
 	character->angle_view = map->direction;
 	character->x_pose = map->c_x;
 	character->y_pose = map->c_y;
-	character->plane_x = 0.0;
-	character->plane_y = 0.66;
+	character->move_speed = MOVE_SPEED;
+	character->view_speed = VIEW_SPEED;
 }
 
 void	load_image(t_data *data)

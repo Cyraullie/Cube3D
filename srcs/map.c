@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 15:37:04 by cgoldens          #+#    #+#             */
-/*   Updated: 2025/06/03 16:00:18 by cgoldens         ###   ########.fr       */
+/*   Updated: 2025/06/30 17:21:13 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,8 +135,10 @@ void	open_door(t_data *data)
 	int		x;
 	int		y;
 
-	pose_x = data->character->x_pose + new_x(data->character->angle_view) + 32;
-	pose_y = data->character->y_pose + new_y(data->character->angle_view) + 32;
+	pose_x = data->character->x_pose + \
+								new_x(data->character->angle_view, data) + 32;
+	pose_y = data->character->y_pose + \
+								new_y(data->character->angle_view, data) + 32;
 	x = (int)pose_x / PIXEL;
 	y = (int)pose_y / PIXEL;
 	if (data->map->map[y][x] == '2')

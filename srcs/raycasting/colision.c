@@ -6,7 +6,7 @@
 /*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/27 10:47:50 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/06/30 16:58:20 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/06/30 17:22:45 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,10 @@ int	check_w(t_data *data)
 	int		x;
 	int		y;
 
-	pose_x = data->character->x_pose + new_x(data->character->angle_view) + 32;
-	pose_y = data->character->y_pose + new_y(data->character->angle_view) + 32;
+	pose_x = data->character->x_pose + \
+							new_x(data->character->angle_view, data) + 32;
+	pose_y = data->character->y_pose + \
+							new_y(data->character->angle_view, data) + 32;
 	x = (int)pose_x / PIXEL;
 	y = (int)pose_y / PIXEL;
 	if (data->map->map[y][x] == '1' || data->map->map[y][x] == '2' \
@@ -49,8 +51,8 @@ int	check_s(t_data *data)
 	int		x;
 	int		y;
 
-	pose_x = data->character->x_pose - new_x(data->character->angle_view) + 32;
-	pose_y = data->character->y_pose - new_y(data->character->angle_view) + 32;
+	pose_x = data->character->x_pose - new_x(data->character->angle_view, data) + 32;
+	pose_y = data->character->y_pose - new_y(data->character->angle_view, data) + 32;
 	x = (int)pose_x / PIXEL;
 	y = (int)pose_y / PIXEL;
 	if (data->map->map[y][x] == '1' || data->map->map[y][x] == '2' \
@@ -74,9 +76,9 @@ int	check_a(t_data *data)
 	int		y;
 
 	pose_x = data->character->x_pose + \
-				new_x(data->character->angle_view - 90) + 32;
+				new_x(data->character->angle_view - 90, data) + 32;
 	pose_y = data->character->y_pose + \
-				new_y(data->character->angle_view - 90) + 32;
+				new_y(data->character->angle_view - 90, data) + 32;
 	x = (int)pose_x / PIXEL;
 	y = (int)pose_y / PIXEL;
 	if (data->map->map[y][x] == '1' || data->map->map[y][x] == '2' \
@@ -100,9 +102,9 @@ int	check_d(t_data *data)
 	int		y;
 
 	pose_x = data->character->x_pose + \
-				new_x(data->character->angle_view + 90) + 32;
+				new_x(data->character->angle_view + 90, data) + 32;
 	pose_y = data->character->y_pose + \
-				new_y(data->character->angle_view + 90) + 32;
+				new_y(data->character->angle_view + 90, data) + 32;
 	x = (int)pose_x / PIXEL;
 	y = (int)pose_y / PIXEL;
 	if (data->map->map[y][x] == '1' || data->map->map[y][x] == '2' \
@@ -125,8 +127,10 @@ int	check_door(t_data *data)
 	int		x;
 	int		y;
 
-	pose_x = data->character->x_pose + new_x(data->character->angle_view) + 32;
-	pose_y = data->character->y_pose + new_y(data->character->angle_view) + 32;
+	pose_x = data->character->x_pose + \
+							new_x(data->character->angle_view, data) + 32;
+	pose_y = data->character->y_pose + \
+							new_y(data->character->angle_view, data) + 32;
 	x = (int)pose_x / PIXEL;
 	y = (int)pose_y / PIXEL;
 	if (data->map->map[y][x] == '2' || data->map->map[y][x] == '3')

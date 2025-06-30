@@ -6,7 +6,7 @@
 /*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 15:06:39 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/06/18 16:22:47 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/06/30 17:18:28 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,13 @@ long long	get_time(void)
 
 static void	update_time(t_data *data)
 {
+	double	frame_time;
+
 	data->last_frame = data->actual_frame;
 	data->actual_frame = get_time();
+	frame_time = (data->actual_frame - data->last_frame) / 1000.0;
+	data->character->move_speed = frame_time * MOVE_SPEED;
+	data->character->view_speed = frame_time * VIEW_SPEED;
 }
 
 static int	game_loop(void	*param)
