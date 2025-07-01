@@ -6,7 +6,7 @@
 /*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 15:46:40 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/07/01 09:57:58 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/07/01 11:27:48 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ int			check_map(t_map *map);
 //free.c
 void		free_array(char **tab);
 void		free_visited_partial(char **visited, int limit);
+void		exit_game(t_data *data);
+int			close_window(void *param);
 //map.c
 void		open_door(t_data *data);
 int			integrity_check(t_map *map);
@@ -52,7 +54,6 @@ void		xpm_img_constructor(t_img *img, char *path, void *mlx);
 //raycasting
 	//mlx_action.c
 void		mlx_action(t_data *data);
-int			close_window(void *param);
 long long	get_time(void);
 	//key_handler.c
 int			key_press(int key, void *param);

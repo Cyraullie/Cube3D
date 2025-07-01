@@ -6,21 +6,11 @@
 /*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 15:06:39 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/06/30 17:18:28 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/07/01 11:33:33 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3D.h"
-
-//TODO free_all
-int	close_window(void *param)
-{
-	t_data	*data;
-
-	data = (t_data *)param;
-	(void)data;
-	exit(0);
-}
 
 long long	get_time(void)
 {

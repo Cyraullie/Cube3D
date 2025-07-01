@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 17:22:42 by cgoldens          #+#    #+#             */
-/*   Updated: 2025/05/22 11:35:57 by cgoldens         ###   ########.fr       */
+/*   Updated: 2025/07/01 11:34:47 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,4 +51,39 @@ void	free_visited_partial(char **visited, int limit)
 		i++;
 	}
 	free(visited);
+}
+
+static void	free_text(t_texture *text, void *mlx)
+{
+	mlx_destroy_image(mlx, text->north->ptr);
+	mlx_destroy_image(mlx, text->south->ptr);
+	mlx_destroy_image(mlx, text->east->ptr);
+	mlx_destroy_image(mlx, text->west->ptr);
+	mlx_destroy_image(mlx, text->c_door->ptr);
+	free(text->north);
+	free(text->n_path);
+	free(text->south);
+	free(text->s_path);
+	free(text->east);
+	free(text->e_path);
+	free(text->west);
+	free(text->w_path);
+	free(text->c_door);
+}
+
+int	close_window(void *param)
+{
+	t_data	*data;
+
+	data = (t_data *)param;
+	free(data->character);
+	free_text(data->texture, data->window->mlx);
+	free(data->texture);
+	free(data->key);
+	free_array(data->map->map);
+	free(data->map);
+	mlx_destroy_window(data->window->mlx, data->window->win);
+	mlx_destroy_display(data->window->mlx);
+	free(data->window);
+	exit(0);
 }

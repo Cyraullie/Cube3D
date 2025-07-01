@@ -6,7 +6,7 @@
 /*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 16:42:35 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/06/30 17:19:44 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/07/01 11:33:36 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,8 +69,6 @@ void	load_image(t_data *data)
 						data->window->mlx);
 	xpm_img_constructor(data->texture->c_door, CLOSE_DOOR_TXTR, \
 						data->window->mlx);
-	xpm_img_constructor(data->texture->o_door, OPEN_DOOR_TXTR, \
-						data->window->mlx);
 }
 
 /**
@@ -98,4 +96,5 @@ void	data_constructor(t_data *data, char *argv)
 	load_image(data);
 	character_constructor(data->character, data->window->mlx, data->map);
 	key_constructor(data->key);
+	data->close = 0;
 }
