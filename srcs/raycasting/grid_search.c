@@ -6,7 +6,7 @@
 /*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/31 11:24:44 by kilian            #+#    #+#             */
-/*   Updated: 2025/06/30 16:51:58 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/07/01 10:00:53 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ static void	init_grid(t_grid *vars, t_data *data, double angle)
 	vars->dir_y = sin(vars->ray_angle);
 	vars->map_x = (int)(vars->ray_x / PIXEL);
 	vars->map_y = (int)(vars->ray_y / PIXEL);
-	vars->delta_dist_x = fabs(1.0 / vars->dir_x);
-	vars->delta_dist_y = fabs(1.0 / vars->dir_y);
+	vars->delta_dist_x = ft_fabs(1.0 / vars->dir_x);
+	vars->delta_dist_y = ft_fabs(1.0 / vars->dir_y);
 	vars->door_side = 0;
 }
 

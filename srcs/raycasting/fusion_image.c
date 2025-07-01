@@ -6,11 +6,27 @@
 /*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 13:43:21 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/05/26 14:50:59 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/07/01 10:00:47 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3D.h"
+
+int	ft_abs(int a)
+{
+	if (a < 0)
+		return (-1 * a);
+	else
+		return (a);
+}
+
+double	ft_fabs(double a)
+{
+	if (a < 0)
+		return (-1 * a);
+	else
+		return (a);
+}
 
 void	fusion_image(t_img *screen_img, t_img *img, int x, int y)
 {

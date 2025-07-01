@@ -6,7 +6,7 @@
 /*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/15 11:27:46 by kilian            #+#    #+#             */
-/*   Updated: 2025/06/30 16:36:10 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/07/01 09:58:35 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,8 +76,8 @@ void	put_tile(t_img *minimap, char tile, int x, int y)
 	float	dist_x;
 	float	dist_y;
 
-	dist_x = abs(x - MINIMAP_RADIUS);
-	dist_y = abs(y - MINIMAP_RADIUS);
+	dist_x = ft_abs(x - MINIMAP_RADIUS);
+	dist_y = ft_abs(y - MINIMAP_RADIUS);
 	if (sqrt(dist_x * dist_x + dist_y * dist_y) < MINIMAP_RADIUS)
 	{
 		if (tile == '1')
