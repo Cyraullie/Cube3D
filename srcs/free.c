@@ -6,7 +6,7 @@
 /*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 17:22:42 by cgoldens          #+#    #+#             */
-/*   Updated: 2025/07/01 11:34:47 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/07/01 11:51:46 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ int	close_window(void *param)
 	free(data->map);
 	mlx_destroy_window(data->window->mlx, data->window->win);
 	mlx_destroy_display(data->window->mlx);
+	free(data->window->mlx);
 	free(data->window);
 	exit(0);
 }

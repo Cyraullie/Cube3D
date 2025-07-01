@@ -6,7 +6,7 @@
 /*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 13:46:51 by cgoldens          #+#    #+#             */
-/*   Updated: 2025/06/20 11:50:36 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/07/01 11:47:41 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,19 +53,23 @@ int	add_struct(t_texture *txtr, char *str)
 	strip_newline(str);
 	tab = ft_split(str, ' ');
 	if (!ft_strncmp(tab[0], "NO", 3))
-		txtr->n_path = tab[1];
+		txtr->n_path = ft_strdup(tab[1]);
 	else if (!ft_strncmp(tab[0], "SO", 3))
-		txtr->s_path = tab[1];
+		txtr->s_path = ft_strdup(tab[1]);
 	else if (!ft_strncmp(tab[0], "WE", 3))
-		txtr->w_path = tab[1];
+		txtr->w_path = ft_strdup(tab[1]);
 	else if (!ft_strncmp(tab[0], "EA", 3))
-		txtr->e_path = tab[1];
+		txtr->e_path = ft_strdup(tab[1]);
 	else if (!ft_strncmp(tab[0], "F", 2))
 		get_color(txtr->f_color, tab[1]);
 	else if (!ft_strncmp(tab[0], "C", 2))
 		get_color(txtr->c_color, tab[1]);
 	else
+	{
+		free_array(tab);
 		return (0);
+	}
+	free_array(tab);
 	return (1);
 }
 

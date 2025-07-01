@@ -6,7 +6,7 @@
 /*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/23 10:17:36 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/07/01 11:12:11 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/07/01 11:39:01 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@ void	image_constructor(t_img *img, void *mlx, int height, int width)
  */
 void	map_constructor(t_map *map)
 {
-	map->map = malloc(sizeof(char **));
 	map->cols = 0;
 	map->rows = 0;
 	map->direction = 0.0;
