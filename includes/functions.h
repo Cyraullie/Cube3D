@@ -3,16 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   functions.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 15:46:40 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/07/01 09:57:58 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/07/01 11:17:39 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #ifndef FUNCTIONS_H
 # define FUNCTIONS_H
+
+
+int			check_map_walls(char **map);
 
 //parsing.c
 void		parsing(int fd, t_data *data);

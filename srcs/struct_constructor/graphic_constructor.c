@@ -6,7 +6,7 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/23 10:17:36 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/06/26 13:30:34 by cgoldens         ###   ########.fr       */
+/*   Updated: 2025/07/01 11:26:44 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,6 @@ void	map_constructor(t_map *map)
 
 void	xpm_img_constructor(t_img *img, char *path, void *mlx)
 {
-	printf("path : %s\n", path);
 	img->ptr = mlx_xpm_file_to_image(mlx, path, &img->width, &img->height);
 	img->addr = mlx_get_data_addr(img->ptr, &img->bpp, \
 		&img->line_length, &img->endian);

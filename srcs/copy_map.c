@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   copy_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 15:59:14 by cgoldens          #+#    #+#             */
-/*   Updated: 2025/06/30 16:31:51 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/07/01 13:53:56 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ static void	allocate_map_lines(t_map *map, int line_count, int max_len)
 	i = 0;
 	while (i < line_count)
 	{
-		map->map[i] = ft_calloc(max_len + 1, sizeof(char));
+		map->map[i] = ft_calloc(max_len + 2, sizeof(char));
 		if (!map->map[i])
 		{
 			while (--i >= 0)
@@ -79,18 +79,23 @@ static void	fill_map_lines(char **raw_lines, t_map *map, int max_len)
 {
 	int	i;
 	int	j;
+	int	end;
 
 	i = 0;
 	while (raw_lines[i])
 	{
 		j = 0;
-		while (raw_lines[i][j])
+		end = 0;
+		while (j < max_len)
 		{
-			map->map[i][j] = raw_lines[i][j];
+			if (raw_lines[i][j] == '\0')
+				end++;
+			map->map[i][j] = ' ';
+			if (end == 0)
+				map->map[i][j] = raw_lines[i][j];
 			j++;
 		}
-		while (j < max_len)
-			map->map[i][j++] = ' ';
+		map->map[i][j] = '\0';
 		i++;
 	}
 }
@@ -117,4 +122,5 @@ void	copy_map(char **raw_lines, t_map *map)
 	if (!map->map)
 		return ;
 	fill_map_lines(raw_lines, map, max_len);
+	line_count = 0;
 }

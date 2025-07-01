@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 13:46:51 by cgoldens          #+#    #+#             */
-/*   Updated: 2025/06/20 11:50:36 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/07/01 15:29:37 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@ int	add_struct(t_texture *txtr, char *str)
 
 	strip_newline(str);
 	tab = ft_split(str, ' ');
+	if (!tab || !tab[0] || !tab[1])
+		return (0);
 	if (!ft_strncmp(tab[0], "NO", 3))
 		txtr->n_path = tab[1];
 	else if (!ft_strncmp(tab[0], "SO", 3))
@@ -116,7 +118,6 @@ void	parsing(int fd, t_data *data)
 	buf = get_next_line(fd);
 	while (buf != NULL)
 	{
-		printf("%s", buf);
 		if (!(!ft_strcmp(buf, "\n")))
 		{
 			if (count != MAX_DATA)
@@ -130,8 +131,7 @@ void	parsing(int fd, t_data *data)
 		free(buf);
 		buf = get_next_line(fd);
 	}
-	if (check_texture(data->texture))
-		exit(EXIT_FAILURE);
-	if (check_map(data->map))
+	if (check_texture(data->texture) || check_map(data->map)
+		|| integrity_check(data->map))
 		exit(EXIT_FAILURE);
 }
