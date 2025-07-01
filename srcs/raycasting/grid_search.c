@@ -6,7 +6,7 @@
 /*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/31 11:24:44 by kilian            #+#    #+#             */
-/*   Updated: 2025/07/01 10:00:53 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/07/01 10:52:18 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,8 @@ static void	dda_loop(t_grid *vars, t_data *data, double angle)
 			vars->side = return_side(angle, 0);
 		}
 		if (data->map->map[vars->map_y][vars->map_x] == '1' || \
-			data->map->map[vars->map_y][vars->map_x] == '2')
+			data->map->map[vars->map_y][vars->map_x] == '2' || \
+			!data->map->map[vars->map_y][vars->map_x])
 		{
 			vars->hit_wall = 1;
 			if (data->map->map[vars->map_y][vars->map_x] == '2')

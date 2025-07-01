@@ -1,0 +1,11 @@
+NO ./assets/wall_north.xpm
+SO ./assets/wall_south.xpm
+WE ./assets/wall_west.xpm
+EA ./assets/wall_east.xpm
+F 20,20,20
+C 180,180,255
+111111
+1    1
+1 2201
+1  0E1
+111111
