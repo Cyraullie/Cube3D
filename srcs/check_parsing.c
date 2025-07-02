@@ -6,55 +6,11 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 14:56:59 by cgoldens          #+#    #+#             */
-/*   Updated: 2025/07/01 14:03:39 by cgoldens         ###   ########.fr       */
+/*   Updated: 2025/07/02 16:25:20 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3D.h"
-
-/**
- * @brief check is the color tab respect the range
- * 
- * @param color 
- * @return int 
- */
-int	check_color(int color[3])
-{
-	int	i;
-
-	i = 0;
-	while (i < 3)
-	{
-		if (!(color[i] >= 0 && color[i] <= 255))
-			return (printf("Erreur\nThe color channel nb %d is not valid.\n"\
-				, i + 1), 1);
-		i++;
-	}
-	return (0);
-}
-
-/**
- * @brief check if texture path exist
- * 
- * @param path 
- * @return int 
- */
-int	check_path(char *path)
-{
-	int		fd;
-	char	*tmp_path;
-
-	tmp_path = path;
-	fd = open(tmp_path, O_RDONLY);
-	if (fd == -1)
-	{
-		printf("Erreur\nThe path '%s' is incorrect\n", path);
-		close(fd);
-		return (1);
-	}
-	close(fd);
-	return (0);
-}
 
 /**
  * @brief check if all texture data are correct
@@ -64,6 +20,8 @@ int	check_path(char *path)
  */
 int	check_texture(t_texture *txtr)
 {
+	if (handle_texture_error(txtr))
+		return (1);
 	if (check_color(txtr->c_color) || check_color(txtr->f_color))
 		return (1);
 	if (check_path(txtr->n_path) || check_path(txtr->s_path)
@@ -138,4 +96,15 @@ int	check_map(t_map *map)
 	if (spawn_cnt == 0)
 		return (printf("Error\nNo spawn point\n"), 1);
 	return (0);
+}
+
+
+void	check_parsing(t_data *data)
+{
+	if (check_texture(data->texture) || check_map(data->map)
+		|| integrity_check(data->map))
+	{
+		//TODO free data here
+		exit(EXIT_FAILURE);
+	}
 }

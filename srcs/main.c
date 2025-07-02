@@ -6,11 +6,15 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 13:46:48 by cgoldens          #+#    #+#             */
-/*   Updated: 2025/07/02 15:59:52 by cgoldens         ###   ########.fr       */
+/*   Updated: 2025/07/02 16:17:30 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3D.h"
+
+//TODO faire attention au directiory qui ont le .cub
+//TODO faire des messages d-erreur pour si y a pas NO/SU/WE/EA/C/F
+//TODO 
 
 /**
  * @brief main function

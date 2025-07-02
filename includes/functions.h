@@ -6,7 +6,7 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 15:46:40 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/07/02 11:23:29 by cgoldens         ###   ########.fr       */
+/*   Updated: 2025/07/02 16:24:06 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,10 @@
 
 
 void		print_error(char *msg, int status);
+int			handle_texture_error(t_texture *txtr);
+int			check_path(char *path);
+int			check_color(int color[3]);
+void 		check_parsing(t_data *data);
 
 //parsing.c
 void		parsing(int fd, t_data *data);

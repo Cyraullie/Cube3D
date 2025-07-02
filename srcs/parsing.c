@@ -6,7 +6,7 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 13:46:51 by cgoldens          #+#    #+#             */
-/*   Updated: 2025/07/02 14:25:42 by cgoldens         ###   ########.fr       */
+/*   Updated: 2025/07/02 16:23:43 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	get_color(int color[3], char *str)
 	{
 		if (!tab[i] || tab[i][0] == '\n' || check_rgb(tab[i]))
 		{
-			printf("Erreur\nRGB format (255,255,255) is not respected\n");
+			printf("Error\nRGB format (255,255,255) is not respected\n");
 			free_array(tab);
 			exit(EXIT_FAILURE);
 		}
@@ -81,12 +81,8 @@ int	add_struct(t_texture *txtr, char *str)
 	else if (!ft_strncmp(tab[0], "C", 2))
 		get_color(txtr->c_color, tab[1]);
 	else
-	{
-		free_array(tab);
-		return (0);
-	}
-	free_array(tab);
-	return (1);
+		return (free_array(tab), 0);
+	return (free_array(tab), 1);
 }
 
 /**
@@ -151,7 +147,5 @@ void	parsing(int fd, t_data *data)
 		free(buf);
 		buf = get_next_line(fd);
 	}
-	if (check_texture(data->texture) || check_map(data->map)
-		|| integrity_check(data->map))
-		exit(EXIT_FAILURE);
+	check_parsing(data);
 }
