@@ -6,7 +6,7 @@
 /*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/27 10:47:50 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/07/01 10:49:25 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/07/02 13:54:25 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,12 +129,12 @@ int	check_door(t_data *data)
 	int		x;
 	int		y;
 
-	pose_x = data->character->x_pose + \
-							new_x(data->character->angle_view, data) + 32;
-	pose_y = data->character->y_pose + \
-							new_y(data->character->angle_view, data) + 32;
-	x = (int)pose_x / PIXEL;
-	y = (int)pose_y / PIXEL;
+	pose_x = (data->character->x_pose + 32) / PIXEL + \
+								(0.3 * cos(data->character->angle_view));
+	pose_y = (data->character->y_pose + 32) / PIXEL + \
+								(0.3 * -sin(data->character->angle_view));
+	x = floor(pose_x);
+	y = floor(pose_y);
 	if (data->map->map[y][x] == '2' || data->map->map[y][x] == '3')
 		return (1);
 	else
