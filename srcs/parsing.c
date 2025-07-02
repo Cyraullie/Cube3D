@@ -71,19 +71,23 @@ int	add_struct(t_texture *txtr, char *str)
 	if (!tab || !tab[0] || !tab[1])
 		return (0);
 	if (!ft_strncmp(tab[0], "NO", 3))
-		txtr->n_path = tab[1];
+		txtr->n_path = ft_strdup(tab[1]);
 	else if (!ft_strncmp(tab[0], "SO", 3))
-		txtr->s_path = tab[1];
+		txtr->s_path = ft_strdup(tab[1]);
 	else if (!ft_strncmp(tab[0], "WE", 3))
-		txtr->w_path = tab[1];
+		txtr->w_path = ft_strdup(tab[1]);
 	else if (!ft_strncmp(tab[0], "EA", 3))
-		txtr->e_path = tab[1];
+		txtr->e_path = ft_strdup(tab[1]);
 	else if (!ft_strncmp(tab[0], "F", 2))
 		get_color(txtr->f_color, tab[1]);
 	else if (!ft_strncmp(tab[0], "C", 2))
 		get_color(txtr->c_color, tab[1]);
 	else
+	{
+		free_array(tab);
 		return (0);
+	}
+	free_array(tab);
 	return (1);
 }
 

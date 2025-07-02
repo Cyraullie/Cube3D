@@ -6,7 +6,7 @@
 /*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 15:41:29 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/06/30 17:06:21 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/07/01 11:29:11 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,6 @@
 # define STRUCTS_H
 
 # include <stdbool.h>
-
-typedef struct s_segment
-{
-	float	x1;
-	float	y1;
-	float	x2;
-	float	y2;
-}	t_segment;
 
 typedef struct s_window
 {
@@ -70,7 +62,6 @@ typedef struct s_texture
 	int		f_color[3];
 	int		c_color[3];
 	t_img	*c_door;
-	t_img	*o_door;
 }	t_texture;
 
 typedef struct s_key
@@ -83,6 +74,7 @@ typedef struct s_key
 	bool	e_lock;
 	bool	left;
 	bool	right;
+	bool	eshap;
 }	t_key;
 
 
@@ -92,17 +84,11 @@ typedef struct s_data
 	t_window	*window;
 	t_texture	*texture;
 	t_map		*map;
-	t_segment	*segment;
 	t_character	*character;
 	long long	last_frame;
 	long long	actual_frame;
+	int			close;
 }	t_data;
-
-typedef struct s_coord
-{
-	int	x;
-	int	y;
-}	t_coord;
 
 typedef struct s_vars
 {

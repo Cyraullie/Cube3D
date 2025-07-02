@@ -31,6 +31,8 @@ int			check_map(t_map *map);
 //free.c
 void		free_array(char **tab);
 void		free_visited_partial(char **visited, int limit);
+void		exit_game(t_data *data);
+int			close_window(void *param);
 //map.c
 void		open_door(t_data *data);
 int			integrity_check(t_map *map);
@@ -55,7 +57,6 @@ void		xpm_img_constructor(t_img *img, char *path, void *mlx);
 //raycasting
 	//mlx_action.c
 void		mlx_action(t_data *data);
-int			close_window(void *param);
 long long	get_time(void);
 	//key_handler.c
 int			key_press(int key, void *param);

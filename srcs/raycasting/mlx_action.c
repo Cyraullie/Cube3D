@@ -6,21 +6,11 @@
 /*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 15:06:39 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/06/30 17:18:28 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/07/01 11:51:22 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3D.h"
-
-//TODO free_all
-int	close_window(void *param)
-{
-	t_data	*data;
-
-	data = (t_data *)param;
-	(void)data;
-	exit(0);
-}
 
 long long	get_time(void)
 {
@@ -64,7 +54,7 @@ static int	game_loop(void	*param)
 void	mlx_action(t_data *data)
 {
 	update_time(data);
-	mlx_mouse_hide(data->window->mlx, data->window->win);
+	// mlx_mouse_hide(data->window->mlx, data->window->win);
 	mlx_hook(data->window->win, 6, 1L << 6, mouse_move, data);
 	mlx_hook(data->window->win, 17, 0, close_window, data);
 	mlx_hook(data->window->win, 2, 1L << 0, key_press, data);
