@@ -6,7 +6,7 @@
 /*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/06 15:12:24 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/06/30 16:57:54 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/07/02 13:24:45 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,14 +63,14 @@ static void	draw_vertical_line(t_img *scn_img, t_grid *grid,
 
 	start = (SCR_HEIGHT / 2) - (line_h / 2);
 	end = (SCR_HEIGHT / 2) + (line_h / 2);
-	y = start;
+	if (start < 0)
+		y = 0;
+	else
+		y = start;
 	while (y < end)
 	{
-		if (y > 0)
-		{
-			color = get_texture_pixel(data, line_h, grid, y - start);
-			put_pixel(scn_img, grid->x, y, color);
-		}
+		color = get_texture_pixel(data, line_h, grid, y - start);
+		put_pixel(scn_img, grid->x, y, color);
 		y++;
 	}
 }

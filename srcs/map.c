@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 15:37:04 by cgoldens          #+#    #+#             */
-/*   Updated: 2025/07/02 11:45:44 by cgoldens         ###   ########.fr       */
+/*   Updated: 2025/07/02 14:01:58 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,11 +95,9 @@ int	flood_fill_zone_check(t_map *map)
 		fprintf(stderr, "No player start found.\n");
 		return (0);
 	}
-
 	visited = dup_map(map);
 	if (!visited)
 		return (0);
-
 	if (!flood_fill_from(map, player_x, player_y, visited))
 	{
 		free_visited_partial(visited, map->rows);
@@ -137,12 +135,12 @@ void	open_door(t_data *data)
 	int		x;
 	int		y;
 
-	pose_x = data->character->x_pose + \
-								new_x(data->character->angle_view, data) + 32;
-	pose_y = data->character->y_pose + \
-								new_y(data->character->angle_view, data) + 32;
-	x = (int)pose_x / PIXEL;
-	y = (int)pose_y / PIXEL;
+	pose_x = (data->character->x_pose + 32) / PIXEL + \
+								(0.3 * cos(data->character->angle_view));
+	pose_y = (data->character->y_pose + 32) / PIXEL + \
+								(0.3 * -sin(data->character->angle_view));
+	x = floor(pose_x);
+	y = floor(pose_y);
 	if (data->map->map[y][x] == '2')
 		data->map->map[y][x] = '3';
 	else if (data->map->map[y][x] == '3')
