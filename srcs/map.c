@@ -6,7 +6,7 @@
 /*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 15:37:04 by cgoldens          #+#    #+#             */
-/*   Updated: 2025/07/02 13:54:27 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/07/02 14:01:58 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,11 +95,9 @@ int	flood_fill_zone_check(t_map *map)
 		fprintf(stderr, "No player start found.\n");
 		return (0);
 	}
-
 	visited = dup_map(map);
 	if (!visited)
 		return (0);
-
 	if (!flood_fill_from(map, player_x, player_y, visited))
 	{
 		free_visited_partial(visited, map->rows);

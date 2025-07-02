@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 13:46:51 by cgoldens          #+#    #+#             */
-/*   Updated: 2025/07/02 13:41:53 by cgoldens         ###   ########.fr       */
+/*   Updated: 2025/07/02 14:01:42 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ int	check_rgb(char *str)
 	}
 	return (0);
 }
-
 
 /**
  * @brief Get the color object
@@ -89,7 +88,6 @@ int	add_struct(t_texture *txtr, char *str)
 	free_array(tab);
 	return (1);
 }
-
 
 /**
  * @brief add map in data struct
