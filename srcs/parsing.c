@@ -3,14 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 13:46:51 by cgoldens          #+#    #+#             */
-/*   Updated: 2025/07/01 11:47:41 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/07/02 11:29:03 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3D.h"
+
+int	check_rgb(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		if (!ft_isdigit(str[i]))
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
 
 /**
  * @brief Get the color object
@@ -24,10 +39,11 @@ void	get_color(int color[3], char *str)
 	int		i;
 
 	i = 0;
+	printf("%s\n", str);
 	tab = ft_split(str, ',');
 	while (i < 3)
 	{
-		if (!tab[i] || tab[i][0] == '\n')
+		if (!tab[i] || tab[i][0] == '\n' || check_rgb(tab[i]))
 		{
 			printf("Erreur\nRGB format (255,255,255) is not respected\n");
 			free_array(tab);
@@ -52,6 +68,8 @@ int	add_struct(t_texture *txtr, char *str)
 
 	strip_newline(str);
 	tab = ft_split(str, ' ');
+	if (!tab || !tab[0] || !tab[1])
+		return (0);
 	if (!ft_strncmp(tab[0], "NO", 3))
 		txtr->n_path = ft_strdup(tab[1]);
 	else if (!ft_strncmp(tab[0], "SO", 3))
@@ -72,6 +90,7 @@ int	add_struct(t_texture *txtr, char *str)
 	free_array(tab);
 	return (1);
 }
+
 
 /**
  * @brief add map in data struct
@@ -96,6 +115,8 @@ void	parse_map(int fd, t_data *data, char *old_buf)
 			strip_newline(buf);
 			raw_lines[line_idx++] = ft_strdup(buf);
 		}
+		else
+			print_error("Error\nMap integrity compromise", EXIT_FAILURE);
 		free(buf);
 		buf = get_next_line(fd);
 	}
@@ -120,7 +141,6 @@ void	parsing(int fd, t_data *data)
 	buf = get_next_line(fd);
 	while (buf != NULL)
 	{
-		printf("%s", buf);
 		if (!(!ft_strcmp(buf, "\n")))
 		{
 			if (count != MAX_DATA)
@@ -134,8 +154,7 @@ void	parsing(int fd, t_data *data)
 		free(buf);
 		buf = get_next_line(fd);
 	}
-	if (check_texture(data->texture))
-		exit(EXIT_FAILURE);
-	if (check_map(data->map))
+	if (check_texture(data->texture) || check_map(data->map)
+		|| integrity_check(data->map))
 		exit(EXIT_FAILURE);
 }

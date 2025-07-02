@@ -6,7 +6,7 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/21 15:15:26 by cgoldens          #+#    #+#             */
-/*   Updated: 2025/05/22 11:35:05 by cgoldens         ###   ########.fr       */
+/*   Updated: 2025/07/01 15:26:00 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	is_valid_cell(t_map *map, int x, int y)
  */
 int	is_accessible(char c)
 {
-	return (c == '0' || is_player(c) || c == '2');
+	return (c == '0' || is_player(c) || c == '2' || c == '3');
 }
 
 /**
@@ -112,23 +112,20 @@ int	flood_fill_from(t_map *map, int x, int y, char **visited)
 
 	if (!is_valid_cell(map, x, y))
 		return (0);
-	if (visited[x][y] || map->map[x][y] == '1')
+	if (visited[x][y] == '.')
 		return (1);
 	c = map->map[x][y];
 	if (c == ' ' || c == '\0')
 		return (0);
-	if (!is_accessible(c))
+	if (!is_accessible(c) || c == '1')
 		return (1);
 	if (!check_neighbors(map, x, y))
 		return (0);
-	visited[x][y] = 1;
-	if (!flood_fill_from(map, x - 1, y, visited))
-		return (0);
-	if (!flood_fill_from(map, x + 1, y, visited))
-		return (0);
-	if (!flood_fill_from(map, x, y - 1, visited))
-		return (0);
-	if (!flood_fill_from(map, x, y + 1, visited))
-		return (0);
-	return (1);
+	visited[x][y] = '.';
+	return (
+		flood_fill_from(map, x - 1, y, visited)
+		&& flood_fill_from(map, x + 1, y, visited)
+		&& flood_fill_from(map, x, y - 1, visited)
+		&& flood_fill_from(map, x, y + 1, visited)
+	);
 }

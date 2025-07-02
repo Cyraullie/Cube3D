@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 15:37:04 by cgoldens          #+#    #+#             */
-/*   Updated: 2025/06/30 17:21:13 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/07/02 11:45:44 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,12 @@ int	check_neighbors(t_map *map, int x, int y)
 	{
 		nx = x + dx[i];
 		ny = y + dy[i];
+		if (nx < 0 || nx >= map->rows || ny < 0)
+			return (0);
+		if (ny >= (int)ft_strlen(map->map[nx]))
+			return (0);
+		if (!is_valid_cell(map, nx, ny))
+			return (0);
 		if (!is_valid_cell(map, x, y) || y >= (int)ft_strlen(map->map[x]))
 			return (0);
 		if (map->map[nx][ny] == ' ' || map->map[nx][ny] == '\0')
@@ -45,35 +51,28 @@ int	check_neighbors(t_map *map, int x, int y)
 	return (1);
 }
 
-/**
- * @brief Allocates and initializes the visited matrix.
- *
- * The visited matrix tracks which cells have been visited during the flood fill.
- * It is allocated based on the map's dimensions and initialized to zero.
- *
- * @param map Pointer to the map structure.
- * @return A pointer to the allocated visited matrix, or NULL on failure.
- */
-static char	**init_visited(t_map *map)
+int	find_player(t_map *map, int *px, int *py)
 {
-	char	**visited;
-	int		i;
+	int	x;
+	int	y;
 
-	visited = malloc(sizeof(char *) * map->rows);
-	if (!visited)
-		return (NULL);
-	i = 0;
-	while (i < map->rows)
+	x = 0;
+	while (x < map->rows)
 	{
-		visited[i] = calloc(map->cols, sizeof(char));
-		if (!visited[i])
+		y = 0;
+		while (y < (int)ft_strlen(map->map[x]))
 		{
-			free_visited_partial(visited, i);
-			return (NULL);
+			if (is_player(map->map[x][y]))
+			{
+				*px = x;
+				*py = y;
+				return (1);
+			}
+			y++;
 		}
-		i++;
+		x++;
 	}
-	return (visited);
+	return (0);
 }
 
 /**
@@ -88,28 +87,26 @@ static char	**init_visited(t_map *map)
 int	flood_fill_zone_check(t_map *map)
 {
 	char	**visited;
-	int		x;
-	int		y;
+	int		player_x;
+	int		player_y;
 
-	visited = init_visited(map);
+	if (!find_player(map, &player_x, &player_y))
+	{
+		fprintf(stderr, "No player start found.\n");
+		return (0);
+	}
+
+	visited = dup_map(map);
 	if (!visited)
 		return (0);
-	x = 0;
-	while (x < map->rows)
+
+	if (!flood_fill_from(map, player_x, player_y, visited))
 	{
-		y = 0;
-		while (y < map->cols)
-		{
-			if (!visited[x][y] && is_accessible(map->map[x][y]))
-			{
-				if (!flood_fill_from(map, x, y, visited))
-					return (free_visited_partial(visited, map->rows), 0);
-			}
-			y++;
-		}
-		x++;
+		free_visited_partial(visited, map->rows);
+		return (0);
 	}
-	return (free_visited_partial(visited, map->rows), 1);
+	free_visited_partial(visited, map->rows);
+	return (1);
 }
 
 /**
@@ -124,10 +121,15 @@ int	flood_fill_zone_check(t_map *map)
 int	integrity_check(t_map *map)
 {
 	if (!flood_fill_zone_check(map))
-		return (1);
+		return (printf("Error\nMap integrity compromise\n"), 1);
 	return (0);
 }
 
+/**
+ * @brief 
+ * 
+ * @param data 
+ */
 void	open_door(t_data *data)
 {
 	double	pose_x;

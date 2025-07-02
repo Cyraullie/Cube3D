@@ -6,7 +6,7 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 15:59:14 by cgoldens          #+#    #+#             */
-/*   Updated: 2025/06/03 16:07:45 by cgoldens         ###   ########.fr       */
+/*   Updated: 2025/07/02 11:31:27 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,4 +53,16 @@ void	get_map_dimensions(char **lines, t_map *map)
 		map->rows++;
 		i++;
 	}
+}
+
+/**
+ * @brief 
+ * 
+ * @param msg 
+ * @param status 
+ */
+void	print_error(char *msg, int status)
+{
+	printf("%s\n", msg);
+	exit(status);
 }

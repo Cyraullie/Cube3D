@@ -3,16 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   functions.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 15:46:40 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/07/01 11:27:48 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/07/02 11:23:29 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #ifndef FUNCTIONS_H
 # define FUNCTIONS_H
+
+
+void		print_error(char *msg, int status);
 
 //parsing.c
 void		parsing(int fd, t_data *data);
