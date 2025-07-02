@@ -6,7 +6,7 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 15:37:04 by cgoldens          #+#    #+#             */
-/*   Updated: 2025/07/01 15:27:29 by cgoldens         ###   ########.fr       */
+/*   Updated: 2025/07/02 11:45:44 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,30 @@ int	check_neighbors(t_map *map, int x, int y)
 	return (1);
 }
 
+int	find_player(t_map *map, int *px, int *py)
+{
+	int	x;
+	int	y;
+
+	x = 0;
+	while (x < map->rows)
+	{
+		y = 0;
+		while (y < (int)ft_strlen(map->map[x]))
+		{
+			if (is_player(map->map[x][y]))
+			{
+				*px = x;
+				*py = y;
+				return (1);
+			}
+			y++;
+		}
+		x++;
+	}
+	return (0);
+}
+
 /**
  * @brief Performs flood fill to check if accessible zones are closed.
  *
@@ -63,30 +87,26 @@ int	check_neighbors(t_map *map, int x, int y)
 int	flood_fill_zone_check(t_map *map)
 {
 	char	**visited;
-	int		x;
-	int		y;
+	int		player_x;
+	int		player_y;
+
+	if (!find_player(map, &player_x, &player_y))
+	{
+		fprintf(stderr, "No player start found.\n");
+		return (0);
+	}
 
 	visited = dup_map(map);
 	if (!visited)
 		return (0);
-	x = 0;
-	while (x < map->rows)
+
+	if (!flood_fill_from(map, player_x, player_y, visited))
 	{
-		y = 0;
-		while (y < map->cols)
-		{
-			if (is_accessible(map->map[x][y]))
-			{
-				if (!flood_fill_from(map, x, y, visited))
-				{
-					return (free_visited_partial(visited, map->rows), 0);
-				}
-			}
-			y++;
-		}
-		x++;
+		free_visited_partial(visited, map->rows);
+		return (0);
 	}
-	return (free_visited_partial(visited, map->rows), 1);
+	free_visited_partial(visited, map->rows);
+	return (1);
 }
 
 /**
