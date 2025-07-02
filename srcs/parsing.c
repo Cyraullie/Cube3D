@@ -6,11 +6,26 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 13:46:51 by cgoldens          #+#    #+#             */
-/*   Updated: 2025/07/01 15:29:37 by cgoldens         ###   ########.fr       */
+/*   Updated: 2025/07/02 11:29:03 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3D.h"
+
+int	check_rgb(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		if (!ft_isdigit(str[i]))
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
 
 /**
  * @brief Get the color object
@@ -24,10 +39,11 @@ void	get_color(int color[3], char *str)
 	int		i;
 
 	i = 0;
+	printf("%s\n", str);
 	tab = ft_split(str, ',');
 	while (i < 3)
 	{
-		if (!tab[i] || tab[i][0] == '\n')
+		if (!tab[i] || tab[i][0] == '\n' || check_rgb(tab[i]))
 		{
 			printf("Erreur\nRGB format (255,255,255) is not respected\n");
 			free_array(tab);
@@ -71,6 +87,7 @@ int	add_struct(t_texture *txtr, char *str)
 	return (1);
 }
 
+
 /**
  * @brief add map in data struct
  * 
@@ -94,6 +111,8 @@ void	parse_map(int fd, t_data *data, char *old_buf)
 			strip_newline(buf);
 			raw_lines[line_idx++] = ft_strdup(buf);
 		}
+		else
+			print_error("Error\nMap integrity compromise", EXIT_FAILURE);
 		free(buf);
 		buf = get_next_line(fd);
 	}
