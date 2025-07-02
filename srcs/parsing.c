@@ -6,7 +6,7 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 13:46:51 by cgoldens          #+#    #+#             */
-/*   Updated: 2025/07/02 11:29:03 by cgoldens         ###   ########.fr       */
+/*   Updated: 2025/07/02 13:41:53 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ void	get_color(int color[3], char *str)
 	int		i;
 
 	i = 0;
-	printf("%s\n", str);
 	tab = ft_split(str, ',');
 	while (i < 3)
 	{
