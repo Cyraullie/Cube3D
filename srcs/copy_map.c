@@ -6,7 +6,7 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 15:59:14 by cgoldens          #+#    #+#             */
-/*   Updated: 2025/07/01 13:53:56 by cgoldens         ###   ########.fr       */
+/*   Updated: 2025/07/02 14:23:53 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,10 @@ static void	fill_map_lines(char **raw_lines, t_map *map, int max_len)
 		while (j < max_len)
 		{
 			if (raw_lines[i][j] == '\0')
+			{
 				end++;
+				break ;
+			}
 			map->map[i][j] = ' ';
 			if (end == 0)
 				map->map[i][j] = raw_lines[i][j];

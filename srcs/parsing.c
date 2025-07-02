@@ -6,7 +6,7 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 13:46:51 by cgoldens          #+#    #+#             */
-/*   Updated: 2025/07/02 13:41:53 by cgoldens         ###   ########.fr       */
+/*   Updated: 2025/07/02 14:21:17 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,7 @@ void	parse_map(int fd, t_data *data, char *old_buf)
 			raw_lines[line_idx++] = ft_strdup(buf);
 		}
 		else
-			print_error("Error\nMap integrity compromise", EXIT_FAILURE);
+			print_error("Error\nCutted map", EXIT_FAILURE);
 		free(buf);
 		buf = get_next_line(fd);
 	}
