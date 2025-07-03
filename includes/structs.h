@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 15:41:29 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/07/01 11:29:11 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/07/03 11:15:06 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,19 +49,32 @@ typedef struct s_character
 	double	move_speed;
 }	t_character;
 
+typedef struct s_identifiers
+{
+	int		no;
+	int		so;
+	int		we;
+	int		ea;
+	int		f;
+	int		c;
+	int		complete;
+}	t_identifiers;
+
+
 typedef struct s_texture
 {
-	t_img	*north;
-	char	*n_path;
-	t_img	*south;
-	char	*s_path;
-	t_img	*west;
-	char	*w_path;
-	t_img	*east;
-	char	*e_path;
-	int		f_color[3];
-	int		c_color[3];
-	t_img	*c_door;
+	t_identifiers	*id;
+	t_img			*north;
+	char			*n_path;
+	t_img			*south;
+	char			*s_path;
+	t_img			*west;
+	char			*w_path;
+	t_img			*east;
+	char			*e_path;
+	int				f_color[3];
+	int				c_color[3];
+	t_img			*c_door;
 }	t_texture;
 
 typedef struct s_key

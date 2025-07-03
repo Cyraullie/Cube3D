@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 17:22:42 by cgoldens          #+#    #+#             */
-/*   Updated: 2025/07/01 11:51:46 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/07/03 11:48:06 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	free_visited_partial(char **visited, int limit)
 	free(visited);
 }
 
-static void	free_text(t_texture *text, void *mlx)
+void	free_text(t_texture *text, void *mlx)
 {
 	mlx_destroy_image(mlx, text->north->ptr);
 	mlx_destroy_image(mlx, text->south->ptr);
@@ -78,6 +78,7 @@ int	close_window(void *param)
 	data = (t_data *)param;
 	free(data->character);
 	free_text(data->texture, data->window->mlx);
+	free(data->texture->id);
 	free(data->texture);
 	free(data->key);
 	free_array(data->map->map);
@@ -87,4 +88,28 @@ int	close_window(void *param)
 	free(data->window->mlx);
 	free(data->window);
 	exit(0);
+}
+
+/**
+ * @brief 
+ * 
+ * @param msg 
+ * @param status 
+ */
+void	print_error(char *msg, int status, t_data *data)
+{
+	printf("%s\n", msg);
+	free(data->character);
+	//TODO le mlx_destroy fait de la merde
+	free_text(data->texture, data->window->mlx);
+	free(data->texture->id);
+	free(data->texture);
+	free(data->key);
+	free_array(data->map->map);
+	free(data->map);
+	mlx_destroy_window(data->window->mlx, data->window->win);
+	mlx_destroy_display(data->window->mlx);
+	free(data->window->mlx);
+	free(data->window);
+	exit(status);
 }

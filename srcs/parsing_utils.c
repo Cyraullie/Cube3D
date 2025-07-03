@@ -6,7 +6,7 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 15:59:14 by cgoldens          #+#    #+#             */
-/*   Updated: 2025/07/02 11:31:27 by cgoldens         ###   ########.fr       */
+/*   Updated: 2025/07/03 11:30:44 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,11 +58,38 @@ void	get_map_dimensions(char **lines, t_map *map)
 /**
  * @brief 
  * 
- * @param msg 
- * @param status 
+ * @param str 
+ * @return int 
  */
-void	print_error(char *msg, int status)
+int	check_rgb(char *str)
 {
-	printf("%s\n", msg);
-	exit(status);
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		if (!ft_isdigit(str[i]))
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
+int	is_map_line(const char *line)
+{
+	int	i;
+
+	if (!line)
+		return (0);
+	i = 0;
+	while (line[i])
+	{
+		if (line[i] != '0' && line[i] != '1' && line[i] != ' '
+			&& line[i] != 'N' && line[i] != 'S' && line[i] != 'E'
+			&& line[i] != 'W' && line[i] != '2' && line[i] != '3')
+			return (0);
+		i++;
+	}
+	// Si la ligne contient au moins un chiffre (évite les lignes vides remplies d'espaces)
+	return (i > 0);
 }

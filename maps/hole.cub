@@ -5,12 +5,12 @@ SO ./assets/wall_south.xpm
 
 
 
-C 1,221,45
+CF 1,221,45
 
 
 
 
-WE ./assets/wall_west.xpm
+WA ./assets/wall_west.xpm
 
 
 

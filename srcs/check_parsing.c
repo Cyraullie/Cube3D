@@ -6,7 +6,7 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 14:56:59 by cgoldens          #+#    #+#             */
-/*   Updated: 2025/07/02 16:25:20 by cgoldens         ###   ########.fr       */
+/*   Updated: 2025/07/03 11:39:53 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,6 +105,17 @@ void	check_parsing(t_data *data)
 		|| integrity_check(data->map))
 	{
 		//TODO free data here
+		free(data->character);
+		free_text(data->texture, data->window->mlx);
+		free(data->texture->id);
+		free(data->texture);
+		free(data->key);
+		free_array(data->map->map);
+		free(data->map);
+		mlx_destroy_window(data->window->mlx, data->window->win);
+		mlx_destroy_display(data->window->mlx);
+		free(data->window->mlx);
+		free(data->window);
 		exit(EXIT_FAILURE);
 	}
 }
