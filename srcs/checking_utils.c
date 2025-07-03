@@ -6,7 +6,7 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 14:46:23 by cgoldens          #+#    #+#             */
-/*   Updated: 2025/07/02 16:30:45 by cgoldens         ###   ########.fr       */
+/*   Updated: 2025/07/03 10:40:39 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,10 +86,11 @@ int	handle_texture_error(t_texture *txtr)
 		return (printf("Error\nNo SO identifier find"), 1);
 	if (!txtr->w_path)
 		return (printf("Error\nNo WE identifier find"), 1);
-//TODO didnt work
-	if (!txtr->c_color[0] && !txtr->c_color[1] && !txtr->c_color[2])
+	if (txtr->c_color[0] == -1 && txtr->c_color[1] == -1
+		&& txtr->c_color[2] == -1)
 		return (printf("Error\nNo C identifier find"), 1);
-	if (!txtr->f_color[0] && !txtr->f_color[1] && !txtr->f_color[2])
+	if (txtr->f_color[0] == -1 && txtr->f_color[1] == -1
+		&& txtr->f_color[2] == -1)
 		return (printf("Error\nNo F identifier find"), 1);
 
 	return (0);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   graphic_constructor.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/23 10:17:36 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/07/01 11:26:44 by cgoldens         ###   ########.fr       */
+/*   Updated: 2025/07/03 10:38:50 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@
  */
 void	texture_constructor(t_texture *texture)
 {
+	int	i;
+
 	texture->north = malloc(sizeof(t_img));
 	texture->south = malloc(sizeof(t_img));
 	texture->west = malloc(sizeof(t_img));
@@ -28,6 +30,13 @@ void	texture_constructor(t_texture *texture)
 	texture->s_path = NULL;
 	texture->w_path = NULL;
 	texture->e_path = NULL;
+	i = 0;
+	while (i < 3)
+	{
+		texture->c_color[i] = -1;
+		texture->f_color[i] = -1;
+		i++;
+	}
 }
 
 /**
