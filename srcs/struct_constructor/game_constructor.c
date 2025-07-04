@@ -6,12 +6,12 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 16:42:35 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/07/03 10:55:45 by cgoldens         ###   ########.fr       */
+/*   Updated: 2025/07/04 16:11:56 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3D.h"
-//TODO a changer apres parce que plius comme ca :)
+
 /**
  * @brief constructor of windows structure
  * 
@@ -82,7 +82,8 @@ void	data_constructor(t_data *data, char *argv)
 	int		fd;
 
 	if (open(argv, __O_DIRECTORY) != -1)
-		print_error("Error\nThis path is a folder not a file", EXIT_FAILURE, data);
+		print_error("Error\nThis path is a folder not a file", \
+					EXIT_FAILURE, data);
 	fd = open(argv, O_RDONLY);
 	data->actual_frame = get_time();
 	data->texture = malloc(sizeof(t_texture));
@@ -93,7 +94,6 @@ void	data_constructor(t_data *data, char *argv)
 	map_constructor(data->map);
 	texture_constructor(data->texture);
 	parsing(fd, data);
-	close(fd);
 	window_constructor(data->window);
 	load_image(data);
 	character_constructor(data->character, data->window->mlx, data->map);

@@ -6,7 +6,7 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 14:56:59 by cgoldens          #+#    #+#             */
-/*   Updated: 2025/07/03 11:39:53 by cgoldens         ###   ########.fr       */
+/*   Updated: 2025/07/04 16:07:20 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,24 +98,58 @@ int	check_map(t_map *map)
 	return (0);
 }
 
-
+/**
+ * @brief check if all data in file are correct
+ * 
+ * @param data 
+ */
 void	check_parsing(t_data *data)
 {
+	if (!has_all_identifiers(data->texture->id))
+		print_error("Error\nOne or more identifier missing", EXIT_FAILURE, data);
 	if (check_texture(data->texture) || check_map(data->map)
 		|| integrity_check(data->map))
 	{
-		//TODO free data here
 		free(data->character);
-		free_text(data->texture, data->window->mlx);
+		free(data->texture->north);
+		free(data->texture->n_path);
+		free(data->texture->south);
+		free(data->texture->s_path);
+		free(data->texture->east);
+		free(data->texture->e_path);
+		free(data->texture->west);
+		free(data->texture->w_path);
+		free(data->texture->c_door);
 		free(data->texture->id);
 		free(data->texture);
-		free(data->key);
 		free_array(data->map->map);
+		free(data->key);
 		free(data->map);
-		mlx_destroy_window(data->window->mlx, data->window->win);
-		mlx_destroy_display(data->window->mlx);
-		free(data->window->mlx);
 		free(data->window);
 		exit(EXIT_FAILURE);
 	}
+}
+
+/**
+ * @brief check if a string is fill with space
+ * 
+ * @param str 
+ * @return int 
+ */
+int	is_empty_or_whitespace(const char *str)
+{
+	int	i;
+
+	if (!str)
+		return (1);
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] != ' ' && str[i] != '\t'
+			&& str[i] != '\n' && str[i] != '\v'
+			&& str[i] != '\f' && str[i] != '\r')
+			return (0);
+		i++;
+	}
+	return (1);
 }

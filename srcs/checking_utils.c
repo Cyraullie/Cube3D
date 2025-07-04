@@ -6,7 +6,7 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 14:46:23 by cgoldens          #+#    #+#             */
-/*   Updated: 2025/07/03 11:35:22 by cgoldens         ###   ########.fr       */
+/*   Updated: 2025/07/04 16:07:56 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,14 +70,13 @@ int	check_path(char *path)
 }
 
 /**
- * @brief 
+ * @brief handle error from identifier
  * 
  * @param txtr 
  * @return int 
  */
 int	handle_texture_error(t_texture *txtr)
 {
-	//TODO check if message are ok
 	if (!txtr->n_path)
 		return (printf("Error\nNo NO identifier find"), 1);
 	if (!txtr->e_path)
@@ -97,7 +96,7 @@ int	handle_texture_error(t_texture *txtr)
 }
 
 /**
- * @brief 
+ * @brief check state of identifier in .cub file
  * 
  * @param id 
  * @return int 
@@ -105,28 +104,4 @@ int	handle_texture_error(t_texture *txtr)
 int	has_all_identifiers(t_identifiers *id)
 {
 	return (id->no && id->so && id->we && id->ea && id->f && id->c);
-}
-
-/**
- * @brief 
- * 
- * @param str 
- * @return int 
- */
-int	is_empty_or_whitespace(const char *str)
-{
-	int	i;
-
-	if (!str)
-		return (1);
-	i = 0;
-	while (str[i])
-	{
-		if (str[i] != ' ' && str[i] != '\t' &&
-			str[i] != '\n' && str[i] != '\v' &&
-			str[i] != '\f' && str[i] != '\r')
-			return (0);
-		i++;
-	}
-	return (1);
 }

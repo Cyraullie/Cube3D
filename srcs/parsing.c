@@ -6,7 +6,7 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 13:46:51 by cgoldens          #+#    #+#             */
-/*   Updated: 2025/07/03 11:46:05 by cgoldens         ###   ########.fr       */
+/*   Updated: 2025/07/04 16:12:57 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	get_color(int color[3], char *str)
 }
 
 /**
- * @brief 
+ * @brief function to check when an identifier are update
  * 
  * @param tab 
  * @param txtr 
@@ -78,7 +78,7 @@ int	add_struct(t_texture *txtr, char *str)
 	strip_newline(str);
 	tab = ft_split(str, ' ');
 	if (!tab || !tab[0] || !tab[1])
-		return (0);
+		return (free_array(tab), 0);
 	count_identifier(tab[0], txtr);
 	if (!ft_strncmp(tab[0], "NO", 3))
 		txtr->n_path = ft_strdup(tab[1]);
@@ -115,20 +115,19 @@ void	parse_map(int fd, t_data *data, char *old_buf)
 	buf = old_buf;
 	while (buf != NULL)
 	{
-		if (!(!ft_strcmp(buf, "\n")))
-		{
-			strip_newline(buf);
-			raw_lines[line_idx++] = ft_strdup(buf);
-		}
-		else
-			print_error("Error\nCutted map", EXIT_FAILURE, data);
+		strip_newline(buf);
+		raw_lines[line_idx++] = ft_strdup(buf);
 		free(buf);
 		buf = get_next_line(fd);
 	}
 	raw_lines[line_idx] = NULL;
-	get_map_dimensions(raw_lines, data->map);
-	copy_map(raw_lines, data->map);
-	free_array(raw_lines);
+	if (check_init_map(raw_lines))
+	{
+		free_tab_and_close(fd, buf, raw_lines);
+		print_error("Error\nCutted map", EXIT_FAILURE, data);
+	}
+	map_data(raw_lines, data);
+	free_buff_array(raw_lines, buf);
 }
 
 /**
@@ -144,33 +143,24 @@ void	parsing(int fd, t_data *data)
 	buf = get_next_line(fd);
 	while (buf != NULL)
 	{
-		if (!ft_strcmp(buf, "\n") || is_empty_or_whitespace(buf))
+		if (!(!ft_strcmp(buf, "\n") || is_empty_or_whitespace(buf)))
 		{
-			free(buf);
-			buf = get_next_line(fd);
-			continue ;
-		}
-		if (!has_all_identifiers(data->texture->id))
-		{
-			if (!add_struct(data->texture, buf))
+			if (!has_all_identifiers(data->texture->id))
+				add_struct(data->texture, buf);
+			else if (is_map_line(buf))
 			{
-				free(buf);
-				print_error("Error\nIdentifier invalid", EXIT_FAILURE, data);
+				parse_map(fd, data, buf);
+				break ;
 			}
-		}
-		else if (is_map_line(buf))
-		{
-			parse_map(fd, data, buf);
-			free(buf);
-			break ;
-		}
-		else
-		{
-			free(buf);
-			print_error("Error\nInvalid line", EXIT_FAILURE, data);
+			else
+			{
+				free_and_close(fd, buf);
+				print_error("Error\nInvalid line", EXIT_FAILURE, data);
+			}
 		}
 		free(buf);
 		buf = get_next_line(fd);
 	}
+	close(fd);
 	check_parsing(data);
 }

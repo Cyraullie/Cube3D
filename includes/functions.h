@@ -6,7 +6,7 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 15:46:40 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/07/03 11:43:47 by cgoldens         ###   ########.fr       */
+/*   Updated: 2025/07/04 16:03:06 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,11 @@
 # define FUNCTIONS_H
 
 
+int			check_init_map(char **map);
+void		map_data(char **raw_lines, t_data *data);
+void		free_and_close(int fd, char *str);
+void		free_tab_and_close(int fd, char *str, char **tab);
+void		free_buff_array(char **tab, char *buf);
 int			handle_texture_error(t_texture *txtr);
 int			check_path(char *path);
 int			check_color(int color[3]);

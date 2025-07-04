@@ -6,7 +6,7 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/23 10:17:36 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/07/03 11:38:50 by cgoldens         ###   ########.fr       */
+/*   Updated: 2025/07/04 14:58:32 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ void	image_constructor(t_img *img, void *mlx, int height, int width)
  */
 void	map_constructor(t_map *map)
 {
+	map->map = NULL;
 	map->cols = 0;
 	map->rows = 0;
 	map->direction = 0.0;

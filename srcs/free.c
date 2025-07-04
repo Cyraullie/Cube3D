@@ -6,7 +6,7 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 17:22:42 by cgoldens          #+#    #+#             */
-/*   Updated: 2025/07/03 11:48:06 by cgoldens         ###   ########.fr       */
+/*   Updated: 2025/07/04 16:09:30 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,12 @@ void	free_visited_partial(char **visited, int limit)
 	free(visited);
 }
 
+/**
+ * @brief free all texture data
+ * 
+ * @param text 
+ * @param mlx 
+ */
 void	free_text(t_texture *text, void *mlx)
 {
 	mlx_destroy_image(mlx, text->north->ptr);
@@ -71,6 +77,12 @@ void	free_text(t_texture *text, void *mlx)
 	free(text->c_door);
 }
 
+/**
+ * @brief free all data before close program
+ * 
+ * @param param 
+ * @return int 
+ */
 int	close_window(void *param)
 {
 	t_data	*data;
@@ -91,7 +103,7 @@ int	close_window(void *param)
 }
 
 /**
- * @brief 
+ * @brief print error message and free all data and close program
  * 
  * @param msg 
  * @param status 
@@ -100,16 +112,26 @@ void	print_error(char *msg, int status, t_data *data)
 {
 	printf("%s\n", msg);
 	free(data->character);
-	//TODO le mlx_destroy fait de la merde
-	free_text(data->texture, data->window->mlx);
+	if (data->texture->n_path != NULL)
+		free(data->texture->n_path);
+	if (data->texture->s_path != NULL)
+		free(data->texture->s_path);
+	if (data->texture->e_path != NULL)
+		free(data->texture->e_path);
+	if (data->texture->w_path != NULL)
+		free(data->texture->w_path);
+	if (data->texture->c_door != NULL)
+		free(data->texture->c_door);
+	if (data->map->map != NULL)
+		free_array(data->map->map);
+	free(data->texture->north);
+	free(data->texture->south);
+	free(data->texture->east);
+	free(data->texture->west);
 	free(data->texture->id);
 	free(data->texture);
 	free(data->key);
-	free_array(data->map->map);
 	free(data->map);
-	mlx_destroy_window(data->window->mlx, data->window->win);
-	mlx_destroy_display(data->window->mlx);
-	free(data->window->mlx);
 	free(data->window);
 	exit(status);
 }

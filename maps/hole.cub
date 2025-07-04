@@ -5,12 +5,12 @@ SO ./assets/wall_south.xpm
 
 
 
-CF 1,221,45
+C 1,221,45
 
 
 
 
-WA ./assets/wall_west.xpm
+WE ./assets/wall_west.xpm
 
 
 
@@ -23,6 +23,7 @@ NO ./assets/wall_north.xpm
 
 1111 
 1001110
+
 1000W1
 100111 1
 1111000000000000000000000000000000000000000000000000000000000000000000000000  000000001
