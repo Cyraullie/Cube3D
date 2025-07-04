@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 15:37:04 by cgoldens          #+#    #+#             */
-/*   Updated: 2025/07/02 14:01:58 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/07/04 16:10:00 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,7 +124,7 @@ int	integrity_check(t_map *map)
 }
 
 /**
- * @brief 
+ * @brief function to open/close target door
  * 
  * @param data 
  */

@@ -6,7 +6,7 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 15:59:14 by cgoldens          #+#    #+#             */
-/*   Updated: 2025/07/02 11:31:27 by cgoldens         ###   ########.fr       */
+/*   Updated: 2025/07/04 16:10:24 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,13 +56,56 @@ void	get_map_dimensions(char **lines, t_map *map)
 }
 
 /**
- * @brief 
+ * @brief check if rgb channel are correct
  * 
- * @param msg 
- * @param status 
+ * @param str 
+ * @return int 
  */
-void	print_error(char *msg, int status)
+int	check_rgb(char *str)
 {
-	printf("%s\n", msg);
-	exit(status);
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		if (!ft_isdigit(str[i]))
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
+int	is_map_line(const char *line)
+{
+	int	i;
+	int	has_valid_char;
+
+	if (!line)
+		return (0);
+	i = 0;
+	has_valid_char = 0;
+	while (line[i])
+	{
+		if (line[i] != '0' && line[i] != '1' && line[i] != ' '
+			&& line[i] != 'N' && line[i] != 'S' && line[i] != 'E'
+			&& line[i] != 'W' && line[i] != '2' && line[i] != '3'
+			&& line[i] != '\n')
+			return (0);
+		if (line[i] != ' ' && line[i] != '\n')
+			has_valid_char = 1;
+		i++;
+	}
+	return (has_valid_char);
+}
+
+/**
+ * @brief function to get all map data
+ * 
+ * @param raw_lines 
+ * @param data 
+ */
+void	map_data(char **raw_lines, t_data *data)
+{
+	get_map_dimensions(raw_lines, data->map);
+	copy_map(raw_lines, data->map);
 }

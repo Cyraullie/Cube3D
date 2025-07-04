@@ -6,25 +6,13 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 13:46:51 by cgoldens          #+#    #+#             */
-/*   Updated: 2025/07/02 16:23:43 by cgoldens         ###   ########.fr       */
+/*   Updated: 2025/07/04 16:12:57 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3D.h"
 
-int	check_rgb(char *str)
-{
-	int	i;
 
-	i = 0;
-	while (str[i])
-	{
-		if (!ft_isdigit(str[i]))
-			return (1);
-		i++;
-	}
-	return (0);
-}
 
 /**
  * @brief Get the color object
@@ -54,6 +42,29 @@ void	get_color(int color[3], char *str)
 }
 
 /**
+ * @brief function to check when an identifier are update
+ * 
+ * @param tab 
+ * @param txtr 
+ */
+void	count_identifier(char *tab, t_texture *txtr)
+{
+	if (!ft_strncmp(tab, "NO", 3))
+		txtr->id->no = 1;
+	else if (!ft_strncmp(tab, "SO", 3))
+		txtr->id->so = 1;
+	else if (!ft_strncmp(tab, "WE", 3))
+		txtr->id->we = 1;
+	else if (!ft_strncmp(tab, "EA", 3))
+		txtr->id->ea = 1;
+	else if (!ft_strncmp(tab, "F", 2))
+		txtr->id->f = 1;
+	else if (!ft_strncmp(tab, "C", 2))
+		txtr->id->c = 1;
+}
+
+
+/**
  * @brief add data with identifier in struct
  * 
  * @param txtr 
@@ -67,7 +78,8 @@ int	add_struct(t_texture *txtr, char *str)
 	strip_newline(str);
 	tab = ft_split(str, ' ');
 	if (!tab || !tab[0] || !tab[1])
-		return (0);
+		return (free_array(tab), 0);
+	count_identifier(tab[0], txtr);
 	if (!ft_strncmp(tab[0], "NO", 3))
 		txtr->n_path = ft_strdup(tab[1]);
 	else if (!ft_strncmp(tab[0], "SO", 3))
@@ -103,20 +115,19 @@ void	parse_map(int fd, t_data *data, char *old_buf)
 	buf = old_buf;
 	while (buf != NULL)
 	{
-		if (!(!ft_strcmp(buf, "\n")))
-		{
-			strip_newline(buf);
-			raw_lines[line_idx++] = ft_strdup(buf);
-		}
-		else
-			print_error("Error\nCutted map", EXIT_FAILURE);
+		strip_newline(buf);
+		raw_lines[line_idx++] = ft_strdup(buf);
 		free(buf);
 		buf = get_next_line(fd);
 	}
 	raw_lines[line_idx] = NULL;
-	get_map_dimensions(raw_lines, data->map);
-	copy_map(raw_lines, data->map);
-	free_array(raw_lines);
+	if (check_init_map(raw_lines))
+	{
+		free_tab_and_close(fd, buf, raw_lines);
+		print_error("Error\nCutted map", EXIT_FAILURE, data);
+	}
+	map_data(raw_lines, data);
+	free_buff_array(raw_lines, buf);
 }
 
 /**
@@ -128,24 +139,28 @@ void	parse_map(int fd, t_data *data, char *old_buf)
 void	parsing(int fd, t_data *data)
 {
 	char	*buf;
-	int		count;
 
-	count = 0;
 	buf = get_next_line(fd);
 	while (buf != NULL)
 	{
-		if (!(!ft_strcmp(buf, "\n")))
+		if (!(!ft_strcmp(buf, "\n") || is_empty_or_whitespace(buf)))
 		{
-			if (count != MAX_DATA)
-				count += add_struct(data->texture, buf);
-			else
+			if (!has_all_identifiers(data->texture->id))
+				add_struct(data->texture, buf);
+			else if (is_map_line(buf))
 			{
 				parse_map(fd, data, buf);
 				break ;
+			}
+			else
+			{
+				free_and_close(fd, buf);
+				print_error("Error\nInvalid line", EXIT_FAILURE, data);
 			}
 		}
 		free(buf);
 		buf = get_next_line(fd);
 	}
+	close(fd);
 	check_parsing(data);
 }

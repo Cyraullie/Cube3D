@@ -6,7 +6,7 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/23 10:17:36 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/07/03 10:38:50 by cgoldens         ###   ########.fr       */
+/*   Updated: 2025/07/04 14:58:32 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,19 @@ void	texture_constructor(t_texture *texture)
 	texture->s_path = NULL;
 	texture->w_path = NULL;
 	texture->e_path = NULL;
-	i = 0;
-	while (i < 3)
+	texture->id = malloc(sizeof(t_identifiers));
+	texture->id->no = 0;
+	texture->id->so = 0;
+	texture->id->we = 0;
+	texture->id->ea = 0;
+	texture->id->f = 0;
+	texture->id->c = 0;
+	texture->id->complete = 0;
+	i = -1;
+	while (++i < 3)
 	{
 		texture->c_color[i] = -1;
 		texture->f_color[i] = -1;
-		i++;
 	}
 }
 
@@ -63,6 +70,7 @@ void	image_constructor(t_img *img, void *mlx, int height, int width)
  */
 void	map_constructor(t_map *map)
 {
+	map->map = NULL;
 	map->cols = 0;
 	map->rows = 0;
 	map->direction = 0.0;

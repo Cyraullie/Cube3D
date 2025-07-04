@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 13:50:46 by cgoldens          #+#    #+#             */
-/*   Updated: 2025/06/30 17:24:04 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/07/03 10:46:57 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 # include <stdlib.h>
 # include <stdbool.h>
 # include <math.h>
+# include <errno.h>
 
 # define PIXEL			64
 # define FOV			66

@@ -6,7 +6,7 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 15:59:14 by cgoldens          #+#    #+#             */
-/*   Updated: 2025/07/02 14:23:53 by cgoldens         ###   ########.fr       */
+/*   Updated: 2025/07/04 16:06:33 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,4 +126,23 @@ void	copy_map(char **raw_lines, t_map *map)
 		return ;
 	fill_map_lines(raw_lines, map, max_len);
 	line_count = 0;
+}
+
+/**
+ * @brief check if the created map is correct
+ * 
+ * @param map 
+ */
+int	check_init_map(char **map)
+{
+	int	i;
+
+	i = 0;
+	while (map[i])
+	{
+		if (!ft_strcmp(map[i], "\0"))
+			return (1);
+		i++;
+	}
+	return (0);
 }

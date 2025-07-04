@@ -6,7 +6,7 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 14:46:23 by cgoldens          #+#    #+#             */
-/*   Updated: 2025/07/03 10:40:39 by cgoldens         ###   ########.fr       */
+/*   Updated: 2025/07/04 16:07:56 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,14 +70,13 @@ int	check_path(char *path)
 }
 
 /**
- * @brief 
+ * @brief handle error from identifier
  * 
  * @param txtr 
  * @return int 
  */
 int	handle_texture_error(t_texture *txtr)
 {
-	//TODO check if message are ok
 	if (!txtr->n_path)
 		return (printf("Error\nNo NO identifier find"), 1);
 	if (!txtr->e_path)
@@ -94,4 +93,15 @@ int	handle_texture_error(t_texture *txtr)
 		return (printf("Error\nNo F identifier find"), 1);
 
 	return (0);
+}
+
+/**
+ * @brief check state of identifier in .cub file
+ * 
+ * @param id 
+ * @return int 
+ */
+int	has_all_identifiers(t_identifiers *id)
+{
+	return (id->no && id->so && id->we && id->ea && id->f && id->c);
 }

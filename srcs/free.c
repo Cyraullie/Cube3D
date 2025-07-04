@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 17:22:42 by cgoldens          #+#    #+#             */
-/*   Updated: 2025/07/01 11:51:46 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/07/04 16:09:30 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,13 @@ void	free_visited_partial(char **visited, int limit)
 	free(visited);
 }
 
-static void	free_text(t_texture *text, void *mlx)
+/**
+ * @brief free all texture data
+ * 
+ * @param text 
+ * @param mlx 
+ */
+void	free_text(t_texture *text, void *mlx)
 {
 	mlx_destroy_image(mlx, text->north->ptr);
 	mlx_destroy_image(mlx, text->south->ptr);
@@ -71,6 +77,12 @@ static void	free_text(t_texture *text, void *mlx)
 	free(text->c_door);
 }
 
+/**
+ * @brief free all data before close program
+ * 
+ * @param param 
+ * @return int 
+ */
 int	close_window(void *param)
 {
 	t_data	*data;
@@ -78,6 +90,7 @@ int	close_window(void *param)
 	data = (t_data *)param;
 	free(data->character);
 	free_text(data->texture, data->window->mlx);
+	free(data->texture->id);
 	free(data->texture);
 	free(data->key);
 	free_array(data->map->map);
@@ -87,4 +100,38 @@ int	close_window(void *param)
 	free(data->window->mlx);
 	free(data->window);
 	exit(0);
+}
+
+/**
+ * @brief print error message and free all data and close program
+ * 
+ * @param msg 
+ * @param status 
+ */
+void	print_error(char *msg, int status, t_data *data)
+{
+	printf("%s\n", msg);
+	free(data->character);
+	if (data->texture->n_path != NULL)
+		free(data->texture->n_path);
+	if (data->texture->s_path != NULL)
+		free(data->texture->s_path);
+	if (data->texture->e_path != NULL)
+		free(data->texture->e_path);
+	if (data->texture->w_path != NULL)
+		free(data->texture->w_path);
+	if (data->texture->c_door != NULL)
+		free(data->texture->c_door);
+	if (data->map->map != NULL)
+		free_array(data->map->map);
+	free(data->texture->north);
+	free(data->texture->south);
+	free(data->texture->east);
+	free(data->texture->west);
+	free(data->texture->id);
+	free(data->texture);
+	free(data->key);
+	free(data->map);
+	free(data->window);
+	exit(status);
 }
