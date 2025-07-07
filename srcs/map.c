@@ -6,7 +6,7 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 15:37:04 by cgoldens          #+#    #+#             */
-/*   Updated: 2025/07/04 16:10:00 by cgoldens         ###   ########.fr       */
+/*   Updated: 2025/07/07 14:39:43 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,16 +135,19 @@ void	open_door(t_data *data)
 	int		x;
 	int		y;
 
-	pose_x = (data->character->x_pose + 32) / PIXEL + \
-								(0.3 * cos(data->character->angle_view));
-	pose_y = (data->character->y_pose + 32) / PIXEL + \
-								(0.3 * -sin(data->character->angle_view));
-	x = floor(pose_x);
-	y = floor(pose_y);
+	pose_x = (data->character->x_pose + 32) / PIXEL;
+	pose_y = (data->character->y_pose + 32) / PIXEL;
+	x = floor(pose_x + (0.3 * cos(data->character->angle_view)));
+	y = floor(pose_y + (0.3 * -sin(data->character->angle_view)));
 	if (data->map->map[y][x] == '2')
+	{
 		data->map->map[y][x] = '3';
-	else if (data->map->map[y][x] == '3')
+	}
+	else if (data->map->map[y][x] == '3'
+			&& data->map->map[(int)floor(pose_y)][(int)floor(pose_x)] != '3')
+	{
 		data->map->map[y][x] = '2';
+	}
 	else
 		return ;
 }
