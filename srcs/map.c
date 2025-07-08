@@ -6,7 +6,7 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 15:37:04 by cgoldens          #+#    #+#             */
-/*   Updated: 2025/07/07 14:39:43 by cgoldens         ###   ########.fr       */
+/*   Updated: 2025/07/08 16:24:24 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,16 +135,17 @@ void	open_door(t_data *data)
 	int		x;
 	int		y;
 
+	//TODO remettre la verifie de si la position de la porte est la meme que du player pour empecher de fermer la porte sur soit
 	pose_x = (data->character->x_pose + 32) / PIXEL;
 	pose_y = (data->character->y_pose + 32) / PIXEL;
-	x = floor(pose_x + (0.3 * cos(data->character->angle_view)));
-	y = floor(pose_y + (0.3 * -sin(data->character->angle_view)));
+	x = floor(pose_x + (cos(data->character->angle_view * 6.28 / 360)));
+	y = floor(pose_y + (sin(data->character->angle_view * 6.28 / 360)));
 	if (data->map->map[y][x] == '2')
 	{
 		data->map->map[y][x] = '3';
 	}
 	else if (data->map->map[y][x] == '3'
-			&& data->map->map[(int)floor(pose_y)][(int)floor(pose_x)] != '3')
+			&& data->map->map[(int)pose_y][(int)pose_x] != '3')
 	{
 		data->map->map[y][x] = '2';
 	}
