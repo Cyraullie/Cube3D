@@ -6,7 +6,7 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/30 16:37:35 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/07/03 11:43:52 by cgoldens         ###   ########.fr       */
+/*   Updated: 2025/07/08 16:02:38 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,10 @@ int	key_press(int key, void *param)
 	if (key == KEY_RIGHT)
 		data->key->right = true;
 	if (key == KEY_E)
-		data->key->e = true;
+	{
+		if (check_door(data) == 1)
+			open_door(data);
+	}
 	return (0);
 }
 
@@ -53,10 +56,5 @@ int	key_unpress(int key, void *param)
 		data->key->left = false;
 	if (key == KEY_RIGHT)
 		data->key->right = false;
-	if (key == KEY_E)
-	{
-		data->key->e = false;
-		data->key->e_lock = false;
-	}
 	return (0);
 }

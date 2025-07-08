@@ -3,12 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   colision.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/27 10:47:50 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/07/02 13:54:25 by ktintim-         ###   ########.fr       */
+/*   Created: Invalid date        by                   #+#    #+#             */
+/*   Updated: 2025/07/08 16:29:42 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #include "../../includes/cub3D.h"
 
@@ -116,6 +117,7 @@ int	check_d(t_data *data)
 		return (0);
 }
 
+
 /**
  * @brief check if a door is front of player
  * 
@@ -128,11 +130,11 @@ int	check_door(t_data *data)
 	double	pose_y;
 	int		x;
 	int		y;
-
+	
 	pose_x = (data->character->x_pose + 32) / PIXEL + \
-								(0.3 * cos(data->character->angle_view));
+								(cos(data->character->angle_view * 6.28 / 360));
 	pose_y = (data->character->y_pose + 32) / PIXEL + \
-								(0.3 * -sin(data->character->angle_view));
+								(sin(data->character->angle_view * 6.28 / 360));
 	x = floor(pose_x);
 	y = floor(pose_y);
 	if (data->map->map[y][x] == '2' || data->map->map[y][x] == '3')
