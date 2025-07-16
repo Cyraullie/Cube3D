@@ -5,11 +5,10 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2025/07/08 16:29:42 by cgoldens         ###   ########.fr       */
+/*   Created: 2025/07/16 13:11:09 by cgoldens          #+#    #+#             */
+/*   Updated: 2025/07/16 13:11:12 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "../../includes/cub3D.h"
 
@@ -27,13 +26,13 @@ int	check_w(t_data *data)
 	int		y;
 
 	pose_x = data->character->x_pose + \
-							new_x(data->character->angle_view, data) + 32;
+new_x(data->character->angle_view, data) + 32;
 	pose_y = data->character->y_pose + \
-							new_y(data->character->angle_view, data) + 32;
+new_y(data->character->angle_view, data) + 32;
 	x = (int)pose_x / PIXEL;
 	y = (int)pose_y / PIXEL;
 	if (data->map->map[y][x] == '1' || data->map->map[y][x] == '2' \
-		|| data->map->map[y][x] == ' ' || !data->map->map[y][x])
+|| data->map->map[y][x] == ' ' || !data->map->map[y][x])
 		return (1);
 	else
 		return (0);
@@ -53,13 +52,13 @@ int	check_s(t_data *data)
 	int		y;
 
 	pose_x = data->character->x_pose - \
-				new_x(data->character->angle_view, data) + 32;
+new_x(data->character->angle_view, data) + 32;
 	pose_y = data->character->y_pose - \
-				new_y(data->character->angle_view, data) + 32;
+new_y(data->character->angle_view, data) + 32;
 	x = (int)pose_x / PIXEL;
 	y = (int)pose_y / PIXEL;
 	if (data->map->map[y][x] == '1' || data->map->map[y][x] == '2' \
-		|| data->map->map[y][x] == ' ' || !data->map->map[y][x])
+|| data->map->map[y][x] == ' ' || !data->map->map[y][x])
 		return (1);
 	else
 		return (0);
@@ -79,13 +78,13 @@ int	check_a(t_data *data)
 	int		y;
 
 	pose_x = data->character->x_pose + \
-				new_x(data->character->angle_view - 90, data) + 32;
+new_x(data->character->angle_view - 90, data) + 32;
 	pose_y = data->character->y_pose + \
-				new_y(data->character->angle_view - 90, data) + 32;
+new_y(data->character->angle_view - 90, data) + 32;
 	x = (int)pose_x / PIXEL;
 	y = (int)pose_y / PIXEL;
 	if (data->map->map[y][x] == '1' || data->map->map[y][x] == '2' \
-		|| data->map->map[y][x] == ' ' || !data->map->map[y][x])
+|| data->map->map[y][x] == ' ' || !data->map->map[y][x])
 		return (1);
 	else
 		return (0);
@@ -105,18 +104,17 @@ int	check_d(t_data *data)
 	int		y;
 
 	pose_x = data->character->x_pose + \
-				new_x(data->character->angle_view + 90, data) + 32;
+new_x(data->character->angle_view + 90, data) + 32;
 	pose_y = data->character->y_pose + \
-				new_y(data->character->angle_view + 90, data) + 32;
+new_y(data->character->angle_view + 90, data) + 32;
 	x = (int)pose_x / PIXEL;
 	y = (int)pose_y / PIXEL;
 	if (data->map->map[y][x] == '1' || data->map->map[y][x] == '2' \
-		|| data->map->map[y][x] == ' ' || !data->map->map[y][x])
+|| data->map->map[y][x] == ' ' || !data->map->map[y][x])
 		return (1);
 	else
 		return (0);
 }
-
 
 /**
  * @brief check if a door is front of player
@@ -130,11 +128,11 @@ int	check_door(t_data *data)
 	double	pose_y;
 	int		x;
 	int		y;
-	
+
 	pose_x = (data->character->x_pose + 32) / PIXEL + \
-								(cos(data->character->angle_view * 6.28 / 360));
+(cos(data->character->angle_view * 6.28 / 360));
 	pose_y = (data->character->y_pose + 32) / PIXEL + \
-								(sin(data->character->angle_view * 6.28 / 360));
+(sin(data->character->angle_view * 6.28 / 360));
 	x = floor(pose_x);
 	y = floor(pose_y);
 	if (data->map->map[y][x] == '2' || data->map->map[y][x] == '3')

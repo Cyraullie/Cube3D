@@ -6,7 +6,7 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 15:14:59 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/07/08 16:02:47 by cgoldens         ###   ########.fr       */
+/*   Updated: 2025/07/16 13:11:51 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	mouse_move(int x, int y, void *param)
 		data->character->angle_view -= data->character->view_speed / 1.5;
 	}
 	mlx_mouse_move(data->window->mlx, data->window->win, \
-					SCR_WIDTH / 2, SCR_HEIGHT / 2);
+SCR_WIDTH / 2, SCR_HEIGHT / 2);
 	return (0);
 }
 
@@ -46,9 +46,9 @@ static void	key_press_2(t_data *data)
 	if (data->key->d == true && check_d(data) == 0)
 	{
 		data->character->x_pose += new_x(data->character->angle_view + 90, \
-																		data);
+data);
 		data->character->y_pose += new_y(data->character->angle_view + 90, \
-																		data);
+data);
 	}
 	if (data->key->left == true)
 		data->character->angle_view -= data->character->view_speed;
@@ -75,9 +75,9 @@ void	key_pressed(t_data *data)
 	if (data->key->a == true && check_a(data) == 0)
 	{
 		data->character->x_pose += new_x(data->character->angle_view - 90, \
-																		data);
+data);
 		data->character->y_pose += new_y(data->character->angle_view - 90, \
-																		data);
+data);
 	}
 	key_press_2(data);
 }

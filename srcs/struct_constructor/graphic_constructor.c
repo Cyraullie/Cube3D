@@ -6,7 +6,7 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/23 10:17:36 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/07/04 14:58:32 by cgoldens         ###   ########.fr       */
+/*   Updated: 2025/07/16 13:09:00 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	image_constructor(t_img *img, void *mlx, int height, int width)
 	img->width = width;
 	img->ptr = mlx_new_image(mlx, img->width, img->height);
 	img->addr = mlx_get_data_addr(img->ptr, &img->bpp, \
-		&img->line_length, &img->endian);
+&img->line_length, &img->endian);
 }
 
 /**
@@ -82,5 +82,5 @@ void	xpm_img_constructor(t_img *img, char *path, void *mlx)
 {
 	img->ptr = mlx_xpm_file_to_image(mlx, path, &img->width, &img->height);
 	img->addr = mlx_get_data_addr(img->ptr, &img->bpp, \
-		&img->line_length, &img->endian);
+&img->line_length, &img->endian);
 }

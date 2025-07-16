@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rotate_image.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/21 10:49:54 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/06/30 16:37:02 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/07/16 13:02:08 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ static void	create_image(t_img *src, t_img *dest, t_vars vars)
 	int	color;
 
 	if (vars.src_x >= 0 && vars.src_x < src->width \
-		&& vars.src_y >= 0 && vars.src_y < src->height)
+&& vars.src_y >= 0 && vars.src_y < src->height)
 	{
 		color = get_pixel(src, vars.src_x, vars.src_y);
 		put_pixel(dest, vars.x, vars.y, color);
@@ -95,9 +95,9 @@ void	rotate_image(t_img *src, t_img *dest, double angle_degre)
 			vars.dx = vars.x - vars.dest_cx;
 			vars.dy = vars.y - vars.dest_cy;
 			vars.src_x = (int)(cos(vars.angle) * vars.dx + \
-						sin(vars.angle) * vars.dy + vars.cx);
+sin(vars.angle) * vars.dy + vars.cx);
 			vars.src_y = (int)(-sin(vars.angle) * vars.dx + \
-						cos(vars.angle) * vars.dy + vars.cy);
+cos(vars.angle) * vars.dy + vars.cy);
 			create_image(src, dest, vars);
 			vars.x++;
 		}

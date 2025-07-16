@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   grid_search.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/31 11:24:44 by kilian            #+#    #+#             */
-/*   Updated: 2025/07/02 13:36:48 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/07/16 13:13:10 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 static void	init_grid(t_grid *vars, t_data *data, double angle)
 {
 	vars->ray_x = data->character->x_pose + \
-					(PIXEL / 2);
+(PIXEL / 2);
 	vars->ray_y = data->character->y_pose + \
-					(PIXEL / 2);
+(PIXEL / 2);
 	vars->ray_angle = return_radian(angle);
 	vars->dir_x = cos(vars->ray_angle);
 	vars->dir_y = sin(vars->ray_angle);
@@ -40,25 +40,25 @@ static void	direction(t_grid *vars)
 	{
 		vars->step_x = -1;
 		vars->side_dist_x = \
-			(vars->ray_x / PIXEL - vars->map_x) * vars->delta_dist_x;
+(vars->ray_x / PIXEL - vars->map_x) * vars->delta_dist_x;
 	}
 	else
 	{
 		vars->step_x = 1;
 		vars->side_dist_x = \
-			((vars->map_x + 1) - vars->ray_x / PIXEL) * vars->delta_dist_x;
+((vars->map_x + 1) - vars->ray_x / PIXEL) * vars->delta_dist_x;
 	}
 	if (vars->dir_y < 0)
 	{
 		vars->step_y = -1;
 		vars->side_dist_y = \
-			(vars->ray_y / PIXEL - vars->map_y) * vars->delta_dist_y;
+(vars->ray_y / PIXEL - vars->map_y) * vars->delta_dist_y;
 	}
 	else
 	{
 		vars->step_y = 1;
 		vars->side_dist_y = \
-			((vars->map_y + 1) - vars->ray_y / PIXEL) * vars->delta_dist_y;
+((vars->map_y + 1) - vars->ray_y / PIXEL) * vars->delta_dist_y;
 	}
 }
 
@@ -99,8 +99,8 @@ static void	dda_loop(t_grid *vars, t_data *data, double angle)
 			vars->side = return_side(angle, 0);
 		}
 		if (data->map->map[vars->map_y][vars->map_x] == '1' || \
-			data->map->map[vars->map_y][vars->map_x] == '2' || \
-			!data->map->map[vars->map_y][vars->map_x])
+data->map->map[vars->map_y][vars->map_x] == '2' || \
+!data->map->map[vars->map_y][vars->map_x])
 		{
 			vars->hit_wall = 1;
 			if (data->map->map[vars->map_y][vars->map_x] == '2')
@@ -125,14 +125,14 @@ void	intersection_point(t_data *data, t_grid *grid, double angle)
 	{
 		grid->dst = grid->side_dist_x - grid->delta_dist_x;
 		hit_y = ((data->character->y_pose + PIXEL / 2) / PIXEL) + \
-					grid->dir_y * (grid->dst);
+grid->dir_y * (grid->dst);
 		grid->percent = hit_y - floor(hit_y);
 	}
 	else
 	{
 		grid->dst = grid->side_dist_y - grid->delta_dist_y;
 		hit_x = ((data->character->x_pose + PIXEL / 2) / PIXEL) + \
-					grid->dir_x * (grid->dst);
+grid->dir_x * (grid->dst);
 		grid->percent = hit_x - floor(hit_x);
 	}
 }

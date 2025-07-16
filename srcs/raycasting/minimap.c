@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minimap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/15 11:27:46 by kilian            #+#    #+#             */
-/*   Updated: 2025/07/01 09:58:35 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/07/16 13:09:37 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,15 +58,15 @@ char	get_tile(t_data *data, int x, int y)
 	int	map_y;
 
 	world_x = ((data->character->x_pose + PIXEL) \
-					/ PIXEL) * TILE_SIZE - MINIMAP_RADIUS + x;
+/ PIXEL) * TILE_SIZE - MINIMAP_RADIUS + x;
 	world_y = ((data->character->y_pose + PIXEL) \
-					/ PIXEL) * TILE_SIZE - MINIMAP_RADIUS + y;
+/ PIXEL) * TILE_SIZE - MINIMAP_RADIUS + y;
 	world_x -= TILE_SIZE / 2;
 	world_y -= TILE_SIZE / 2;
 	map_x = world_x / TILE_SIZE;
 	map_y = world_y / TILE_SIZE;
 	if (map_x < 0 || map_y < 0 || \
-		map_x >= data->map->cols || map_y >= data->map->rows)
+map_x >= data->map->cols || map_y >= data->map->rows)
 		return ('\0');
 	return (data->map->map[map_y][map_x]);
 }
@@ -83,7 +83,7 @@ void	put_tile(t_img *minimap, char tile, int x, int y)
 		if (tile == '1')
 			put_pixel(minimap, x, y, 0x888888);
 		if (tile == '0' || tile == 'W' || tile == 'S' || \
-			tile == 'N' || tile == 'E' || tile == '3')
+tile == 'N' || tile == 'E' || tile == '3')
 			put_pixel(minimap, x, y, 0x222222);
 		if (tile == ' ' || tile == '\0')
 			put_pixel(minimap, x, y, 0x010101);
