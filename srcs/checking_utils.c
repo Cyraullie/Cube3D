@@ -6,7 +6,7 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 14:46:23 by cgoldens          #+#    #+#             */
-/*   Updated: 2025/07/04 16:07:56 by cgoldens         ###   ########.fr       */
+/*   Updated: 2025/07/16 13:14:36 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@ int	check_color(int color[3])
 	while (i < 3)
 	{
 		if (!(color[i] >= 0 && color[i] <= 255))
-			return (printf("Error\nThe color channel nb %d is not valid.\n"\
-				, i + 1), 1);
+			return (printf("Error\nThe color channel nb %d is not valid.\n", \
+i + 1), 1);
 		i++;
 	}
 	return (0);
@@ -91,7 +91,6 @@ int	handle_texture_error(t_texture *txtr)
 	if (txtr->f_color[0] == -1 && txtr->f_color[1] == -1
 		&& txtr->f_color[2] == -1)
 		return (printf("Error\nNo F identifier find"), 1);
-
 	return (0);
 }
 

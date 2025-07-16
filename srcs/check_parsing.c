@@ -6,7 +6,7 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 14:56:59 by cgoldens          #+#    #+#             */
-/*   Updated: 2025/07/04 16:07:20 by cgoldens         ###   ########.fr       */
+/*   Updated: 2025/07/16 13:13:35 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,8 @@ int	check_map(t_map *map)
 void	check_parsing(t_data *data)
 {
 	if (!has_all_identifiers(data->texture->id))
-		print_error("Error\nOne or more identifier missing", EXIT_FAILURE, data);
+		print_error("Error\nOne or more identifier missing", \
+EXIT_FAILURE, data);
 	if (check_texture(data->texture) || check_map(data->map)
 		|| integrity_check(data->map))
 	{

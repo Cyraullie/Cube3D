@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/06 15:12:24 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/07/02 13:24:45 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/07/16 13:12:26 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	rgb_to_hex(int color[3])
 }
 
 static int	return_text_pixel(t_img *texture, double percent, \
-								double line_h, int y)
+double line_h, int y)
 {
 	int	text_x;
 	int	text_y;
@@ -34,21 +34,21 @@ static int	get_texture_pixel(t_data *data, double line_h,
 {
 	if (grid->door_side != 0)
 		return (return_text_pixel(data->texture->c_door, \
-									grid->percent, line_h, y));
+grid->percent, line_h, y));
 	else
 	{
 		if (grid->side == N)
 			return (return_text_pixel(data->texture->north, \
-										grid->percent, line_h, y));
+grid->percent, line_h, y));
 		else if (grid->side == S)
 			return (return_text_pixel(data->texture->south, \
-										grid->percent, line_h, y));
+grid->percent, line_h, y));
 		else if (grid->side == E)
 			return (return_text_pixel(data->texture->east, \
-										grid->percent, line_h, y));
+grid->percent, line_h, y));
 		else if (grid->side == W)
 			return (return_text_pixel(data->texture->west, \
-										grid->percent, line_h, y));
+grid->percent, line_h, y));
 	}
 	return (0);
 }

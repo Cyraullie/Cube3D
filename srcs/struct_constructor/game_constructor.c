@@ -6,7 +6,7 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 16:42:35 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/07/08 16:25:39 by cgoldens         ###   ########.fr       */
+/*   Updated: 2025/07/16 13:08:42 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,15 +59,15 @@ void	character_constructor(t_character *character, void *mlx, t_map *map)
 void	load_image(t_data *data)
 {
 	xpm_img_constructor(data->texture->north, data->texture->n_path, \
-						data->window->mlx);
+data->window->mlx);
 	xpm_img_constructor(data->texture->south, data->texture->s_path, \
-						data->window->mlx);
+data->window->mlx);
 	xpm_img_constructor(data->texture->east, data->texture->e_path, \
-						data->window->mlx);
+data->window->mlx);
 	xpm_img_constructor(data->texture->west, data->texture->w_path, \
-						data->window->mlx);
+data->window->mlx);
 	xpm_img_constructor(data->texture->c_door, CLOSE_DOOR_TXTR, \
-						data->window->mlx);
+data->window->mlx);
 }
 
 /**
@@ -82,7 +82,7 @@ void	data_constructor(t_data *data, char *argv)
 
 	if (open(argv, __O_DIRECTORY) != -1)
 		print_error("Error\nThis path is a folder not a file", \
-					EXIT_FAILURE, data);
+EXIT_FAILURE, data);
 	fd = open(argv, O_RDONLY);
 	data->actual_frame = get_time();
 	data->texture = malloc(sizeof(t_texture));

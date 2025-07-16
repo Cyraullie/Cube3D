@@ -6,13 +6,11 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 13:46:51 by cgoldens          #+#    #+#             */
-/*   Updated: 2025/07/04 16:12:57 by cgoldens         ###   ########.fr       */
+/*   Updated: 2025/07/16 13:14:57 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3D.h"
-
-
 
 /**
  * @brief Get the color object
@@ -62,7 +60,6 @@ void	count_identifier(char *tab, t_texture *txtr)
 	else if (!ft_strncmp(tab, "C", 2))
 		txtr->id->c = 1;
 }
-
 
 /**
  * @brief add data with identifier in struct

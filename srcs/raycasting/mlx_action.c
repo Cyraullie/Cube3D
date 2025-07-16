@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_action.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 15:06:39 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/07/02 14:01:23 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/07/15 11:07:10 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static int	game_loop(void	*param)
 	draw_ceiling(&screen_image, rgb_to_hex(data->texture->c_color));
 	put_minimap(data, &screen_image);
 	mlx_put_image_to_window(data->window->mlx, \
-		data->window->win, screen_image.ptr, 0, 0);
+data->window->win, screen_image.ptr, 0, 0);
 	mlx_destroy_image(data->window->mlx, screen_image.ptr);
 	return (0);
 }
