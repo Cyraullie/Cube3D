@@ -6,7 +6,7 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 13:46:48 by cgoldens          #+#    #+#             */
-/*   Updated: 2025/07/24 17:33:36 by cgoldens         ###   ########.fr       */
+/*   Updated: 2025/07/24 17:43:03 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ int	check_file_name(char *path)
 
 	len_filename = ft_strlen(path);
 	len_ext = ft_strlen(ext);
+	//TODO add strncmp maybe to avoid .cubb
 	if (!ft_strcmp(path, ".cub"))
 		return (1);
 	return (!ft_strcmp(path + (len_filename - len_ext), ext) == 0);
