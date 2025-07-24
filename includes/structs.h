@@ -6,7 +6,7 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 15:41:29 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/07/08 16:25:21 by cgoldens         ###   ########.fr       */
+/*   Updated: 2025/07/24 16:56:48 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ typedef struct s_window
 	void	*win;
 }	t_window;
 
-typedef struct s_map {
+typedef struct s_map
+{
 	char	**map;
 	int		rows;
 	int		cols;
@@ -30,7 +31,8 @@ typedef struct s_map {
 	float	c_y;
 }				t_map;
 
-typedef struct s_img {
+typedef struct s_img
+{
 	void	*ptr;
 	char	*addr;
 	int		bpp;
@@ -60,7 +62,6 @@ typedef struct s_identifiers
 	int		complete;
 }	t_identifiers;
 
-
 typedef struct s_texture
 {
 	t_identifiers	*id;
@@ -87,7 +88,6 @@ typedef struct s_key
 	bool	right;
 	bool	eshap;
 }	t_key;
-
 
 typedef struct s_data
 {
