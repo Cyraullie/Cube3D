@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kilian <kilian@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 13:50:46 by cgoldens          #+#    #+#             */
-/*   Updated: 2025/07/03 10:46:57 by cgoldens         ###   ########.fr       */
+/*   Updated: 2025/07/25 06:58:21 by kilian           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@
 # define OD				6
 
 # define VIEW_SPEED		200
-# define MOVE_SPEED		300
+# define MOVE_SPEED		150
 
 # define _USE_MATH_DEFINES
 # ifndef M_PI
