@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   checking_utils.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kilian <kilian@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 14:46:23 by cgoldens          #+#    #+#             */
-/*   Updated: 2025/07/16 13:14:36 by cgoldens         ###   ########.fr       */
+/*   Updated: 2025/07/25 07:03:21 by kilian           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3D.h"
+#include "../../includes/cub3D.h"
 
 /**
  * @brief check the char to know if it's a valid char in the map

@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   free_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kilian <kilian@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/04 15:34:09 by cgoldens          #+#    #+#             */
-/*   Updated: 2025/07/04 16:08:52 by cgoldens         ###   ########.fr       */
+/*   Updated: 2025/07/25 07:03:21 by kilian           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3D.h"
+#include "../../includes/cub3D.h"
 
 /**
  * @brief free a string and an array
