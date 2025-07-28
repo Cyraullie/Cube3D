@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_action.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 15:06:39 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/07/15 11:07:10 by cgoldens         ###   ########.fr       */
+/*   Updated: 2025/07/28 13:55:42 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ static int	game_loop(void	*param)
 	t_img	screen_image;
 
 	data = (t_data *)param;
+	update_time(data);
 	image_constructor(&screen_image, data->window->mlx, SCR_HEIGHT, SCR_WIDTH);
 	key_pressed(data);
 	raycasting(data, &screen_image);
@@ -53,7 +54,6 @@ data->window->win, screen_image.ptr, 0, 0);
 
 void	mlx_action(t_data *data)
 {
-	update_time(data);
 	mlx_hook(data->window->win, 6, 1L << 6, mouse_move, data);
 	mlx_hook(data->window->win, 17, 0, close_window, data);
 	mlx_hook(data->window->win, 2, 1L << 0, key_press, data);
