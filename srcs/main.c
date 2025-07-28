@@ -6,7 +6,7 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 13:46:48 by cgoldens          #+#    #+#             */
-/*   Updated: 2025/07/28 10:58:50 by cgoldens         ###   ########.fr       */
+/*   Updated: 2025/07/28 11:00:50 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ check du nom du file.
 Pas de message d'erreur si Identifier apres la map. 
 */
 
-int	find_last_tab(char **tab)
+static int	find_last_tab(char **tab)
 {
 	int	i;
 
@@ -32,7 +32,7 @@ int	find_last_tab(char **tab)
 	return (i - 1);
 }
 
-int	check_file_name(char *path)
+static int	check_file_name(char *path)
 {
 	const char	*ext = ".cub";
 	size_t		len_filename;

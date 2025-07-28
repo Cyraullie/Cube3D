@@ -17,6 +17,7 @@ WE ./assets/wall_west.xpm
 
 
 
+NO ./assets/wall_north.xpm
 
 
 
@@ -26,5 +27,3 @@ WE ./assets/wall_west.xpm
 100111 1
 1111
 1
-
-NO ./assets/wall_north.xpm

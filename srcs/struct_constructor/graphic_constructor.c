@@ -6,7 +6,7 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/23 10:17:36 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/07/16 13:09:00 by cgoldens         ###   ########.fr       */
+/*   Updated: 2025/07/28 11:34:58 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	texture_constructor(t_texture *texture)
 	texture->id->ea = 0;
 	texture->id->f = 0;
 	texture->id->c = 0;
-	texture->id->complete = 0;
+	texture->id->duplicate = 0;
 	i = -1;
 	while (++i < 3)
 	{

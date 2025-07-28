@@ -6,7 +6,7 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 15:37:04 by cgoldens          #+#    #+#             */
-/*   Updated: 2025/07/08 16:29:53 by cgoldens         ###   ########.fr       */
+/*   Updated: 2025/07/28 11:52:07 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,14 @@ int	check_neighbors(t_map *map, int x, int y)
 	return (1);
 }
 
+/**
+ * @brief function to find the player position
+ * 
+ * @param map 
+ * @param px 
+ * @param py 
+ * @return int 
+ */
 int	find_player(t_map *map, int *px, int *py)
 {
 	int	x;

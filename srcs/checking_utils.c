@@ -6,7 +6,7 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 14:46:23 by cgoldens          #+#    #+#             */
-/*   Updated: 2025/07/16 13:14:36 by cgoldens         ###   ########.fr       */
+/*   Updated: 2025/07/28 11:59:05 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,11 @@ int	check_path(char *path)
 	char	*tmp_path;
 
 	tmp_path = path;
+	if (open(tmp_path, __O_DIRECTORY) != -1)
+	{
+		printf("Error\nThis path is a folder not a file\n");
+		exit(EXIT_FAILURE);
+	}
 	fd = open(tmp_path, O_RDONLY);
 	if (fd == -1)
 	{
@@ -77,20 +82,23 @@ int	check_path(char *path)
  */
 int	handle_texture_error(t_texture *txtr)
 {
+	printf("txtr test %s\n", txtr->n_path);
+	if (txtr->id->duplicate == 1)
+		return (printf("Error\nDouble identifier detected\n"), 1);
 	if (!txtr->n_path)
-		return (printf("Error\nNo NO identifier find"), 1);
+		return (printf("Error\nNo NO identifier find\n"), 1);
 	if (!txtr->e_path)
-		return (printf("Error\nNo EA identifier find"), 1);
+		return (printf("Error\nNo EA identifier find\n"), 1);
 	if (!txtr->s_path)
-		return (printf("Error\nNo SO identifier find"), 1);
+		return (printf("Error\nNo SO identifier find\n"), 1);
 	if (!txtr->w_path)
-		return (printf("Error\nNo WE identifier find"), 1);
+		return (printf("Error\nNo WE identifier find\n"), 1);
 	if (txtr->c_color[0] == -1 && txtr->c_color[1] == -1
 		&& txtr->c_color[2] == -1)
-		return (printf("Error\nNo C identifier find"), 1);
+		return (printf("Error\nNo C identifier find\n"), 1);
 	if (txtr->f_color[0] == -1 && txtr->f_color[1] == -1
 		&& txtr->f_color[2] == -1)
-		return (printf("Error\nNo F identifier find"), 1);
+		return (printf("Error\nNo F identifier find\n"), 1);
 	return (0);
 }
 
