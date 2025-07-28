@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_constructor.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 16:42:35 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/07/16 13:08:42 by cgoldens         ###   ########.fr       */
+/*   Updated: 2025/07/28 15:46:01 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,13 +85,10 @@ void	data_constructor(t_data *data, char *argv)
 EXIT_FAILURE, data);
 	fd = open(argv, O_RDONLY);
 	data->actual_frame = get_time();
-	data->texture = malloc(sizeof(t_texture));
-	data->map = malloc(sizeof(t_map));
-	data->window = malloc(sizeof(t_window));
-	data->character = malloc(sizeof(t_character));
-	data->key = malloc(sizeof(t_key));
+	if (!malloc_data(data))
+		correct_free(data);
 	map_constructor(data->map);
-	texture_constructor(data->texture);
+	texture_constructor(data->texture, data);
 	parsing(fd, data);
 	window_constructor(data->window);
 	load_image(data);

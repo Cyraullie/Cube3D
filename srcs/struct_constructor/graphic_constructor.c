@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   graphic_constructor.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/23 10:17:36 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/07/16 13:09:00 by cgoldens         ###   ########.fr       */
+/*   Updated: 2025/07/28 15:46:09 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,20 +17,16 @@
  * 
  * @param texture 
  */
-void	texture_constructor(t_texture *texture)
+void	texture_constructor(t_texture *texture, t_data *data)
 {
 	int	i;
 
-	texture->north = malloc(sizeof(t_img));
-	texture->south = malloc(sizeof(t_img));
-	texture->west = malloc(sizeof(t_img));
-	texture->east = malloc(sizeof(t_img));
-	texture->c_door = malloc(sizeof(t_img));
+	if (!malloc_texture(texture))
+		correct_free(data);
 	texture->n_path = NULL;
 	texture->s_path = NULL;
 	texture->w_path = NULL;
 	texture->e_path = NULL;
-	texture->id = malloc(sizeof(t_identifiers));
 	texture->id->no = 0;
 	texture->id->so = 0;
 	texture->id->we = 0;
