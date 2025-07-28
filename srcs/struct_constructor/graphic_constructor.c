@@ -6,7 +6,7 @@
 /*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/23 10:17:36 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/07/28 15:46:09 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/07/28 16:01:57 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	texture_constructor(t_texture *texture, t_data *data)
 	texture->id->ea = 0;
 	texture->id->f = 0;
 	texture->id->c = 0;
-	texture->id->complete = 0;
+	texture->id->duplicate = 0;
 	i = -1;
 	while (++i < 3)
 	{

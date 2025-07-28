@@ -6,7 +6,7 @@
 /*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 16:42:35 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/07/28 15:46:01 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/07/28 16:01:41 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,12 +78,9 @@ data->window->mlx);
  */
 void	data_constructor(t_data *data, char *argv)
 {
-	int		fd;
+	int	fd;
 
-	if (open(argv, __O_DIRECTORY) != -1)
-		print_error("Error\nThis path is a folder not a file", \
-EXIT_FAILURE, data);
-	fd = open(argv, O_RDONLY);
+	fd = check_file(argv);
 	data->actual_frame = get_time();
 	if (!malloc_data(data))
 		correct_free(data);

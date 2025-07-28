@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 13:50:46 by cgoldens          #+#    #+#             */
-/*   Updated: 2025/07/28 12:00:19 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/07/28 14:56:16 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@
 # define PIXEL			64
 # define FOV			66
 # define CLOSE_DOOR_TXTR	"./assets/close_door.xpm"
-# define OPEN_DOOR_TXTR	"./assets/open_door.xpm"
 
 # define MINIMAP_SIZE	300
 # define MINIMAP_RADIUS	150
