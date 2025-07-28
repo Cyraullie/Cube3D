@@ -6,7 +6,7 @@
 /*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 15:46:40 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/07/28 16:01:19 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/07/28 16:05:22 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ void		xpm_img_constructor(t_img *img, char *path, void *mlx);
 	//constructor_utils.c
 int			malloc_data(t_data *data);
 int			malloc_texture(t_texture *texture);
+void		correct_free(t_data *data);
 
 //raycasting
 	//mlx_action.c

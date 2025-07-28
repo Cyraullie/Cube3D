@@ -6,7 +6,7 @@
 /*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/28 15:04:21 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/07/28 15:30:08 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/07/28 16:03:52 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,4 +52,5 @@ int	malloc_texture(t_texture *texture)
 	texture->id = malloc(sizeof(t_identifiers));
 	if (!texture->id)
 		return (0);
+	return (1);
 }
