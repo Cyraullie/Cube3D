@@ -6,7 +6,7 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/28 11:53:35 by cgoldens          #+#    #+#             */
-/*   Updated: 2025/07/28 11:54:00 by cgoldens         ###   ########.fr       */
+/*   Updated: 2025/07/28 14:47:07 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,4 +34,58 @@ int	check_double(t_texture *txtr, char *str)
 	else if (!ft_strncmp(str, "C", 2) && txtr->id->c == 1)
 		return (txtr->id->duplicate = 1, 1);
 	return (0);
+}
+
+/**
+ * @brief Get the data object from .cub
+ * 
+ * @param data 
+ * @param buf 
+ * @param fd 
+ * @return int 
+ */
+int	get_data(t_data *data, char *buf, int fd)
+{
+	if (!has_all_identifiers(data->texture->id) && is_map_line(buf))
+	{
+		return (1);
+	}
+	if (!has_all_identifiers(data->texture->id))
+	{
+		add_struct(data->texture, buf);
+	}
+	else if (is_map_line(buf))
+	{
+		return (parse_map(fd, data, buf), 2);
+	}
+	else
+	{
+		free_and_close(fd, buf);
+		print_error("Error\nInvalid line", EXIT_FAILURE, data);
+	}
+	return (0);
+}
+
+/**
+ * @brief 
+ * 
+ * @param path 
+ * @return int 
+ */
+int	check_file(char *path)
+{
+	int		fd;
+
+	if (open(path, __O_DIRECTORY) != -1)
+	{
+		printf("Error\nThis path is a folder not a file\n");
+		exit(EXIT_FAILURE);
+	}
+	fd = open(path, O_RDONLY);
+	if (fd == -1)
+	{
+		printf("Error\nThis path didnt exist\n");
+		exit(EXIT_FAILURE);
+	}
+	return (fd);
 }

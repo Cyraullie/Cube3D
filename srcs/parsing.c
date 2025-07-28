@@ -6,7 +6,7 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 13:46:51 by cgoldens          #+#    #+#             */
-/*   Updated: 2025/07/28 12:00:51 by cgoldens         ###   ########.fr       */
+/*   Updated: 2025/07/28 14:24:52 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,29 +138,24 @@ void	parse_map(int fd, t_data *data, char *old_buf)
 void	parsing(int fd, t_data *data)
 {
 	char	*buf;
+	int		x;
 
+	x = 0;
 	buf = get_next_line(fd);
 	while (buf != NULL)
 	{
 		if (!(!ft_strcmp(buf, "\n") || is_empty_or_whitespace(buf)))
 		{
-			printf("%s", buf);
-			if (!has_all_identifiers(data->texture->id))
-			{
-				printf("cacaiden\n");
-				add_struct(data->texture, buf);
-			}
-			else if (is_map_line(buf))
-			{
-				printf("caca\n");
-				parse_map(fd, data, buf);
-				break ;
-			}
-			else
+			x = get_data(data, buf, fd);
+			if (x == 1)
 			{
 				free_and_close(fd, buf);
-				print_error("Error\nInvalid line", EXIT_FAILURE, data);
+				get_next_line(120000);
+				print_error("Error\nMissing one or more identifier before map",
+					EXIT_FAILURE, data);
 			}
+			else if (x == 2)
+				break ;
 		}
 		free(buf);
 		buf = get_next_line(fd);

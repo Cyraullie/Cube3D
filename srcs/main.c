@@ -6,21 +6,11 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 13:46:48 by cgoldens          #+#    #+#             */
-/*   Updated: 2025/07/28 11:00:50 by cgoldens         ###   ########.fr       */
+/*   Updated: 2025/07/28 14:47:33 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3D.h"
-
-/*
-Attention au parsing,
-double identifier/path.
-Espace dans le path texture.
-Experience utilisateur pas fluide.
-ET LA NORMINETTE.
-check du nom du file.
-Pas de message d'erreur si Identifier apres la map. 
-*/
 
 static int	find_last_tab(char **tab)
 {
@@ -69,7 +59,6 @@ int	main(int argc, char **argv)
 		printf("Error\n.cub file needed\n");
 		exit(EXIT_FAILURE);
 	}
-	//TODO check name of file need to contain .cub but .cub only didnt work
 	data_constructor(&data, argv[1]);
 	mlx_action(&data);
 }

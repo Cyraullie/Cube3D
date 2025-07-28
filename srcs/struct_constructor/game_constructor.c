@@ -6,7 +6,7 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 16:42:35 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/07/28 11:44:30 by cgoldens         ###   ########.fr       */
+/*   Updated: 2025/07/28 14:46:35 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,14 +78,9 @@ data->window->mlx);
  */
 void	data_constructor(t_data *data, char *argv)
 {
-	int		fd;
+	int	fd;
 
-	if (open(argv, __O_DIRECTORY) != -1)
-	{
-		printf("Error\nThis path is a folder not a file\n");
-		exit(EXIT_FAILURE);
-	}
-	fd = open(argv, O_RDONLY);
+	fd = check_file(argv);
 	data->actual_frame = get_time();
 	data->texture = malloc(sizeof(t_texture));
 	data->map = malloc(sizeof(t_map));

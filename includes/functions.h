@@ -6,13 +6,17 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 15:46:40 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/07/28 11:54:50 by cgoldens         ###   ########.fr       */
+/*   Updated: 2025/07/28 14:47:53 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FUNCTIONS_H
 # define FUNCTIONS_H
 
+int			check_file(char *path);
+int			add_struct(t_texture *txtr, char *str);
+void		parse_map(int fd, t_data *data, char *old_buf);
+int			get_data(t_data *data, char *buf, int fd);
 int			check_double(t_texture *txtr, char *str);
 int			check_init_map(char **map);
 void		map_data(char **raw_lines, t_data *data);
