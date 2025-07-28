@@ -6,7 +6,7 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 15:41:29 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/07/24 16:56:48 by cgoldens         ###   ########.fr       */
+/*   Updated: 2025/07/28 11:31:39 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ typedef struct s_identifiers
 	int		ea;
 	int		f;
 	int		c;
-	int		complete;
+	int		duplicate;
 }	t_identifiers;
 
 typedef struct s_texture

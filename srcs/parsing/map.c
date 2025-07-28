@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kilian <kilian@student.42.fr>              +#+  +:+       +#+        */
+/*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 15:37:04 by cgoldens          #+#    #+#             */
-/*   Updated: 2025/07/25 07:03:21 by kilian           ###   ########.fr       */
+/*   Updated: 2025/07/28 14:54:43 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,14 @@ int	check_neighbors(t_map *map, int x, int y)
 	return (1);
 }
 
+/**
+ * @brief function to find the player position
+ * 
+ * @param map 
+ * @param px 
+ * @param py 
+ * @return int 
+ */
 int	find_player(t_map *map, int *px, int *py)
 {
 	int	x;

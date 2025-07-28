@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kilian <kilian@student.42.fr>              +#+  +:+       +#+        */
+/*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 13:46:51 by cgoldens          #+#    #+#             */
-/*   Updated: 2025/07/25 07:03:21 by kilian           ###   ########.fr       */
+/*   Updated: 2025/07/28 14:54:49 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,8 @@ int	add_struct(t_texture *txtr, char *str)
 	tab = ft_split(str, ' ');
 	if (!tab || !tab[0] || !tab[1])
 		return (free_array(tab), 0);
+	if (check_double(txtr, tab[0]))
+		return (free_array(tab), 1);
 	count_identifier(tab[0], txtr);
 	if (!ft_strncmp(tab[0], "NO", 3))
 		txtr->n_path = ft_strdup(tab[1]);
@@ -136,24 +138,24 @@ void	parse_map(int fd, t_data *data, char *old_buf)
 void	parsing(int fd, t_data *data)
 {
 	char	*buf;
+	int		x;
 
+	x = 0;
 	buf = get_next_line(fd);
 	while (buf != NULL)
 	{
 		if (!(!ft_strcmp(buf, "\n") || is_empty_or_whitespace(buf)))
 		{
-			if (!has_all_identifiers(data->texture->id))
-				add_struct(data->texture, buf);
-			else if (is_map_line(buf))
-			{
-				parse_map(fd, data, buf);
-				break ;
-			}
-			else
+			x = get_data(data, buf, fd);
+			if (x == 1)
 			{
 				free_and_close(fd, buf);
-				print_error("Error\nInvalid line", EXIT_FAILURE, data);
+				get_next_line(120000);
+				print_error("Error\nMissing one or more identifier before map",
+					EXIT_FAILURE, data);
 			}
+			else if (x == 2)
+				break ;
 		}
 		free(buf);
 		buf = get_next_line(fd);
