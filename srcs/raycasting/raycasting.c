@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kilian <kilian@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/06 15:12:24 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/07/25 06:53:27 by kilian           ###   ########.fr       */
+/*   Updated: 2025/07/28 13:56:34 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,8 +89,8 @@ void	raycasting(t_data *data, t_img *scn_img)
 		ray_angle = data->character->angle_view + angle_offset;
 		intersection_point(data, &grid, ray_angle);
 		grid.dst *= cos(return_radian(angle_offset));
-		if (grid.dst < 0.1)
-			grid.dst = 0.1;
+		if (grid.dst < 0.2)
+			grid.dst = 0.2;
 		line_h = SCR_HEIGHT / grid.dst;
 		draw_vertical_line(scn_img, &grid, line_h, data);
 		grid.x++;
