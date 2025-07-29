@@ -6,7 +6,7 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 15:46:40 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/07/29 13:17:38 by cgoldens         ###   ########.fr       */
+/*   Updated: 2025/07/29 13:26:28 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,10 +99,6 @@ int			check_door(t_data *data);
 	//minimap.c
 void		put_minimap(t_data *data, t_img *scn_img);
 	//draw_panel.c
-void		draw_square(t_img *img, int square_size, int color);
-void		draw_map(t_data *data, char *map[8]);
-void		draw_line(t_img *img, int color);
-//TODO ^ ? pas utilisee
 void		draw_floor(t_img *scn_img, int color);
 void		draw_ceiling(t_img *scn_img, int color);
 	//rotate_image.c
