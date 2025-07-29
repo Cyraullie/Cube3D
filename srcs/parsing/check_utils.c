@@ -6,7 +6,7 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/28 11:53:35 by cgoldens          #+#    #+#             */
-/*   Updated: 2025/07/29 10:39:01 by cgoldens         ###   ########.fr       */
+/*   Updated: 2025/07/29 16:21:34 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,19 @@ int	check_double(t_texture *txtr, char *str)
 	return (0);
 }
 
+
+int	check_xpm(char *str)
+{
+	char	**tab;
+
+	strip_newline(str);
+	tab = ft_split(str, ' ');
+	if (!tab || !tab[0] || !tab[1])
+		return (free_array(tab), 0);
+	free_array(tab);
+	return (0);
+}
+
 /**
  * @brief Get the data object from .cub
  * 
@@ -47,17 +60,16 @@ int	check_double(t_texture *txtr, char *str)
 int	get_data(t_data *data, char *buf, int fd)
 {
 	if (!has_all_identifiers(data->texture->id) && is_map_line(buf))
-	{
 		return (1);
-	}
 	if (!has_all_identifiers(data->texture->id))
 	{
-		add_struct(data->texture, buf);
+		if (check_xpm(buf) == 0)
+			add_struct(data->texture, buf);
+		else
+			print_error("Error\nPath in %s didn't .xmp", EXIT_FAILURE, data);
 	}
 	else if (is_map_line(buf))
-	{
 		return (parse_map(fd, data, buf), 2);
-	}
 	else
 	{
 		free_and_close(fd, buf);
