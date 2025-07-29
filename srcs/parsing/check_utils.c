@@ -6,7 +6,7 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/28 11:53:35 by cgoldens          #+#    #+#             */
-/*   Updated: 2025/07/29 16:21:34 by cgoldens         ###   ########.fr       */
+/*   Updated: 2025/07/29 16:30:00 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,15 +36,22 @@ int	check_double(t_texture *txtr, char *str)
 	return (0);
 }
 
-
+/**
+ * @brief 
+ * 
+ * @param str 
+ * @return int 
+ */
 int	check_xpm(char *str)
 {
 	char	**tab;
 
 	strip_newline(str);
 	tab = ft_split(str, ' ');
-	if (!tab || !tab[0] || !tab[1])
+	if (!tab || !tab[0] || !tab[1] || !ft_strncmp(tab[0], "C", 2)
+		|| !ft_strncmp(tab[0], "F", 2))
 		return (free_array(tab), 0);
+	printf("%s\n", tab[0]);
 	free_array(tab);
 	return (0);
 }
