@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_protection.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/28 15:02:14 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/07/28 15:57:20 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/07/29 10:29:41 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,4 +82,6 @@ void	correct_free(t_data *data)
 		free(data->character);
 	if (data->key)
 		free(data->key);
+	printf("Error\nMalloc didn't work correctly (skill issue)\n");
+	exit(EXIT_FAILURE);
 }

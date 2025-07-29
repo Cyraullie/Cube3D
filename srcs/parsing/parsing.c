@@ -6,7 +6,7 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 13:46:51 by cgoldens          #+#    #+#             */
-/*   Updated: 2025/07/28 14:54:49 by cgoldens         ###   ########.fr       */
+/*   Updated: 2025/07/29 10:31:11 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,6 +111,9 @@ void	parse_map(int fd, t_data *data, char *old_buf)
 
 	line_idx = 0;
 	raw_lines = malloc(sizeof(char *) * 1024);
+	if (!raw_lines)
+		print_error("Error\nMalloc didn't work correctly (skill issue)",
+			EXIT_FAILURE, data);
 	buf = old_buf;
 	while (buf != NULL)
 	{

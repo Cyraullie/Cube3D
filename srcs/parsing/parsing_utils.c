@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kilian <kilian@student.42.fr>              +#+  +:+       +#+        */
+/*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 15:59:14 by cgoldens          #+#    #+#             */
-/*   Updated: 2025/07/25 07:03:21 by kilian           ###   ########.fr       */
+/*   Updated: 2025/07/29 10:36:03 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,5 +107,7 @@ int	is_map_line(const char *line)
 void	map_data(char **raw_lines, t_data *data)
 {
 	get_map_dimensions(raw_lines, data->map);
-	copy_map(raw_lines, data->map);
+	if (copy_map(raw_lines, data->map))
+		print_error("Error\nMalloc didn't work correctly (skill issue)",
+			EXIT_FAILURE, data);
 }

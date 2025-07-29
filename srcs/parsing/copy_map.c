@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   copy_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kilian <kilian@student.42.fr>              +#+  +:+       +#+        */
+/*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 15:59:14 by cgoldens          #+#    #+#             */
-/*   Updated: 2025/07/25 07:03:21 by kilian           ###   ########.fr       */
+/*   Updated: 2025/07/29 10:37:32 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,13 +43,13 @@ int	get_max_line_length(char **raw_lines)
  * @param line_count Number of lines to allocate.
  * @param max_len Maximum length of each line (number of columns).
  */
-static void	allocate_map_lines(t_map *map, int line_count, int max_len)
+static int	allocate_map_lines(t_map *map, int line_count, int max_len)
 {
 	int	i;
 
 	map->map = malloc(sizeof(char *) * (line_count + 1));
 	if (!map->map)
-		return ;
+		return (1);
 	i = 0;
 	while (i < line_count)
 	{
@@ -60,11 +60,12 @@ static void	allocate_map_lines(t_map *map, int line_count, int max_len)
 				free(map->map[i]);
 			free(map->map);
 			map->map = NULL;
-			return ;
+			return (1);
 		}
 		i++;
 	}
 	map->map[line_count] = NULL;
+	return (0);
 }
 
 /**
@@ -110,7 +111,7 @@ static void	fill_map_lines(char **raw_lines, t_map *map, int max_len)
  * @param raw_lines Array of raw map lines.
  * @param map Map structure to fill.
  */
-void	copy_map(char **raw_lines, t_map *map)
+int	copy_map(char **raw_lines, t_map *map)
 {
 	int	line_count;
 	int	max_len;
@@ -121,11 +122,13 @@ void	copy_map(char **raw_lines, t_map *map)
 	max_len = get_max_line_length(raw_lines);
 	map->rows = line_count;
 	map->cols = max_len;
-	allocate_map_lines(map, line_count, max_len);
+	if (allocate_map_lines(map, line_count, max_len))
+		return (1);
 	if (!map->map)
-		return ;
+		return (1);
 	fill_map_lines(raw_lines, map, max_len);
 	line_count = 0;
+	return (0);
 }
 
 /**
