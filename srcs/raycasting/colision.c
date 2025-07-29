@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   colision.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kilian <kilian@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 13:11:09 by cgoldens          #+#    #+#             */
-/*   Updated: 2025/07/25 06:55:07 by kilian           ###   ########.fr       */
+/*   Updated: 2025/07/29 13:22:20 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ new_x(data->character->angle_view, data) + 32;
 new_y(data->character->angle_view, data) + 32;
 	x = (int)pose_x / PIXEL;
 	y = (int)pose_y / PIXEL;
-	x += 0.1;
-	y += 0.1;
+	x += 0.3;
+	y += 0.3;
 	if (data->map->map[y][x] == '1' || data->map->map[y][x] == '2' \
 || data->map->map[y][x] == ' ' || !data->map->map[y][x])
 		return (1);
@@ -59,8 +59,8 @@ new_x(data->character->angle_view, data) + 32;
 new_y(data->character->angle_view, data) + 32;
 	x = (int)pose_x / PIXEL;
 	y = (int)pose_y / PIXEL;
-	x += 0.1;
-	y += 0.1;
+	x -= 0.3;
+	y -= 0.3;
 	if (data->map->map[y][x] == '1' || data->map->map[y][x] == '2' \
 || data->map->map[y][x] == ' ' || !data->map->map[y][x])
 		return (1);
@@ -87,8 +87,8 @@ new_x(data->character->angle_view - 90, data) + 32;
 new_y(data->character->angle_view - 90, data) + 32;
 	x = (int)pose_x / PIXEL;
 	y = (int)pose_y / PIXEL;
-	x += 0.1;
-	y += 0.1;
+	x += 0.3;
+	y += 0.3;
 	if (data->map->map[y][x] == '1' || data->map->map[y][x] == '2' \
 || data->map->map[y][x] == ' ' || !data->map->map[y][x])
 		return (1);
@@ -115,8 +115,8 @@ new_x(data->character->angle_view + 90, data) + 32;
 new_y(data->character->angle_view + 90, data) + 32;
 	x = (int)pose_x / PIXEL;
 	y = (int)pose_y / PIXEL;
-	x += 0.1;
-	y += 0.1;
+	x += 0.3;
+	y += 0.3;
 	if (data->map->map[y][x] == '1' || data->map->map[y][x] == '2' \
 || data->map->map[y][x] == ' ' || !data->map->map[y][x])
 		return (1);
