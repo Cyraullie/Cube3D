@@ -6,11 +6,13 @@
 /*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 13:11:09 by cgoldens          #+#    #+#             */
-/*   Updated: 2025/07/29 16:33:15 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/07/29 16:50:00 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3D.h"
+
+// TODO faut faire ces colision rallonger de merde la ptn
 
 /**
  * @brief check if the moove dont go in a wall
