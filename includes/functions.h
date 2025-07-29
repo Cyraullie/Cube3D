@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   functions.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 15:46:40 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/07/29 13:26:28 by cgoldens         ###   ########.fr       */
+/*   Updated: 2025/07/29 15:44:06 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,12 +71,12 @@ void		key_constructor(t_key *key);
 void		texture_constructor(t_texture *texture, t_data *data);
 void		map_constructor(t_map *map);
 void		image_constructor(t_img *img, void *mlx, int height, int width);
-void		xpm_img_constructor(t_img *img, char *path, void *mlx);
+void		xpm_img_constructor(t_img *img, char *path, void *mlx, t_data *data);
 	//constructor_utils.c
 int			malloc_data(t_data *data);
 int			malloc_texture(t_texture *texture);
 	//free_protection.c
-void		correct_free(t_data *data);
+void		correct_free(t_data *data, int malloc_index);
 
 //raycasting
 	//mlx_action.c

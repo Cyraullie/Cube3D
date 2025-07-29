@@ -6,7 +6,7 @@
 /*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 16:42:35 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/07/28 16:01:41 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/07/29 16:04:07 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,16 +58,21 @@ void	character_constructor(t_character *character, void *mlx, t_map *map)
 
 void	load_image(t_data *data)
 {
+	data->texture->north->ptr = NULL;
+	data->texture->south->ptr = NULL;
+	data->texture->east->ptr = NULL;
+	data->texture->west->ptr = NULL;
+	data->texture->c_door->ptr = NULL;
 	xpm_img_constructor(data->texture->north, data->texture->n_path, \
-data->window->mlx);
+data->window->mlx, data);
 	xpm_img_constructor(data->texture->south, data->texture->s_path, \
-data->window->mlx);
+data->window->mlx, data);
 	xpm_img_constructor(data->texture->east, data->texture->e_path, \
-data->window->mlx);
+data->window->mlx, data);
 	xpm_img_constructor(data->texture->west, data->texture->w_path, \
-data->window->mlx);
+data->window->mlx, data);
 	xpm_img_constructor(data->texture->c_door, CLOSE_DOOR_TXTR, \
-data->window->mlx);
+data->window->mlx, data);
 }
 
 /**
@@ -83,7 +88,7 @@ void	data_constructor(t_data *data, char *argv)
 	fd = check_file(argv);
 	data->actual_frame = get_time();
 	if (!malloc_data(data))
-		correct_free(data);
+		correct_free(data, 1);
 	map_constructor(data->map);
 	texture_constructor(data->texture, data);
 	parsing(fd, data);

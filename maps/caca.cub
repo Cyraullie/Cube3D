@@ -1,7 +1,7 @@
 NO ./assets/wall_north.xpm
 SO ./assets/wall_south.xpm
 WE ./assets/wall_west.xpm
-EA ./assets/wall_east.xpm
+EA ./maps/caca.cub
 F 29,247,247
 C 1,221,45
         1111111111111111111111111

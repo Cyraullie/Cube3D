@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   grid_search.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/31 11:24:44 by kilian            #+#    #+#             */
-/*   Updated: 2025/07/16 13:13:10 by cgoldens         ###   ########.fr       */
+/*   Updated: 2025/07/29 15:58:44 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,10 +73,10 @@ static int	return_side(double angle, int index)
 	}
 	else
 	{
-		if (angle <= 180 || angle >= 0)
-			return (S);
-		else
+		if (angle <= 180 && angle >= 0)
 			return (N);
+		else
+			return (S);
 	}
 }
 
