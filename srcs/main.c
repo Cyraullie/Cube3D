@@ -6,7 +6,7 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 13:46:48 by cgoldens          #+#    #+#             */
-/*   Updated: 2025/07/29 16:11:58 by cgoldens         ###   ########.fr       */
+/*   Updated: 2025/07/30 13:58:23 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,9 @@
 
 //TODO map missing
 //TODO pas le droit de passer en diago (les coins de map interdit)
-//TODO texture nord et sud la meme ????
-//TODO compilation par rapport au header aussi (dans makefile)
-//TODO autoriser uniquement les .xpm
+
 //TODO input infini
+//TODO compilation par rapport au header aussi (dans makefile)
 
 
 static int	find_last_tab(char **tab)
