@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_parsing.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kilian <kilian@student.42.fr>              +#+  +:+       +#+        */
+/*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 14:56:59 by cgoldens          #+#    #+#             */
-/*   Updated: 2025/07/25 07:03:21 by kilian           ###   ########.fr       */
+/*   Updated: 2025/07/30 14:30:53 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ int	check_map(t_map *map)
 
 	spawn_cnt = 0;
 	if (map->rows == 0 || map->cols == 0)
-		return (1);
+		return (printf("Error\nMap missing in .cub file\n"), 1);
 	rows = -1;
 	while (++rows < map->rows)
 	{
