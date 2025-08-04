@@ -6,7 +6,7 @@
 /*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/23 10:17:36 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/07/28 16:01:57 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/07/29 15:44:46 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	texture_constructor(t_texture *texture, t_data *data)
 	int	i;
 
 	if (!malloc_texture(texture))
-		correct_free(data);
+		correct_free(data, 1);
 	texture->n_path = NULL;
 	texture->s_path = NULL;
 	texture->w_path = NULL;
@@ -74,9 +74,14 @@ void	map_constructor(t_map *map)
 	map->c_y = 0.0;
 }
 
-void	xpm_img_constructor(t_img *img, char *path, void *mlx)
+void	xpm_img_constructor(t_img *img, char *path, void *mlx, t_data *data)
 {
 	img->ptr = mlx_xpm_file_to_image(mlx, path, &img->width, &img->height);
+	if (!img->ptr)
+	{
+		printf("Error\nInvalid xpm format");
+		correct_free(data, 0);
+	}
 	img->addr = mlx_get_data_addr(img->ptr, &img->bpp, \
 &img->line_length, &img->endian);
 }

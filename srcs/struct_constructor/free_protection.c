@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_protection.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/28 15:02:14 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/07/29 10:29:41 by cgoldens         ###   ########.fr       */
+/*   Updated: 2025/07/29 15:45:06 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ static void	free_data_window(t_window *window)
 	free(window);
 }
 
-void	correct_free(t_data *data)
+void	correct_free(t_data *data, int malloc_index)
 {
 	if (data->texture->id)
 		free(data->texture->id);
@@ -82,6 +82,7 @@ void	correct_free(t_data *data)
 		free(data->character);
 	if (data->key)
 		free(data->key);
-	printf("Error\nMalloc didn't work correctly (skill issue)\n");
+	if (malloc_index == 1)
+		printf("Error\nMalloc didn't work correctly (skill issue)\n");
 	exit(EXIT_FAILURE);
 }
