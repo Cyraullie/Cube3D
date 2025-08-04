@@ -6,7 +6,7 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/28 11:53:35 by cgoldens          #+#    #+#             */
-/*   Updated: 2025/07/29 10:39:01 by cgoldens         ###   ########.fr       */
+/*   Updated: 2025/07/30 13:56:19 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,33 @@ int	check_double(t_texture *txtr, char *str)
 }
 
 /**
+ * @brief 
+ * 
+ * @param str 
+ * @return int 
+ */
+int	check_xpm(char *str)
+{
+	char	**tab;
+	const char	*ext = ".xpm";
+	size_t		len_filename;
+	size_t		len_ext;
+
+	strip_newline(str);
+	tab = ft_split(str, ' ');
+	if (!tab || !tab[0] || !tab[1] || !ft_strncmp(tab[0], "C", 2)
+		|| !ft_strncmp(tab[0], "F", 2))
+		return (free_array(tab), 0);
+	len_filename = ft_strlen(tab[1]);
+	len_ext = ft_strlen(ext);
+	if (!ft_strncmp(tab[1], ext, 5))
+		return (free_array(tab), 1);
+	if ((!ft_strcmp(tab[1] + (len_filename - len_ext), ext)) == 0)
+		return (free_array(tab), 1);
+	return (free_array(tab), 0);
+}
+
+/**
  * @brief Get the data object from .cub
  * 
  * @param data 
@@ -47,17 +74,20 @@ int	check_double(t_texture *txtr, char *str)
 int	get_data(t_data *data, char *buf, int fd)
 {
 	if (!has_all_identifiers(data->texture->id) && is_map_line(buf))
-	{
 		return (1);
-	}
 	if (!has_all_identifiers(data->texture->id))
 	{
-		add_struct(data->texture, buf);
+		if (check_xpm(buf) == 0)
+			add_struct(data->texture, buf);
+		else
+		{
+			free_and_close(fd, buf);
+			get_next_line(120000);
+			print_error("Error\nPath in %s didn't .xmp", EXIT_FAILURE, data);
+		}
 	}
 	else if (is_map_line(buf))
-	{
 		return (parse_map(fd, data, buf), 2);
-	}
 	else
 	{
 		free_and_close(fd, buf);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_constructor.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 16:42:35 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/07/29 16:04:07 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/07/29 16:23:09 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,8 @@ void	key_constructor(t_key *key)
  * @param mlx 
  * @param map 
  */
-void	character_constructor(t_character *character, void *mlx, t_map *map)
+static void	character_constructor(t_character *character, t_map *map)
 {
-	(void)mlx;
 	character->angle_view = map->direction;
 	character->x_pose = map->c_x;
 	character->y_pose = map->c_y;
@@ -94,7 +93,7 @@ void	data_constructor(t_data *data, char *argv)
 	parsing(fd, data);
 	window_constructor(data->window);
 	load_image(data);
-	character_constructor(data->character, data->window->mlx, data->map);
+	character_constructor(data->character, data->map);
 	key_constructor(data->key);
 	data->close = 0;
 }

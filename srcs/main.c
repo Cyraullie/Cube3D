@@ -6,17 +6,16 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 13:46:48 by cgoldens          #+#    #+#             */
-/*   Updated: 2025/07/29 15:39:08 by cgoldens         ###   ########.fr       */
+/*   Updated: 2025/07/30 14:30:20 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3D.h"
 
-//TODO map missing
 //TODO pas le droit de passer en diago (les coins de map interdit)
-//TODO texture nord et sud la meme ????
+
+//TODO input infini
 //TODO compilation par rapport au header aussi (dans makefile)
-//TODO autoriser uniquement les .xpm
 
 
 static int	find_last_tab(char **tab)
