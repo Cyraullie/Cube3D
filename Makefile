@@ -1,28 +1,28 @@
 NAME = cub3D
 
 CC = cc
-
-CFLAGS = -Wall -Werror -Wextra  -g -o3
+CFLAGS = -Wall -Werror -Wextra -g -MMD -MP
 
 SRCDIR = srcs/
 OBJDIR = objs/
+INCDIR = includes/
 
 SRCS = $(shell find $(SRCDIR) -type f -name "*.c")
+OBJS = $(SRCS:$(SRCDIR)%.c=$(OBJDIR)%.o)
+DEPS = $(OBJS:.o=.d)
 
-LIBFTDIR	= libft/
-MLXDIR		= minilibx/
+LIBFTDIR = libft/
+MLXDIR = minilibx/
 
 LIBFT = $(LIBFTDIR)/libft.a
 MLX = $(MLXDIR)libmlx.a
 
 MLX_FLAGS = -L$(MLXDIR) -lmlx -lXext -lX11
 
-OBJS = $(SRCS:$(SRCDIR)%.c=$(OBJDIR)%.o)
-
 GREEN = \033[1;32m
 RESET = \033[0m
 
-all: header $(NAME) $(LIBFT) $(MLX)
+all: header $(NAME)
 
 header:
 	@echo "$(GREEN)"
@@ -36,16 +36,16 @@ header:
 
 $(OBJDIR)%.o: $(SRCDIR)%.c
 	@mkdir -p $(dir $@)
-	@$(CC) $(CFLAGS) -c -o $@ $<
-
-$(LIBFT):
-	make -C $(LIBFTDIR)
-
-$(MLX):
-	make -C $(MLXDIR)
+	$(CC) $(CFLAGS) -I$(INCDIR) -c $< -o $@
 
 $(NAME): $(OBJS) $(LIBFT) $(MLX)
-	$(CC) $(CFLAGS) $(OBJS) -L$(MLXDIR) -lmlx -L$(LIBFTDIR) -lft -lXext -lX11 -lm -lbsd -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJS) -L$(LIBFTDIR) -lft -L$(MLXDIR) -lmlx -lXext -lX11 -lm -lbsd -o $(NAME)
+
+$(LIBFT):
+	$(MAKE) -C $(LIBFTDIR)
+
+$(MLX):
+	$(MAKE) -C $(MLXDIR)
 
 clean:
 	@rm -rf $(OBJDIR)
@@ -54,9 +54,10 @@ clean:
 
 fclean: clean
 	@rm -f $(NAME)
-	make -C $(MLXDIR) clean
-	make -C $(LIBFTDIR) fclean
+	@$(MAKE) fclean -C $(LIBFTDIR)
 
 re: fclean all
+
+-include $(DEPS)
 
 .PHONY: all clean fclean re
