@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   functions.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ktintim <ktintim-@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 15:46:40 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/07/29 15:44:06 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/08/21 13:56:48 by ktintim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,8 @@ void		key_constructor(t_key *key);
 void		texture_constructor(t_texture *texture, t_data *data);
 void		map_constructor(t_map *map);
 void		image_constructor(t_img *img, void *mlx, int height, int width);
-void		xpm_img_constructor(t_img *img, char *path, void *mlx, t_data *data);
+void		xpm_img_constructor(t_img *img, char *path, \
+void *mlx, t_data *data);
 	//constructor_utils.c
 int			malloc_data(t_data *data);
 int			malloc_texture(t_texture *texture);
@@ -96,6 +97,7 @@ int			check_s(t_data *data);
 int			check_a(t_data *data);
 int			check_d(t_data *data);
 int			check_door(t_data *data);
+int			no_clip(t_data *data, int new_x, int new_y);
 	//minimap.c
 void		put_minimap(t_data *data, t_img *scn_img);
 	//draw_panel.c

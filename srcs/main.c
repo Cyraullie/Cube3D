@@ -3,20 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ktintim <ktintim-@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 13:46:48 by cgoldens          #+#    #+#             */
-/*   Updated: 2025/07/30 14:30:20 by cgoldens         ###   ########.fr       */
+/*   Updated: 2025/08/21 13:55:37 by ktintim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3D.h"
-
-//TODO pas le droit de passer en diago (les coins de map interdit)
-
-//TODO input infini
-//TODO compilation par rapport au header aussi (dans makefile)
-
 
 static int	find_last_tab(char **tab)
 {

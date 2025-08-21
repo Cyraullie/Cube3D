@@ -3,16 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   colision.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ktintim <ktintim-@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 13:11:09 by cgoldens          #+#    #+#             */
-/*   Updated: 2025/07/29 16:50:00 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/08/21 13:42:34 by ktintim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3D.h"
-
-// TODO faut faire ces colision rallonger de merde la ptn
 
 /**
  * @brief check if the moove dont go in a wall
@@ -34,7 +32,8 @@ new_y(data->character->angle_view, data) + 32;
 	x = ((int)pose_x / PIXEL);
 	y = ((int)pose_y / PIXEL);
 	if (data->map->map[y][x] == '1' || data->map->map[y][x] == '2' \
-|| data->map->map[y][x] == ' ' || !data->map->map[y][x])
+|| data->map->map[y][x] == ' ' || !data->map->map[y][x] || \
+no_clip(data, x, y) == 1)
 		return (1);
 	else
 		return (0);
@@ -60,7 +59,8 @@ new_y(data->character->angle_view, data) + 32;
 	x = (int)pose_x / PIXEL;
 	y = (int)pose_y / PIXEL;
 	if (data->map->map[y][x] == '1' || data->map->map[y][x] == '2' \
-|| data->map->map[y][x] == ' ' || !data->map->map[y][x])
+|| data->map->map[y][x] == ' ' || !data->map->map[y][x] || \
+no_clip(data, x, y) == 1)
 		return (1);
 	else
 		return (0);
@@ -86,7 +86,8 @@ new_y(data->character->angle_view - 90, data) + 32;
 	x = (int)pose_x / PIXEL;
 	y = (int)pose_y / PIXEL;
 	if (data->map->map[y][x] == '1' || data->map->map[y][x] == '2' \
-|| data->map->map[y][x] == ' ' || !data->map->map[y][x])
+|| data->map->map[y][x] == ' ' || !data->map->map[y][x] || \
+no_clip(data, x, y) == 1)
 		return (1);
 	else
 		return (0);
@@ -112,7 +113,8 @@ new_y(data->character->angle_view + 90, data) + 32;
 	x = (int)pose_x / PIXEL;
 	y = (int)pose_y / PIXEL;
 	if (data->map->map[y][x] == '1' || data->map->map[y][x] == '2' \
-|| data->map->map[y][x] == ' ' || !data->map->map[y][x])
+|| data->map->map[y][x] == ' ' || !data->map->map[y][x] || \
+no_clip(data, x, y) == 1)
 		return (1);
 	else
 		return (0);

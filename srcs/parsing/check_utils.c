@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ktintim <ktintim-@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/28 11:53:35 by cgoldens          #+#    #+#             */
-/*   Updated: 2025/07/30 13:56:19 by cgoldens         ###   ########.fr       */
+/*   Updated: 2025/08/21 13:56:36 by ktintim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int	check_double(t_texture *txtr, char *str)
  */
 int	check_xpm(char *str)
 {
-	char	**tab;
+	char		**tab;
 	const char	*ext = ".xpm";
 	size_t		len_filename;
 	size_t		len_ext;
