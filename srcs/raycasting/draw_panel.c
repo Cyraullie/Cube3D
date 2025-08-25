@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_panel.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ktintim <ktintim-@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 09:47:05 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/07/29 13:26:59 by cgoldens         ###   ########.fr       */
+/*   Updated: 2025/08/25 14:07:03 by ktintim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
  * @param scn_img 
  * @param color 
  */
-void	draw_floor(t_img *scn_img, int color)
+void	draw_ceiling(t_img *scn_img, int color)
 {
 	int	x;
 	int	y;
@@ -43,7 +43,7 @@ void	draw_floor(t_img *scn_img, int color)
  * @param scn_img 
  * @param color 
  */
-void	draw_ceiling(t_img *scn_img, int color)
+void	draw_floor(t_img *scn_img, int color)
 {
 	int	x;
 	int	y;
