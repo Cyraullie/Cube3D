@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktintim <ktintim-@student.42.fr>           +#+  +:+       +#+        */
+/*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/28 11:53:35 by cgoldens          #+#    #+#             */
-/*   Updated: 2025/08/21 13:56:36 by ktintim          ###   ########.fr       */
+/*   Updated: 2025/08/25 13:49:42 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,8 @@ int	get_data(t_data *data, char *buf, int fd)
 		{
 			free_and_close(fd, buf);
 			get_next_line(120000);
-			print_error("Error\nPath in %s didn't .xmp", EXIT_FAILURE, data);
+			print_error("Error\nAn identifier path isn't in xmp extension",
+				EXIT_FAILURE, data);
 		}
 	}
 	else if (is_map_line(buf))
